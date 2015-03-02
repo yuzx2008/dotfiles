@@ -24,5 +24,11 @@ else
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		doIt;
 	fi;
+  echo "dotfiles installed completed. Please don't forget to change your git username and email:";
+  echo "    git config --global user.name \"Your Name\"";
+  echo "    git config --global user.email you@example.com";
+  echo "";
+  echo "When you first start vim, please use :BundleInstall to install all the plugins."
+  echo "Have fun!"
 fi;
 unset doIt;
