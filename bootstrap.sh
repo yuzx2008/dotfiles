@@ -10,6 +10,7 @@ function doIt() {
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
 	source ~/.bash_profile;
 
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   if [ ! -d $HOME/.vim/UltiSnips ]; then
     ln -s $DOTFILES/.vim/UltiSnips $HOME/.vim/UltiSnips
   fi
