@@ -143,3 +143,8 @@ alias reload="exec $SHELL -l"
 # Easily switch between `io.js` and `Node.js`
 alias use-iojs="brew unlink node && brew link --force iojs"
 alias use-node="brew unlink iojs && brew link --force node"
+
+# force to use macvim instead of normal vim
+if [ -f /usr/local/bin/mvim ]; then
+  alias vim="mvim -v"
+fi
