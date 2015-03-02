@@ -37,8 +37,8 @@ map <C-n> :NERDTreeToggle<CR>
 map <Leader>n :NERDTree %:p:h<CR>
 
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
+" Plugin 'plasticboy/vim-markdown'
+" let g:vim_markdown_folding_disabled=1
 
 Plugin 'Valloric/YouCompleteMe'
 

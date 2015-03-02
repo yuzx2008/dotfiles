@@ -1,8 +1,39 @@
-# Mathias’s dotfiles
+# Tyr's dotfiles
 
 ![Screenshot of my shell prompt](http://i.imgur.com/EkEtphC.png)
 
+This is a derived work from Mathias's dotfiles. Consider to use his setup directly. See: https://github.com/mathiasbynens/dotfiles.
+
+Disclaimer: I have tuned the dotfiles for my own use. Some of the setup may not be good for you.
+
+Chaged to Mathias's dotfiles:
+
+* use [liquidprompt](https://github.com/nojhan/liquidprompt) for shell prompt.
+* use [vundle](https://github.com/gmarik/Vundle.vi://github.com/gmarik/Vundle.vim) for vim plugin management.
+* added lots of vim plugins.
+
 ## Installation
+
+### Quick installation
+
+```bash
+cd $HOME
+git clone https://github.com/mathiasbynens/dotfiles.git && cd dotfiles
+git submodule init && git submodule update
+source bootstrap.sh
+```
+
+After everything is done, you can start vim and run command: `:BundleInstall`. You should get all the plugins installed. `YouCompleteMe` may report error. Please follow https://github.com/Valloric/YouCompleteMe to properly install it.
+
+If you are a OSX homebrew user, you can further run:
+
+```bash
+source brew.sh
+```
+
+to get your homebrew formulas updated. Have fun!
+
+(the following guide is from Mathias's project. Read on if you want to know more.)
 
 ### Using Git and the bootstrap script
 
