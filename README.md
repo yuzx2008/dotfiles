@@ -1,6 +1,8 @@
 # Tyr's dotfiles
 
-![Screenshot of my shell prompt](http://i.imgur.com/EkEtphC.png)
+![Screenshot of my shell prompt](http://i.imgur.com/hBEsvYg.png)
+
+![Screenshot of my vim](http://i.imgur.com/gPvOSLP.png)
 
 This is a derived work from Mathias's dotfiles. Consider to use his setup directly. See: https://github.com/mathiasbynens/dotfiles.
 
