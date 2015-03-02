@@ -1,8 +1,14 @@
 # Tyr's dotfiles
 
+Below is my shell prompt:
+
 ![Screenshot of my shell prompt](http://i.imgur.com/hBEsvYg.png)
 
+Below is my vim (Nerdtree, YouCompleteMe, UltiSnip and a lot more...):
+
 ![Screenshot of my vim](http://i.imgur.com/gPvOSLP.png)
+
+
 
 This is a derived work from Mathias's dotfiles. Consider to use his setup directly. See: https://github.com/mathiasbynens/dotfiles.
 
