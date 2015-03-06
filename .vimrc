@@ -76,7 +76,14 @@ Plugin 'tpope/vim-eunuch'
 
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 
+" all lanugage support
 Plugin 'sheerun/vim-polyglot'
+
+" change surroundins - cs/ds/ysiw/yss
+Plugin 'tpope/vim-surround'
+
+" do syntax check
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

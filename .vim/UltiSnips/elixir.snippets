@@ -24,16 +24,6 @@ defmodule ${1:name} do
 end
 endsnippet
 
-snippet defmac "defines a new macro" b
-defm ${1:name} do
-	@doc """
-	$2
-	"""
-
-	$3
-end
-endsnippet
-
 snippet defi "defines a new implementation" b
 defimpl ${1:name}, for: $2 do
 	$3
