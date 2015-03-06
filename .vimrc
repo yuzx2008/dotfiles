@@ -85,6 +85,10 @@ Plugin 'tpope/vim-surround'
 " do syntax check
 Plugin 'scrooloose/syntastic'
 
+" fuzzy file find
+Plugin 'kien/ctrlp.vim'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
