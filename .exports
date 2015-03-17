@@ -20,7 +20,15 @@ export MANPAGER='less -X';
 # Always enable colored `grep` output.
 export GREP_OPTIONS='--color=auto';
 
+export GOPATH=$HOME/go
+
 export DOTFILES=$HOME/dotfiles
 export ARENA=$HOME/study/arena
 export ARENA_E=$ARENA/elixir
 export ARENA_ET=$ARENA_E/training
+export ARENA_CJ=$ARENA/clojure
+export ARENA_PY=$ARENA/python
+export ARENA_TL=$ARENA_TL/tcl
+
+export PYTHONPATH=$HOME/projects/juniper/jcs3:$HOME/projects/juniper/tchen.argon/src
+export CLOJURESCRIPT_HOME=$HOME/projects/clojure/clojurescript

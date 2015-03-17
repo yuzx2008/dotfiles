@@ -88,6 +88,9 @@ Plugin 'scrooloose/syntastic'
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
 
+" vim cscope
+Plugin 'vim-scripts/cscope.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -141,8 +144,9 @@ set cursorline
 set tabstop=2
 set expandtab
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-"set list
+" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set lcs=tab:▸\ ,trail:·
+set list
 " Highlight searches
 set hlsearch
 " Ignore case of searches
@@ -214,6 +218,9 @@ noremap <leader>xt :! mix test<CR>
 noremap <leader>gd :! go get<CR>
 noremap <leader>gc :! make<CR>
 noremap <leader>gt :! make test<CR>
+
+" tcl keymapping
+noremap <leader>tt :set noexpandtab<CR>
 
 
 " web page
