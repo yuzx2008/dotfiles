@@ -30,5 +30,4 @@ export ARENA_CJ=$ARENA/clojure
 export ARENA_PY=$ARENA/python
 export ARENA_TL=$ARENA_TL/tcl
 
-export PYTHONPATH=$HOME/projects/juniper/jcs3:$HOME/projects/juniper/tchen.argon/src
 export CLOJURESCRIPT_HOME=$HOME/projects/clojure/clojurescript
