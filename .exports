@@ -28,6 +28,7 @@ export ARENA_E=$ARENA/elixir
 export ARENA_ET=$ARENA_E/training
 export ARENA_CJ=$ARENA/clojure
 export ARENA_PY=$ARENA/python
-export ARENA_TL=$ARENA_TL/tcl
+export ARENA_TL=$ARENA/tcl
+export ARENA_EM=$ARENA/elm
 
 export CLOJURESCRIPT_HOME=$HOME/projects/clojure/clojurescript

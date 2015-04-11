@@ -89,8 +89,26 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 
 " vim cscope
-Plugin 'vim-scripts/cscope.vim'
+" Plugin 'vim-scripts/cscope.vim'
 
+" Elm lang
+Plugin 'lambdatoast/elm.vim'
+
+" ansible yaml support
+Plugin 'chase/vim-ansible-yaml'
+
+" fireplace for clojure
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-dispatch'
+
+" precision editing for s-expression
+Plugin 'guns/vim-sexp'
+
+" clojure runtime files
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -202,8 +220,27 @@ if has("autocmd")
 endif
 
 au FileType scss setl sw=2 sts=2 et
+au FileType html setl sw=2 sts=2 et
+au FileType css setl sw=2 sts=2 et
+au FileType elm setl sw=2 sts=2 et
+au FileType go setl sw=2 sts=2 et
 
 set t_Co=256
+
+" Enable Rainbow Parentheses when dealing with Clojure files
+au FileType clojure RainbowParenthesesActivate
+au Syntax * RainbowParenthesesLoadRound
+
+" This should enable Emacs like indentation
+let g:clojure_fuzzy_indent=1
+let g:clojure_align_multiline_strings = 1
+
+" Add some words which should be indented like defn etc: Compojure/compojure-api, midje and schema stuff mostly.
+let g:clojure_fuzzy_indent_patterns=['^GET', '^POST', '^PUT', '^DELETE', '^ANY', '^HEAD', '^PATCH', '^OPTIONS', '^def']
+autocmd FileType clojure setlocal lispwords+=describe,it,testing,facts,fact,provided
+
+" Disable some irritating mappings
+let g:sexp_enable_insert_mode_mappings = 0"
 
 " basic keymapping
 noremap <leader>c :! compass compile<CR>
@@ -213,6 +250,12 @@ noremap <leader>ed :! mix deps.get<CR>
 noremap <leader>ec :! mix compile<CR>
 noremap <leader>et :! mix test<CR>
 noremap <leader>xt :! mix test<CR>
+
+" clojure keymapping
+noremap <leader>cd :! lein deps<CR>
+noremap <leader>cc :! lein compile<CR>
+noremap <leader>ce :! lein test<CR>
+noremap <leader>ce :Eval<CR>
 
 " golang keymapping
 noremap <leader>gd :! go get<CR>
@@ -229,5 +272,4 @@ noremap <leader>exh :! open http://www.phoenixframework.org/v0.9.0/docs<CR>
 noremap <leader>ehp :! open https://hex.pm<CR>
 
 noremap <leader>gh :! open https://github.com<CR>
-
 

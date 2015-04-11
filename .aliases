@@ -148,3 +148,6 @@ alias use-node="brew unlink iojs && brew link --force node"
 if [ -f /usr/local/bin/mvim ]; then
   alias vim="mvim -v"
 fi
+
+alias route="netstat -r"
+alias listport="netstat -a | egrep 'Proto|LISTEN'"
