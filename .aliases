@@ -151,3 +151,4 @@ fi
 
 alias route="netstat -r"
 alias listport="netstat -a | egrep 'Proto|LISTEN'"
+alias pylintc="pylint --rcfile=pylint.rc"
