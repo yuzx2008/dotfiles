@@ -31,4 +31,7 @@ export ARENA_PY=$ARENA/python
 export ARENA_TL=$ARENA/tcl
 export ARENA_EM=$ARENA/elm
 
+# local elasticsearch deployment
+export ESL='http://localhost:9200'
+
 export CLOJURESCRIPT_HOME=$HOME/projects/clojure/clojurescript
