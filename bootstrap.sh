@@ -12,9 +12,14 @@ function doIt() {
 		--exclude ".vim/UltiSnips"\
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
+ 
+  # 加入到 .bashrc 中 
+  if grep "source ~/.bash_profile;" ~/.bashrc > /dev/null 2>&1; then
+    echo "source ~/.bash_profile;" >> ~/.bashrc
+  fi
 
   # 执行 bash_profile
-	source ~/.bash_profile;
+  source ~/.bash_profile;
 
   # 如果不存在 Vundle，则 clone
   if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
@@ -37,4 +42,5 @@ else
   echo "When you first start vim, please use :PluginInstall to install all the plugins.(vim +PluginInstall +qall)"
   echo "Have fun!"
 fi;
+
 unset doIt;
