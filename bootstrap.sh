@@ -12,9 +12,14 @@ function doIt() {
 		--exclude ".vim/UltiSnips"\
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
+
+  # 执行 bash_profile
 	source ~/.bash_profile;
 
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  # 如果不存在 Vundle，则 clone
+  if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  fi
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
