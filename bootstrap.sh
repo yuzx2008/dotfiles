@@ -5,7 +5,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
-	# 
+	# 将文件拷贝到 ~ 
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude "bootstrap.sh" \
@@ -15,9 +15,6 @@ function doIt() {
 	source ~/.bash_profile;
 
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  if [ ! -d $HOME/.vim/UltiSnips ]; then
-    ln -s $DOTFILES/.vim/UltiSnips $HOME/.vim/UltiSnips
-  fi
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
@@ -32,7 +29,7 @@ else
   echo "    git config --global user.name \"Your Name\"";
   echo "    git config --global user.email you@example.com";
   echo "";
-  echo "When you first start vim, please use :BundleInstall to install all the plugins."
+  echo "When you first start vim, please use :PluginInstall to install all the plugins.(vim +PluginInstall +qall)"
   echo "Have fun!"
 fi;
 unset doIt;
