@@ -14,7 +14,11 @@ function doIt() {
 		--exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
  
   # 加入到 .bashrc 中 
-  if grep "source ~/.bash_profile;" ~/.bashrc > /dev/null 2>&1; then
+  if 
+    cat ~/.bashrc | grep "source ~/.bash_profile;" > /dev/null 2>&1
+  then
+    echo "Found \"source ~/.bash_profile;\" in ~/.bashrc."
+  else
     echo "source ~/.bash_profile;" >> ~/.bashrc
   fi
 
