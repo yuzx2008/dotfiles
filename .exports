@@ -8,8 +8,8 @@ export HISTFILESIZE="${HISTSIZE}";
 export HISTCONTROL='ignoreboth';
 
 # Prefer US English and use UTF-8.
-export LANG='en_US.UTF-8';
-export LC_ALL='en_US.UTF-8';
+#export LANG='en_US.UTF-8';
+#export LC_ALL='en_US.UTF-8';
 
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
@@ -20,18 +20,5 @@ export MANPAGER='less -X';
 # Always enable colored `grep` output.
 export GREP_OPTIONS='--color=auto';
 
-export GOPATH=$HOME/go
-
 export DOTFILES=$HOME/dotfiles
-export ARENA=$HOME/study/arena
-export ARENA_E=$ARENA/elixir
-export ARENA_ET=$ARENA_E/training
-export ARENA_CJ=$ARENA/clojure
-export ARENA_PY=$ARENA/python
-export ARENA_TL=$ARENA/tcl
-export ARENA_EM=$ARENA/elm
 
-# local elasticsearch deployment
-export ESL='http://localhost:9200'
-
-export CLOJURESCRIPT_HOME=$HOME/projects/clojure/clojurescript
