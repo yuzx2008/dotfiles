@@ -157,7 +157,7 @@ set noeol
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-	set undodir=~/.vim/undo
+  set undodir=~/.vim/undo
 endif
 
 " Don’t create backups when editing files in certain directories
@@ -236,8 +236,8 @@ set showcmd
 
 " Use relative line numbers
 "if exists("&relativenumber")
-"	set relativenumber
-"	au BufReadPost * set relativenumber
+" set relativenumber
+" au BufReadPost * set relativenumber
 "endif
 
 " Start scrolling three lines before the horizontal window border
@@ -245,11 +245,11 @@ set scrolloff=3
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
@@ -257,12 +257,12 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " Enable file type detection
+  filetype on
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
 au FileType html setl sw=2 sts=2 et
@@ -271,13 +271,8 @@ au FileType css setl sw=2 sts=2 et
 " basic keymapping
 noremap <leader>c :! compass compile<CR>
 
-" golang keymapping
-noremap <leader>gd :! go get<CR>
-noremap <leader>gc :! make<CR>
-noremap <leader>gt :! make test<CR>
-
 " web page
-noremap <leader>gh :! open https://github.com<CR>
+noremap <leader>gh :! google-chrome https://github.com<CR>
 
 " 选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -312,10 +307,6 @@ nnoremap <Leader>tc :tabclose<cr>
 nnoremap <leader>md :set filetype=markdown<CR>
 nnoremap <leader>mp :InstantMarkdownPreview<CR>
 
-" Python 设置，如：不要 tab 等
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType python map <F12> :!python %<CR>
-
 " 将 pathogen 自身也置于独立目录，指定其路径
 " runtime bundle/vim-pathogen-2.3/autoload/pathogen.vim
 " 运行 pathogen
@@ -324,15 +315,18 @@ autocmd FileType python map <F12> :!python %<CR>
 " gvim 字体（用 \ 转义空格，最后指定大小 11）
 set guifont=Courier\ 10\ Pitch\ 11
 
-" 禁止折行
+" 禁止折行（全局）
 set nowrap
+
 " 设置历史记录数
 set history=1000
 " 取消备份，禁止临时文件生成
 " set nobackup
 " set noswapfile
+
 " 设置匹配模式，输入一个左括号时会匹配相应的右括号
 set showmatch
+
 " 设置 C/C++ 自动对齐
 " set autoindent
 " set cindent
@@ -384,16 +378,34 @@ autocmd InsertLeave * call Fcitx2En()
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
 
-"-----------------------------------------------------------------
-" plugin - NERD_tree.vim 以树状方式浏览系统中的文件和目录
-" :ERDtree 打开 NERD_tree         :NERDtreeClose    关闭 NERD_tree
-" o 打开关闭文件或者目录         t 在标签页中打开
-" T 在后台标签页中打开           ! 执行此文件
-" p 到上层目录                   P 到根目录
-" K 到第一个节点                 J 到最后一个节点
-" u 打开上层目录                 m 显示文件系统菜单（添加、删除、移动操作）
-" r 递归刷新当前目录             R 递归刷新当前根目录
-"-----------------------------------------------------------------
+"-------------------
+" :ERDtree 打开 NERD_tree        
+" :NERDtreeClose 关闭 NERD_tree
+" o 打开关闭文件或者目录
+" t 在标签页中打开
+" T 在后台标签页中打开
+" ! 执行此文件
+" p 到上层目录
+" P 到根目录
+" K 到第一个节点
+" J 到最后一个节点
+" u 打开上层目录
+" m 显示文件系统菜单（添加、删除、移动操作）
+" r 递归刷新当前目录
+" R 递归刷新当前根目录
+"---------------------
 " F3 NERDTree 切换
 map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
+
+" Python 设置，如：不要 tab 等
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType python map <F12> :!python %<CR>
+
+" 设置 markdown 格式自动换行
+autocmd FileType markdown set wrap
+
+" 在 bash 中执行光标所在行
+nnoremap <leader>b :.w !bash<CR>
+
+
