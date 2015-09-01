@@ -38,9 +38,10 @@ Plugin 'honza/vim-snippets'
 
 " " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-x>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" UltiSnips 的 tab 键与 YCM 冲突，重新设定
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 let g:UltiSnipsUsePythonVersion = 2
 
 " If you want :UltiSnipsEdit to split your window.
@@ -51,8 +52,40 @@ Plugin 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
-map <Leader>n :NERDTree %:p:h<CR>
+" map <C-n> :NERDTreeToggle<CR>
+" map <Leader>n :NERDTree %:p:h<CR>
+"-------------------
+" :ERDtree 打开 NERD_tree        
+" :NERDtreeClose 关闭 NERD_tree
+" o 打开关闭文件或者目录
+" t 在标签页中打开
+" T 在后台标签页中打开
+" ! 执行此文件
+" p 到上层目录
+" P 到根目录
+" K 到第一个节点
+" J 到最后一个节点
+" u 打开上层目录
+" m 显示文件系统菜单（添加、删除、移动操作）
+" r 递归刷新当前目录
+" R 递归刷新当前根目录
+"---------------------
+" F3 NERDTree 切换
+map <F9> :NERDTreeToggle<CR>
+imap <F9> <ESC>:NERDTreeToggle<CR>
+" 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
+nmap <Leader>fl :NERDTreeToggle<CR>
+" 设置NERDTree子窗口宽度
+let NERDTreeWinSize=32
+" 设置NERDTree子窗口位置
+let NERDTreeWinPos="left"
+" 显示隐藏文件
+let NERDTreeShowHidden=1
+" NERDTree 子窗口中不显示冗余帮助信息
+let NERDTreeMinimalUI=1
+" 删除文件时自动删除文件对应 buffer
+let NERDTreeAutoDeleteBuffer=1
+
 
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -173,9 +206,6 @@ set secure
 
 " Enable line numbers（行号）
 set number
-
-" Enable syntax highlighting
-syntax on
 
 " Highlight current line（高亮当前行/列）
 set cursorline
@@ -332,7 +362,10 @@ set showmatch
 " set cindent
 
 " 配色方案
-" syntax enable
+syntax enable
+" Enable syntax highlighting
+syntax on
+
 " light dark
 if has('gui_running')
     set background=light
@@ -377,26 +410,6 @@ autocmd InsertLeave * call Fcitx2En()
 
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
-
-"-------------------
-" :ERDtree 打开 NERD_tree        
-" :NERDtreeClose 关闭 NERD_tree
-" o 打开关闭文件或者目录
-" t 在标签页中打开
-" T 在后台标签页中打开
-" ! 执行此文件
-" p 到上层目录
-" P 到根目录
-" K 到第一个节点
-" J 到最后一个节点
-" u 打开上层目录
-" m 显示文件系统菜单（添加、删除、移动操作）
-" r 递归刷新当前目录
-" R 递归刷新当前根目录
-"---------------------
-" F3 NERDTree 切换
-map <F9> :NERDTreeToggle<CR>
-imap <F9> <ESC>:NERDTreeToggle<CR>
 
 " Python 设置，如：不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
