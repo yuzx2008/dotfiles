@@ -96,6 +96,7 @@ let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
 
 Plugin 'Valloric/YouCompleteMe'
+let g:ycm_auto_trigger = 0
 
 Plugin 'jiangmiao/auto-pairs'
 
