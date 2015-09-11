@@ -86,3 +86,4 @@ alias reload="exec $SHELL -l"
 alias listport="netstat -a | egrep 'Proto|LISTEN'"
 alias pylintc="pylint --rcfile=pylint.rc"
 
+alias tmux="tmux -2"

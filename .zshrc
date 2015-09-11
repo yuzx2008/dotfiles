@@ -71,8 +71,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USR_SERVER/lib:$USR_SERVER/mysql/lib
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$NODE_HOME/bin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
-export TERM=xterm-256color
 umask 0000
+export TERM=screen-256color       # for a tmux -2 session (also for screen)
+eval 'dircolors ~/.dircolors'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,3 +101,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias tmux="tmux -2"
