@@ -73,7 +73,7 @@ export PATH=$PATH:$NODE_HOME/bin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
 umask 0000
 export TERM=screen-256color       # for a tmux -2 session (also for screen)
-eval 'dircolors ~/.dircolors'
+#eval 'dircolors ~/.dircolors'
 
 source $ZSH/oh-my-zsh.sh
 
