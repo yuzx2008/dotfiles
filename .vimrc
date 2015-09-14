@@ -160,7 +160,7 @@ let mapleader=","
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 " set clipboard=unnamed " for mac osx
-set clipboard=unnamedplus " for ubuntu
+" set clipboard=unnamedplus " for ubuntu
 
 " Enhance command-line completion（vim 自身命令行模式智能补全）
 set wildmenu
@@ -318,14 +318,6 @@ nnoremap <Leader>wh <C-W>h
 nnoremap <Leader>wk <C-W>k
 " 跳转至下方窗口
 nnoremap <Leader>wj <C-W>j
-
-" Buffers 操作快捷方式
-nnoremap <C-RETURN> :bnext<CR>
-nnoremap <C-S-RETURN> :bprevious<CR>
-
-" Tab 操作快捷方式
-nnoremap <C-TAB> :tabnext<CR>
-nnoremap <C-S-TAB> :tabprev<CR>
 
 " tab 快捷键
 nnoremap <Leader>tn :tabnext<cr>
