@@ -95,9 +95,6 @@ Plugin 'suan/vim-instant-markdown'
 let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
 
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_auto_trigger = 0
-
 Plugin 'jiangmiao/auto-pairs'
 
 " quick google search
@@ -109,8 +106,9 @@ noremap <F3> :Autoformat<CR><CR>
 Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'rking/ag.vim'
-
-Plugin 'vim-scripts/DrawIt'
+let g:agprg="ag --vimgrep"
+" configure ag.vim to always start searching from your project root instead of the cwd
+let g:ag_working_path_mode="r"
 
 Plugin 'tpope/vim-eunuch'
 
@@ -127,6 +125,18 @@ Plugin 'scrooloose/syntastic'
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" ctrlp 默认用 grep 搜索，效率低。所以，用 ag 替换默认搜索功能。ag 是一轻量级搜索工具，速度非常快。为集成 ag，添加配置
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files.
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " ansible yaml support
 Plugin 'chase/vim-ansible-yaml'
@@ -138,9 +148,7 @@ set laststatus=2
 " 指定配色方案为 256 色
 " set t_Co=256
 let g:Powline_symbols='fancy'
-
-"Plugin 'JarrodCTaylor/vim-shell-executor'
-"Plugin 'vim-scripts/Conque-Shell'
+set statusline+=%{fugitive#statusline()} "  Git Hotness
 
 " =================
 " All of your Plugins must be added before the following line
