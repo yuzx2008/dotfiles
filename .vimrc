@@ -26,7 +26,7 @@ Plugin 'L9'
 Plugin 'wincent/command-t'
 
 " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file://~/.yuzx/vim_plugin'
+" Plugin 'file://~/.vim/by_yuzx'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -252,9 +252,6 @@ set ignorecase
 " Highlight dynamically as pattern is typed（搜索时大小写不敏感）
 set incsearch
 
-" Always show status line（总显示状态栏）
-set laststatus=2
-
 " Enable mouse in all modes（Vim 可鼠标，防止终端下无法拷贝）
 set mouse=a
 
@@ -323,6 +320,7 @@ noremap <leader>gh :! google-chrome https://github.com<CR>
 vnoremap <Leader>y "+y
 " 系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
+vmap <C-x> "+c
 
 " 跳转至右方窗口
 nnoremap <Leader>wl <C-W>l
@@ -386,10 +384,6 @@ colorscheme solarized
 " let g:rehash256 = 1
 
 " colorscheme phd
-
-" Copy = Ctrl+C Paste = Ctrl+V
-vmap <C-c> "+yi
-vmap <C-x> "+c
 
 " fcitx 退出插入模式时，切换为英文输入法
 let g:input_toggle = 1
