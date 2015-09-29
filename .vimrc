@@ -419,4 +419,6 @@ autocmd FileType markdown set wrap
 " 在 bash 中执行光标所在行
 nnoremap <leader>b :.w !bash<CR>
 
-
+" 键盘操作
+map <Up> gk
+map <Down> gj
