@@ -347,9 +347,6 @@ nnoremap <leader>mp :InstantMarkdownPreview<CR>
 " 运行 pathogen
 " execute pathogen#infect()
 
-" gvim 字体（用 \ 转义空格，最后指定大小 11）
-set guifont=Courier\ 10\ Pitch\ 11
-
 " 禁止折行（全局）
 set nowrap
 
