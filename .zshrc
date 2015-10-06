@@ -70,6 +70,7 @@ export PATH=$PATH:$USR_SERVER/bin:$USR_SERVER/sbin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USR_SERVER/lib:$USR_SERVER/mysql/lib
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$NODE_HOME/bin
+export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
 umask 0000
 export TERM=screen-256color       # for a tmux -2 session (also for screen)
