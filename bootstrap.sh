@@ -31,16 +31,8 @@ function doIt() {
   fi
 }
 
-read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  doIt;
-fi;
-echo "dotfiles installed completed. Please don't forget to change your git username and email:";
-echo "    git config --global user.name \"Your Name\"";
-echo "    git config --global user.email you@example.com";
-echo "";
-echo "When you first start vim, please use :PluginInstall to install all the plugins.(vim +PluginInstall +qall)"
-echo "Have fun!"
-
+doIt;
+git config --global user.email "yuzx2008@gmail.com"
+git config --global user.name "yuzx2008"
+echo "Done. When you first start vim, please use :PluginInstall to install all the plugins.(vim +PluginInstall +qall)"
 unset doIt;
