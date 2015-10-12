@@ -131,15 +131,17 @@ Plugin 'scrooloose/syntastic'
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/software/* " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " ctrlp 默认用 grep 搜索，效率低。所以，用 ag 替换默认搜索功能。ag 是一轻量级搜索工具，速度非常快。为集成 ag，添加配置
+" 注意：因为定义了 g:ctrlp_user_command 所以上面定义的忽略失效，在 ag 命令上加 --ignore
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --ignore "software/" --nocolor -g ""'
   " Ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
