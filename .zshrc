@@ -103,3 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias tmux="tmux -2"
+alias start_mysql="cd /usr/local/mysql ; sudo ./bin/mysqld_safe --user=mysql & ; cd -"
+alias start_redis="redis-server /home/yuzx/server/redis.conf"
+alias start_memcached="memcached -d -m 64 -u root -l 127.0.0.1 -p 12111 -c 1024"
+alias stop_mysql="mysqladmin -u root -pmysql1 shutdown"

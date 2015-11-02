@@ -11,7 +11,7 @@ function doIt() {
 		--exclude "bootstrap.sh" \
 		--exclude ".vim/UltiSnips"\
 		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
+		--exclude "LICENSE-MIT.txt" -avrthopg --no-perms . ~;
  
   # 加入到 .bashrc 中 
   if 
@@ -23,7 +23,7 @@ function doIt() {
   fi
 
   # 执行 bash_profile
-  source ~/.bash_profile;
+  # source ~/.bash_profile;
 
   # 如果不存在 Vundle，则 clone
   if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
@@ -32,7 +32,7 @@ function doIt() {
 }
 
 doIt;
-git config --global user.email "yuzx2008@gmail.com"
-git config --global user.name "yuzx2008"
+# git config --global user.email "yuzx2008@gmail.com"
+# git config --global user.name "yuzx2008"
 echo "Done. When you first start vim, please use :PluginInstall to install all the plugins.(vim +PluginInstall +qall)"
 unset doIt;
