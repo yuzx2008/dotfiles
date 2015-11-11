@@ -1,0 +1,12 @@
+
+" 读取 .vimrc 的内容
+source ~/.vimrc
+
+" 格式化代码
+:map \r :action ReformatCode<CR>
+
+" 查找 action
+" :actionlist [pattern]
+" 执行 action
+" :action {name}
+
