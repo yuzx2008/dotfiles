@@ -1,3 +1,4 @@
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -115,3 +116,21 @@ alias start_mysql="cd /usr/local/mysql ; sudo ./bin/mysqld_safe --user=mysql & ;
 alias start_redis="redis-server /home/yuzx/server/redis.conf"
 alias start_memcached="memcached -d -m 64 -u root -l 127.0.0.1 -p 12111 -c 1024"
 alias stop_mysql="mysqladmin -u root -pmysql1 shutdown"
+
+bindkey -v
+
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
+
