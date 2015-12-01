@@ -50,12 +50,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+plugins=(git ubuntu history-substring-search github gradle zsh-syntax-highlighting tmux tmuxinator vi-mode) 
 # User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 
 export USR_SERVER=/home/yuzx/server
 export JAVA_HOME=$USR_SERVER/jdk8
@@ -74,8 +70,11 @@ export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
 umask 0000
 export TERM=screen-256color       # for a tmux -2 session (also for screen)
 export EDITOR="vim"
+if [ -d "$HOME/bin" ]; then
+  PATH="$HOME/bin:$PATH"
+fi
 if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
+  PATH="$HOME/.local/bin:$PATH"
 fi
 #eval 'dircolors ~/.dircolors'
 
@@ -86,6 +85,8 @@ if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 fi
 
 # You may need to manually set your language environment
+# export LANG=zh_CN.UTF-8
+# export LC_ALL=en_US.UTF-8
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
