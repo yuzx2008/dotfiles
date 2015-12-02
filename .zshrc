@@ -19,7 +19,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -28,7 +28,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -36,7 +36,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="false"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -68,15 +68,14 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USR_SERVER/lib
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
 umask 0000
-export TERM=screen-256color       # for a tmux -2 session (also for screen)
-export EDITOR="vim"
+# export TERM=screen-256color       # for a tmux -2 session (also for screen)
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
-#eval 'dircolors ~/.dircolors'
+# eval 'dircolors ~/.dircolors'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,9 +84,7 @@ if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 fi
 
 # You may need to manually set your language environment
-# export LANG=zh_CN.UTF-8
-# export LC_ALL=en_US.UTF-8
-# export LANG=en_US.UTF-8
+export LANG=zh_CN.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
