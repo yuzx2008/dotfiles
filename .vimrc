@@ -14,6 +14,32 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
+" 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
+let g:ycm_error_symbol='>>'
+let g:ycm_warning_symbol='>*'
+" 跳转快捷键，可跳到 definition 和 declaration
+nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F5> :YcmDiags<CR>
+" 全局配置文件路径
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" 开启基于 tag 的补全，可在这之后添加需要的标签路径
+let g:ycm_collect_identifiers_from_tags_files = 1
+" 开启语义补全
+let g:ycm_seed_identifiers_with_syntax = 1
+" 在接受补全后不分裂出一个窗口显示接受的项
+set completeopt-=preview
+" 不显示开启vim时检查ycm_extra_conf文件的信息
+let g:ycm_confirm_extra_conf=0
+" 每次重新生成匹配项，禁止缓存匹配项
+let g:ycm_cache_omnifunc=0
+" 在注释中也可以补全
+let g:ycm_complete_in_comments=1
+" 输入第一个字符就开始补全
+let g:ycm_min_num_of_chars_for_completion=1
+" 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
+let g:ycm_use_ultisnips_completer=0
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -152,7 +178,7 @@ endif
 Plugin 'chase/vim-ansible-yaml'
 
 " PowerLine 插件，状态栏增强展示
-Plugin 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-powerline'
 " vim 有一个状态栏，加 powline 则有两状态栏
 set laststatus=2
 " 指定配色方案为 256 色
@@ -405,6 +431,78 @@ function! Fcitx2Zh()
   endif
 endfunction
 
+" 调用 astyle 格式化代码，和 F3 有啥区别？
+func FormartSrc()
+  exec "w"
+  if &filetype == 'c'
+    exec "!astyle --style=ansi -a --suffix=none %"
+  elseif &filetype == 'cpp' || &filetype == 'hpp'
+    exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
+  elseif &filetype == 'perl'
+    exec "!astyle --style=gnu --suffix=none %"
+  elseif &filetype == 'py'||&filetype == 'python'
+    exec "r !autopep8 -i --aggressive %"
+  elseif &filetype == 'java'
+    exec "!astyle --style=java --suffix=none %"
+  elseif &filetype == 'jsp'
+    exec "!astyle --style=gnu --suffix=none %"
+  elseif &filetype == 'xml'
+    exec "!astyle --style=gnu --suffix=none %"
+  else
+    exec "normal gg=G"
+    return
+  endif
+  exec "e! %"
+endfunc
+map <F6> :call FormartSrc()<CR><CR>
+
+" 新建 .c, .h, .sh, .java，自动插入文件头 
+func SetFileHeaderPart() 
+    "如果文件类型为.sh文件 
+    if &filetype == 'sh' 
+        call setline(1,"\#!/bin/bash") 
+        call append(line("."), "") 
+    elseif &filetype == 'python'
+        call setline(1,"#!/usr/bin/env python")
+        call append(line("."),"# coding=utf-8")
+        call append(line(".")+1, "") 
+
+    elseif &filetype == 'ruby'
+        call setline(1,"#!/usr/bin/env ruby")
+        call append(line("."),"# encoding: utf-8")
+        call append(line(".")+1, "")
+    else 
+        call setline(1, "/*************************************************************************") 
+        call append(line("."),   "  > File Name   : ".expand("%")) 
+        call append(line(".")+1, "  > Author      : yuzx2008") 
+        call append(line(".")+2, "  > Mail        : yuzx2008@xx.com") 
+        call append(line(".")+3, "  > Created Time: ".strftime("%c")) 
+        call append(line(".")+4, " ************************************************************************/") 
+        call append(line(".")+5, "")
+    endif
+    if expand("%:e") == 'cpp'
+        call append(line(".")+6, "#include<iostream>")
+        call append(line(".")+7, "using namespace std;")
+        call append(line(".")+8, "")
+    endif
+    if &filetype == 'c'
+        call append(line(".")+6, "#include<stdio.h>")
+        call append(line(".")+7, "")
+    endif
+    if expand("%:e") == 'h'
+        call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
+        call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
+        call append(line(".")+8, "#endif")
+    endif
+    if &filetype == 'java'
+        call append(line(".")+6,"public class ".expand("%:r"))
+        call append(line(".")+7,"")
+    endif
+endfunc 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetFileHeaderPart()" 
+" 新建文件后，自动定位到文件末尾
+autocmd BufNewFile * normal G
+
 set ttimeoutlen=150
 " 退出插入模式
 autocmd InsertLeave * call Fcitx2En()
@@ -427,3 +525,4 @@ nnoremap <leader>b :.w !bash<CR>
 " 键盘操作
 map <Up> gk
 map <Down> gj
+
