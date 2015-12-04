@@ -13,6 +13,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'Valloric/YouCompleteMe'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -150,7 +152,7 @@ endif
 Plugin 'chase/vim-ansible-yaml'
 
 " PowerLine 插件，状态栏增强展示
-Bundle 'Lokaltog/vim-powerline'
+Plugin 'Lokaltog/vim-powerline'
 " vim 有一个状态栏，加 powline 则有两状态栏
 set laststatus=2
 " 指定配色方案为 256 色
