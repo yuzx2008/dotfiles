@@ -19,7 +19,7 @@
 
 import os
 import ycm_core
-
+ 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
@@ -42,6 +42,11 @@ flags = [
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
 'c++',
+'-stdlib=libc++',
+'-x',
+'c++',
+'-I',
+'.',
 '-isystem',
 '/usr/include',
 '-isystem',
@@ -145,8 +150,10 @@ def FlagsForFile( filename, **kwargs ):
     # Bear in mind that compilation_info.compiler_flags_ does NOT return a
     # python list, but a "list-like" StringVec object
     compilation_info = GetCompilationInfoForFile( filename )
+    """
     if not compilation_info:
       return None
+    """
 
     final_flags = MakeRelativePathsInFlagsAbsolute(
       compilation_info.compiler_flags_,
