@@ -65,12 +65,14 @@ export MAVEN_HOME=$USR_SERVER/maven
 export MAVEN_OPTS="-Xms256m -Xmx512m"
 export HADOOP_PREFIX=$USR_SERVER/hadoop
 export SPARK_HOME=$USR_SERVER/spark
+export GOROOT=/usr/local/go
 export NODE_HOME=$USR_SERVER/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
 export PATH=$PATH:$USR_SERVER/bin:$USR_SERVER/sbin:$NODE_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USR_SERVER/lib
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$SCALA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
+export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
 umask 0000
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
