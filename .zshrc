@@ -61,8 +61,12 @@ export ANT_HOME=$USR_SERVER/ant
 export GRADLE_HOME=$USR_SERVER/gradle
 export GROOVY_HOME=$USR_SERVER/groovy
 export SCALA_HOME=$USR_SERVER/scala
+export SBT_HOME=$USR_SERVER/sbt
+# -XX:MaxPermSize=256M
+export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 export MAVEN_HOME=$USR_SERVER/maven
-export MAVEN_OPTS="-Xms256m -Xmx512m"
+# export MAVEN_OPTS="-Xms256m -Xmx512m"
+export MAVEN_OPTS="-Xmx2g -XX:ReservedCodeCacheSize=512m"
 export HADOOP_PREFIX=$USR_SERVER/hadoop
 export SPARK_HOME=$USR_SERVER/spark
 export GOROOT=/usr/local/go
@@ -72,13 +76,18 @@ export PATH=$PATH:$USR_SERVER/bin:$USR_SERVER/sbin:$NODE_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USR_SERVER/lib
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$SCALA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
+export PATH=$PATH:$SBT_HOME/bin
 export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
+
 umask 0000
+
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
+
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
+
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
