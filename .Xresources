@@ -1,4 +1,5 @@
 ! https://wiki.archlinux.org/index.php/Xterm
+
 xterm*locale: true
 xterm*saveLines: 10240
 xterm*faceName: DejaVu Sans Mono for Powerline:style=Book:antialias=True
@@ -9,7 +10,7 @@ xterm*scrollBar: true
 ! xterm or xterm-256-color
 xterm*termName: xterm-256color
 ! window size
-xterm*VT100.geometry: 80x60
+xterm.*VT100.geometry: 80x60
 ! Enable bell urgency
 xterm*bellIsUrgent: true
 ! Remove black border
