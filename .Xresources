@@ -1,11 +1,9 @@
 ! https://wiki.archlinux.org/index.php/Xterm
 xterm*locale: true
 xterm*saveLines: 10240
-! CJK Fonts
-xterm*faceName: DejaVu Sans Mono for Powerline:style=Regular:antialias=false
-xterm*faceNameDoublesize: WenQuanYi Microhei:antialias=true
+xterm*faceName: DejaVu Sans Mono for Powerline:style=Book:antialias=True
+xterm*faceNameDoublesize: WenQuanYi Zen Hei Mono:style=Regular:antialias=True
 xterm*faceSize: 10
-
 xterm*rightScrollBar: true
 xterm*scrollBar: true
 ! xterm or xterm-256-color
