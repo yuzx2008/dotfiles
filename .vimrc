@@ -124,10 +124,15 @@ let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
+nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
+nnoremap <leader>mp :exe '!google-chrome %'<CR>
 
-Plugin 'suan/vim-instant-markdown'
-let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 0
+Plugin 'JamshedVesuna/vim-markdown-preview'
+" need connect to github.com
+" let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Google Chrome'
+" let vim_markdown_preview_hotkey='<C-m>'
+" let vim_markdown_preview_hotkey='<leader>mp'
 
 Plugin 'jiangmiao/auto-pairs'
 
@@ -371,7 +376,6 @@ nnoremap <Leader>tc :tabclose<cr>
 
 " 设置 markdown filetype
 nnoremap <leader>md :set filetype=markdown<CR>
-nnoremap <leader>mp :InstantMarkdownPreview<CR>
 
 " 将 pathogen 自身也置于独立目录，指定其路径
 " runtime bundle/vim-pathogen-2.3/autoload/pathogen.vim
