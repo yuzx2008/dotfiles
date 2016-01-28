@@ -4,6 +4,9 @@ set nocompatible
 " required
 filetype off
 
+" 设置快捷键前缀，即：<Leader>
+let mapleader=","
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -124,15 +127,16 @@ let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
-nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
-nnoremap <leader>mp :exe '!google-chrome %'<CR>
+" start chrome has some problem
+" nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
+" nnoremap <leader>mp :exe ':silent !google-chrome %'<CR>
 
 Plugin 'JamshedVesuna/vim-markdown-preview'
 " need connect to github.com
 " let vim_markdown_preview_github=1
-let vim_markdown_preview_browser='Google Chrome'
+" let vim_markdown_preview_browser='Google Chrome'
 " let vim_markdown_preview_hotkey='<C-m>'
-" let vim_markdown_preview_hotkey='<leader>mp'
+let vim_markdown_preview_hotkey='<leader>mp'
 
 Plugin 'jiangmiao/auto-pairs'
 
@@ -203,9 +207,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-" 设置快捷键前缀，即：<Leader>
-let mapleader=","
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 " set clipboard=unnamed " for mac osx
