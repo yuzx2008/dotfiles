@@ -2,15 +2,12 @@
 
 ! A comma separated list of font names that are checked in order when trying to find glyphs for characters. 
 ! Man for coding, nothing beats the terminus font.. nothing! Also, notice that boldFont, italicFont, and boldItalicFont are specified as well. This makes a huge difference you will notice right away.
-! URxvt*font: xft:DejaVu Sans Mono for Powerline:antialias=false:autohint=true:pixelsize=14,style=Book
-! URxvt*boldFont: xft:WenQuanYi Zen Hei Mono:antialias=false:autohint=true:pixelsize=14,style=Regular
-! URxvt*boldItalicFont: xft:Bitstream Vera Sans Mono:bold:italic:autohint=true:pixelsize=12
+URxvt*font: xft:DejaVu Sans Mono for Powerline:size=11,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Bitmap Song
+! URxvt*boldFont: DejaVu Sans Mono for Powerline:style=Bold:size=24,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Bitmap Song:style=Bold
+! URxvt*italicFont: xft:DejaVu Sans Mono for Powerline:style=Oblique:size=14,xft:WenQuanYi Bitmap Song
+! URxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:style=Bold Oblique:size=14,xft:WenQuanYi Bitmap Song
+
 ! URxvt*letterSpace: 0
-! URxvt*font: xft:Terminess Powerline:size=12
-URxvt*font: -xos4-terminus-medium-*-*-*-14-*-*-*-*-*-iso8859-15,xft:terminus:pixelsize:12
-URxvt*boldFont: -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso8859-15,xft:terminus:bold:pixelsize:12
-URxvt*italicFont: xft:Bitstream Vera Sans Mono:italic:autohint=true:pixelsize=12
-URxvt*boldItalicFont: xft:Bitstream Vera Sans Mono:bold:italic:autohint=true:pixelsize=12
 
 ! Start as a login shell by prepending a - to argv[0] of the shell. Again, for tmux, this is super-helpful and causes your bash login files like ~/.bash_profile to be loaded.
 URxvt*loginShell: true
@@ -39,7 +36,7 @@ URxvt*fading: 30
 URxvt*utmpInhibit: false
 URxvt*urgentOnBell: false
 ! Use visual bell on receipt of a bell character. Helpful to be used with inputrc and tmux.
-URxvt*visualBell: true
+URxvt*visualBell: false
 URxvt*mapAlert: true
 URxvt*mouseWheelScrollPage: false
 ! Use the specified colour as the windows background colour [default White]. Why in the world would you default white unless you are old-school... as in 70s.
@@ -64,10 +61,19 @@ URxvt*perl-ext:
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 URxvt*depth: bitdepth
 
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.render: True
+Xft.core: Flase
 Xft.dpi: 96
-Xft.antialias: true
+Xft.antialias: True
 Xft.rgba: rgb
-Xft.hinting: true
+Xft.hinting: True
+Xft.scale: 1.0
+Xft.minspace: True
+! Hintstyle is the amount of font reshaping done to line up to the grid. 
+! Hinting values are: hintnone, hintslight, hintmedium, and hintfull. 
+! hintslight will make the font more fuzzy to line up to the grid but will be better in retaining font shape, while hintfull will be a crisp font that aligns well to the pixel grid but will lose a greater amount of font shape. Preferences vary.
 Xft.hintstyle: hintslight
 
 ! Solarized color scheme for the X Window System
