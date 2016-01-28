@@ -67,14 +67,14 @@ Xft.render: True
 Xft.core: Flase
 Xft.dpi: 96
 Xft.antialias: True
-Xft.rgba: rgb
+Xft.rgba: none
 Xft.hinting: True
 Xft.scale: 1.0
 Xft.minspace: True
 ! Hintstyle is the amount of font reshaping done to line up to the grid. 
 ! Hinting values are: hintnone, hintslight, hintmedium, and hintfull. 
 ! hintslight will make the font more fuzzy to line up to the grid but will be better in retaining font shape, while hintfull will be a crisp font that aligns well to the pixel grid but will lose a greater amount of font shape. Preferences vary.
-Xft.hintstyle: hintslight
+Xft.hintstyle: hintfull
 
 ! Solarized color scheme for the X Window System
 !
