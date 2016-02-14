@@ -282,6 +282,8 @@ set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 
 " Highlight searches（高亮搜索结果）
 set hlsearch
+" Clear search highlight by hitting enter
+nnoremap <silent> <CR> :noh<CR>
 
 " Ignore case of searches
 set ignorecase
@@ -347,8 +349,21 @@ endif
 au FileType html setl sw=2 sts=2 et
 au FileType css setl sw=2 sts=2 et
 
+au BufNewFile,BufRead *.conf.j2 set filetype=dosini
+au BufNewFile,BufRead *.conf    set filetype=dosini
+au BufNewFile,BufRead *.json    set filetype=javascript
+au BufNewFile,BufRead *.less    set filetype=css
+au BufNewFile,BufRead *.md      set filetype=markdown
+au BufNewFile,BufRead .aliases  set filetype=sh
+
+" to bottom if log
+au BufNewFile,BufRead *.log normal G
+
 " basic keymapping
 noremap <leader>c :! compass compile<CR>
+
+" open help in new tab
+cabbrev help tab help
 
 " web page
 noremap <leader>gh :! google-chrome https://github.com<CR>
@@ -358,6 +373,10 @@ vnoremap <Leader>y "+y
 " 系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
 vmap <C-x> "+c
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
 " 跳转至右方窗口
 nnoremap <Leader>wl <C-W>l
@@ -383,7 +402,7 @@ nnoremap <leader>md :set filetype=markdown<CR>
 " 运行 pathogen
 " execute pathogen#infect()
 
-" 禁止折行（全局）
+" no wrapping by default. Use `:set wrap` to re-enable
 set nowrap
 
 " 设置历史记录数
