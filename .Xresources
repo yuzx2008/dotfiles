@@ -2,12 +2,11 @@
 
 ! A comma separated list of font names that are checked in order when trying to find glyphs for characters. 
 ! Man for coding, nothing beats the terminus font.. nothing! Also, notice that boldFont, italicFont, and boldItalicFont are specified as well. This makes a huge difference you will notice right away.
-URxvt*font: xft:DejaVu Sans Mono for Powerline:size=11,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Bitmap Song
+URxvt*font: xft:DejaVu Sans Mono for Powerline:pixelsize=12,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Zen Hei,xft:WenQuanYi Bitmap Song,xft:Droid Sans Fallback,xft:DejaVu Sans
 ! URxvt*boldFont: DejaVu Sans Mono for Powerline:style=Bold:size=24,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Bitmap Song:style=Bold
 ! URxvt*italicFont: xft:DejaVu Sans Mono for Powerline:style=Oblique:size=14,xft:WenQuanYi Bitmap Song
 ! URxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:style=Bold Oblique:size=14,xft:WenQuanYi Bitmap Song
-
-! URxvt*letterSpace: 0
+URxvt*letterSpace: -1
 
 ! Start as a login shell by prepending a - to argv[0] of the shell. Again, for tmux, this is super-helpful and causes your bash login files like ~/.bash_profile to be loaded.
 URxvt*loginShell: true
@@ -61,13 +60,13 @@ URxvt*perl-ext:
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 URxvt*depth: bitdepth
 
-Xft.autohint: 0
+Xft.autohint: True
 Xft.lcdfilter: lcddefault
 Xft.render: True
 Xft.core: Flase
 Xft.dpi: 96
 Xft.antialias: True
-Xft.rgba: none
+Xft.rgba: rgb
 Xft.hinting: True
 Xft.scale: 1.0
 Xft.minspace: True
