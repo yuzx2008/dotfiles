@@ -129,14 +129,16 @@ Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 " start chrome has some problem
 " nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
-" nnoremap <leader>mp :exe ':silent !google-chrome %'<CR>
+" TODO
+nnoremap <leader>mp :OpenBrowser "file:///home/yuzx/.vim/1.md?" . expand('%:p')<CR>
 
-Plugin 'JamshedVesuna/vim-markdown-preview'
+" Plugin 'JamshedVesuna/vim-markdown-preview'
 " need connect to github.com
 " let vim_markdown_preview_github=1
 " let vim_markdown_preview_browser='Google Chrome'
 " let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_hotkey='<leader>mp'
+" let vim_markdown_preview_hotkey='<leader>mp'
+
 
 Plugin 'jiangmiao/auto-pairs'
 
@@ -165,6 +167,27 @@ Plugin 'tpope/vim-surround'
 
 " do syntax check
 Plugin 'scrooloose/syntastic'
+
+Plugin 'tyru/open-browser.vim'
+let g:netrw_nogx = 1 " disable netrw's gx mapping. 
+nmap gx <Plug>(openbrowser-smart-search) 
+vmap gx <Plug>(openbrowser-smart-search) 
+" Open URI under cursor. 
+nmap <leader>obu <Plug>(openbrowser-open) 
+" Open selected URI. 
+vmap <leader>obu <Plug>(openbrowser-open) 
+" Search word under cursor. 
+" nmap <leader>obs <Plug>(openbrowser-search) 
+" Search selected word. vmap map-you-like <Plug>(openbrowser-search) 
+" If it looks like URI, Open URI under cursor. 
+" Otherwise, Search word under cursor. 
+nmap <leader>obs <Plug>(openbrowser-smart-search) 
+" If it looks like URI, Open selected URI. 
+" Otherwise, Search selected word. 
+vmap <leader>obs <Plug>(openbrowser-smart-search) 
+
+" http://editorconfig.org/ && ~/.editorconfig
+Plugin 'editorconfig/editorconfig-vim'
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
@@ -346,6 +369,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
+" ??
 au FileType html setl sw=2 sts=2 et
 au FileType css setl sw=2 sts=2 et
 
@@ -358,6 +382,9 @@ au BufNewFile,BufRead .aliases  set filetype=sh
 
 " to bottom if log
 au BufNewFile,BufRead *.log normal G
+
+" 设置 markdown 格式自动换行
+autocmd FileType markdown set wrap
 
 " basic keymapping
 noremap <leader>c :! compass compile<CR>
@@ -523,11 +550,14 @@ func SetFileHeaderPart()
         call append(line(".")+7,"")
     endif
 endfunc 
+
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetFileHeaderPart()" 
 " 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G
 
+" ??
 set ttimeoutlen=150
+
 " 退出插入模式
 autocmd InsertLeave * call Fcitx2En()
 " 进入插入模式
@@ -536,17 +566,10 @@ autocmd InsertLeave * call Fcitx2En()
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
 
-" Python 设置，如：不要 tab 等
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+" Python 设置，如：不要 tab 等，.editconfig
+" autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType python map <F12> :!python %<CR>
-
-" 设置 markdown 格式自动换行
-autocmd FileType markdown set wrap
 
 " 在 bash 中执行光标所在行
 nnoremap <leader>b :.w !bash<CR>
-
-" 键盘操作
-map <Up> gk
-map <Down> gj
 
