@@ -68,8 +68,10 @@ export MAVEN_HOME=$USR_SERVER/maven
 # export MAVEN_OPTS="-Xms256m -Xmx512m"
 export MAVEN_OPTS="-Xmx2g -XX:ReservedCodeCacheSize=512m"
 export HADOOP_PREFIX=$USR_SERVER/hadoop
+export HBASE_HOME=$USR_SERVER/hbase
 export SPARK_HOME=$USR_SERVER/spark
 export KAFKA_HOME=$USR_SERVER/kafka
+export ZOOKEEPER_HOME=$USR_SERVER/zookeeper
 export GOROOT=/usr/local/go
 export NODE_HOME=$USR_SERVER/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
@@ -78,6 +80,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USR_SERVER/lib
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$SCALA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$KAFKA_HOME/bin
 export PATH=$PATH:$SBT_HOME/bin
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+export PATH=$PATH:$HBASE_HOME/bin
 export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
 
@@ -127,6 +131,12 @@ alias start_mysql="cd /usr/local/mysql ; sudo ./bin/mysqld_safe --user=mysql & ;
 alias start_redis="redis-server /home/yuzx/etc/redis.conf"
 alias start_memcached="memcached -d -m 64 -u root -l 127.0.0.1 -p 12111 -c 1024"
 alias stop_mysql="mysqladmin -u root -pmysql1 shutdown"
+alias start_zk="zkServer.sh start"
+alias stop_zk="zkServer.sh stop"
+alias start_hbase="start-hbase.sh"
+alias stop_hbase="stop-hbase.sh"
+alias start_kafka="cd ~/server/kafka; bin/kafka-server-start.sh -daemon config/server.properties"
+alias stop_kafka="cd ~/server/kafka; bin/kafka-server-stop.sh"
 
 bindkey -v
 
