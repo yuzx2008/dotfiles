@@ -16,6 +16,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" vim-colors-solarized
+Plugin 'altercation/vim-colors-solarized'
+
 Plugin 'Valloric/YouCompleteMe'
 " 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
 let g:ycm_error_symbol='>>'
@@ -92,7 +95,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " map <C-n> :NERDTreeToggle<CR>
 " map <Leader>n :NERDTree %:p:h<CR>
 "-------------------
-" :ERDtree 打开 NERD_tree        
+" :ERDtree 打开 NERD_tree
 " :NERDtreeClose 关闭 NERD_tree
 " o 打开关闭文件或者目录
 " t 在标签页中打开
@@ -169,22 +172,22 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 
 Plugin 'tyru/open-browser.vim'
-let g:netrw_nogx = 1 " disable netrw's gx mapping. 
-nmap gx <Plug>(openbrowser-smart-search) 
-vmap gx <Plug>(openbrowser-smart-search) 
-" Open URI under cursor. 
-nmap <leader>obu <Plug>(openbrowser-open) 
-" Open selected URI. 
-vmap <leader>obu <Plug>(openbrowser-open) 
-" Search word under cursor. 
-" nmap <leader>obs <Plug>(openbrowser-search) 
-" Search selected word. vmap map-you-like <Plug>(openbrowser-search) 
-" If it looks like URI, Open URI under cursor. 
-" Otherwise, Search word under cursor. 
-nmap <leader>obs <Plug>(openbrowser-smart-search) 
-" If it looks like URI, Open selected URI. 
-" Otherwise, Search selected word. 
-vmap <leader>obs <Plug>(openbrowser-smart-search) 
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+" Open URI under cursor.
+nmap <leader>obu <Plug>(openbrowser-open)
+" Open selected URI.
+vmap <leader>obu <Plug>(openbrowser-open)
+" Search word under cursor.
+" nmap <leader>obs <Plug>(openbrowser-search)
+" Search selected word. vmap map-you-like <Plug>(openbrowser-search)
+" If it looks like URI, Open URI under cursor.
+" Otherwise, Search word under cursor.
+nmap <leader>obs <Plug>(openbrowser-smart-search)
+" If it looks like URI, Open selected URI.
+" Otherwise, Search selected word.
+vmap <leader>obs <Plug>(openbrowser-smart-search)
 
 " http://editorconfig.org/ && ~/.editorconfig
 Plugin 'editorconfig/editorconfig-vim'
@@ -452,17 +455,12 @@ syntax on
 
 " light dark
 if has('gui_running')
-    set background=light
+  set background=light
 else
-    set background=dark
+  set background=dark
+  " let g:solarized_termcolors=256
 endif
 colorscheme solarized
-
-" colorscheme molokai
-" let g:molokai_original = 1
-" let g:rehash256 = 1
-
-" colorscheme phd
 
 " fcitx 退出插入模式时，切换为英文输入法
 let g:input_toggle = 1
@@ -507,28 +505,28 @@ func FormartSrc()
 endfunc
 map <F6> :call FormartSrc()<CR><CR>
 
-" 新建 .c, .h, .sh, .java，自动插入文件头 
-func SetFileHeaderPart() 
-    "如果文件类型为.sh文件 
-    if &filetype == 'sh' 
-        call setline(1,"\#!/bin/bash") 
-        call append(line("."), "") 
+" 新建 .c, .h, .sh, .java，自动插入文件头
+func SetFileHeaderPart()
+    "如果文件类型为.sh文件
+    if &filetype == 'sh'
+        call setline(1,"\#!/bin/bash")
+        call append(line("."), "")
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
         call append(line("."),"# coding=utf-8")
-        call append(line(".")+1, "") 
+        call append(line(".")+1, "")
 
     elseif &filetype == 'ruby'
         call setline(1,"#!/usr/bin/env ruby")
         call append(line("."),"# encoding: utf-8")
         call append(line(".")+1, "")
-    else 
-        call setline(1, "/*************************************************************************") 
-        call append(line("."),   "  > File Name   : ".expand("%")) 
-        call append(line(".")+1, "  > Author      : yuzx2008") 
-        call append(line(".")+2, "  > Mail        : yuzx2008@xx.com") 
-        call append(line(".")+3, "  > Created Time: ".strftime("%c")) 
-        call append(line(".")+4, " ************************************************************************/") 
+    else
+        call setline(1, "/*************************************************************************")
+        call append(line("."),   "  > File Name   : ".expand("%"))
+        call append(line(".")+1, "  > Author      : yuzx2008")
+        call append(line(".")+2, "  > Mail        : yuzx2008@xx.com")
+        call append(line(".")+3, "  > Created Time: ".strftime("%c"))
+        call append(line(".")+4, " ************************************************************************/")
         call append(line(".")+5, "")
     endif
     if expand("%:e") == 'cpp'
@@ -549,9 +547,9 @@ func SetFileHeaderPart()
         call append(line(".")+6,"public class ".expand("%:r"))
         call append(line(".")+7,"")
     endif
-endfunc 
+endfunc
 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetFileHeaderPart()" 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetFileHeaderPart()"
 " 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G
 
