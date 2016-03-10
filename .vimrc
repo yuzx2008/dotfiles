@@ -19,7 +19,7 @@ Plugin 'gmarik/Vundle.vim'
 " vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
 let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'

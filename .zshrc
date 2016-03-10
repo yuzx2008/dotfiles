@@ -6,8 +6,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
 DEFAULT_USER="yuzx"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -84,6 +84,9 @@ export PATH=$PATH:$ZOOKEEPER_HOME/bin
 export PATH=$PATH:$HBASE_HOME/bin
 export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=$USR_SERVER/lib/pkgconfig:$PKG_CONFIG_PATH
+
+export PATH=/usr/local/cuda-7.5/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
 
 umask 0000
 
