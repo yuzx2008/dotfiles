@@ -571,6 +571,6 @@ autocmd FileType python map <F12> :!python %<CR>
 " 在 bash 中执行光标所在行
 nnoremap <leader>b :.w !bash<CR>
 
-" transparent support
-hi Normal ctermfg=252 ctermbg=none
+" transparent support ctermfg=252
+hi Normal ctermbg=none
 
