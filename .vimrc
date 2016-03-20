@@ -1,4 +1,3 @@
-
 " be iMproved, required
 set nocompatible
 " required
@@ -19,15 +18,10 @@ Plugin 'gmarik/Vundle.vim'
 " vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
 
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
 let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'
-" 跳转快捷键，可跳到 definition 和 declaration
-nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F5> :YcmDiags<CR>
 " 全局配置文件路径
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 " 开启基于 tag 的补全，可在这之后添加需要的标签路径
@@ -72,13 +66,10 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " =================
 " Track the engine.
 Plugin 'SirVer/ultisnips'
-
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
-" " Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-" UltiSnips 的 tab 键与 YCM 冲突，重新设定
+" Trigger configuration. Do not use <tab> if you use YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
@@ -92,8 +83,6 @@ Plugin 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" map <C-n> :NERDTreeToggle<CR>
-" map <Leader>n :NERDTree %:p:h<CR>
 "-------------------
 " :ERDtree 打开 NERD_tree
 " :NERDtreeClose 关闭 NERD_tree
@@ -110,11 +99,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " r 递归刷新当前目录
 " R 递归刷新当前根目录
 "---------------------
-" F3 NERDTree 切换
-map <F9> :NERDTreeToggle<CR>
-imap <F9> <ESC>:NERDTreeToggle<CR>
-" 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
-nmap <Leader>fl :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
 let NERDTreeWinSize=32
 " 设置NERDTree子窗口位置
@@ -130,18 +114,6 @@ let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
-" start chrome has some problem
-" nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
-" TODO
-nnoremap <leader>mp :OpenBrowser "file:///home/yuzx/.vim/1.md?" . expand('%:p')<CR>
-
-" Plugin 'JamshedVesuna/vim-markdown-preview'
-" need connect to github.com
-" let vim_markdown_preview_github=1
-" let vim_markdown_preview_browser='Google Chrome'
-" let vim_markdown_preview_hotkey='<C-m>'
-" let vim_markdown_preview_hotkey='<leader>mp'
-
 
 Plugin 'jiangmiao/auto-pairs'
 
@@ -171,24 +143,6 @@ Plugin 'tpope/vim-surround'
 " do syntax check
 Plugin 'scrooloose/syntastic'
 
-Plugin 'tyru/open-browser.vim'
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
-" Open URI under cursor.
-nmap <leader>obu <Plug>(openbrowser-open)
-" Open selected URI.
-vmap <leader>obu <Plug>(openbrowser-open)
-" Search word under cursor.
-" nmap <leader>obs <Plug>(openbrowser-search)
-" Search selected word. vmap map-you-like <Plug>(openbrowser-search)
-" If it looks like URI, Open URI under cursor.
-" Otherwise, Search word under cursor.
-nmap <leader>obs <Plug>(openbrowser-smart-search)
-" If it looks like URI, Open selected URI.
-" Otherwise, Search selected word.
-vmap <leader>obs <Plug>(openbrowser-smart-search)
-
 " http://editorconfig.org/ && ~/.editorconfig
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -198,8 +152,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/software/* "
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-" ctrlp 默认用 grep 搜索，效率低。所以，用 ag 替换默认搜索功能。ag 是一轻量级搜索工具，速度非常快。为集成 ag，添加配置
-" 注意：因为定义了 g:ctrlp_user_command 所以上面定义的忽略失效，在 ag 命令上加 --ignore
+" ctrlp 默认 grep 搜索，效率低。用 ag 替换，速度非常快（忽略 software 文件夹得内容）
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -288,7 +241,7 @@ set number
 " Highlight current line（高亮当前行/列）
 set cursorline
 " 高亮当前列
-" set cursorcolumn（Tab 宽度）
+" set cursorcolumn
 
 " Make tabs as wide as two spaces
 set tabstop=2
@@ -341,26 +294,8 @@ set title
 " Show the (partial) command as it’s being typed（状态栏显示正输入的命令）
 set showcmd
 
-" Use relative line numbers
-"if exists("&relativenumber")
-" set relativenumber
-" au BufReadPost * set relativenumber
-"endif
-
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
-
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  :%s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Automatic commands
 if has("autocmd")
@@ -371,10 +306,6 @@ if has("autocmd")
   " Treat .md files as Markdown
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
-
-" ??
-au FileType html setl sw=2 sts=2 et
-au FileType css setl sw=2 sts=2 et
 
 au BufNewFile,BufRead *.conf.j2 set filetype=dosini
 au BufNewFile,BufRead *.conf    set filetype=dosini
@@ -389,48 +320,8 @@ au BufNewFile,BufRead *.log normal G
 " 设置 markdown 格式自动换行
 autocmd FileType markdown set wrap
 
-" basic keymapping
-noremap <leader>c :! compass compile<CR>
-
 " open help in new tab
 cabbrev help tab help
-
-" web page
-noremap <leader>gh :! google-chrome https://github.com<CR>
-
-" 选中文本块复制至系统剪贴板
-vnoremap <Leader>y "+y
-" 系统剪贴板内容粘贴至 vim
-nmap <Leader>p "+p
-vmap <C-x> "+c
-
-" Reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-
-" 跳转至右方窗口
-nnoremap <Leader>wl <C-W>l
-" 跳转至左方窗口
-nnoremap <Leader>wh <C-W>h
-" 跳转至上方窗口
-nnoremap <Leader>wk <C-W>k
-" 跳转至下方窗口
-nnoremap <Leader>wj <C-W>j
-
-" tab 快捷键
-nnoremap <Leader>tn :tabnext<cr>
-nnoremap <Leader>tp :tabprevious<cr>
-nnoremap <Leader>td :tabnew .<cr>
-nnoremap <Leader>te :tabedit
-nnoremap <Leader>tc :tabclose<cr>
-
-" 设置 markdown filetype
-nnoremap <leader>md :set filetype=markdown<CR>
-
-" 将 pathogen 自身也置于独立目录，指定其路径
-" runtime bundle/vim-pathogen-2.3/autoload/pathogen.vim
-" 运行 pathogen
-" execute pathogen#infect()
 
 " no wrapping by default. Use `:set wrap` to re-enable
 set nowrap
@@ -461,49 +352,6 @@ else
   " let g:solarized_termcolors=256
 endif
 colorscheme solarized
-
-" fcitx 退出插入模式时，切换为英文输入法
-let g:input_toggle = 1
-function! Fcitx2En()
-  let s:input_status = system("fcitx-remote")
-  if s:input_status == 2
-    let g:input_toggle = 1
-    let l:a = system("fcitx-remote -c")
-  endif
-endfunction
-
-function! Fcitx2Zh()
-  let s:input_status = system("fcitx-remote")
-  if s:input_status != 2 && g:input_toggle == 1
-    let l:a = system("fcitx-remote -o")
-    let g:input_toggle = 0
-  endif
-endfunction
-
-" 调用 astyle 格式化代码，和 F3 有啥区别？
-func FormartSrc()
-  exec "w"
-  if &filetype == 'c'
-    exec "!astyle --style=ansi -a --suffix=none %"
-  elseif &filetype == 'cpp' || &filetype == 'hpp'
-    exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
-  elseif &filetype == 'perl'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'py'||&filetype == 'python'
-    exec "r !autopep8 -i --aggressive %"
-  elseif &filetype == 'java'
-    exec "!astyle --style=java --suffix=none %"
-  elseif &filetype == 'jsp'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'xml'
-    exec "!astyle --style=gnu --suffix=none %"
-  else
-    exec "normal gg=G"
-    return
-  endif
-  exec "e! %"
-endfunc
-map <F6> :call FormartSrc()<CR><CR>
 
 " 新建 .c, .h, .sh, .java，自动插入文件头
 func SetFileHeaderPart()
@@ -553,9 +401,53 @@ autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetFileHeaderP
 " 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G
 
-" ??
+" help ttimeoutlen
 set ttimeoutlen=150
 
+" transparent support ctermfg=252
+hi Normal ctermbg=none
+
+" 调用 astyle 格式化代码，和 F3 有啥区别？
+func FormartSrc()
+  exec "w"
+  if &filetype == 'c'
+    exec "!astyle --style=ansi -a --suffix=none %"
+  elseif &filetype == 'cpp' || &filetype == 'hpp'
+    exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
+  elseif &filetype == 'perl'
+    exec "!astyle --style=gnu --suffix=none %"
+  elseif &filetype == 'py'||&filetype == 'python'
+    exec "r !autopep8 -i --aggressive %"
+  elseif &filetype == 'java'
+    exec "!astyle --style=java --suffix=none %"
+  elseif &filetype == 'jsp'
+    exec "!astyle --style=gnu --suffix=none %"
+  elseif &filetype == 'xml'
+    exec "!astyle --style=gnu --suffix=none %"
+  else
+    exec "normal gg=G"
+    return
+  endif
+  exec "e! %"
+endfunc
+map <F6> :call FormartSrc()<CR><CR>
+
+" fcitx 退出插入模式时，切换为英文输入法
+let g:input_toggle = 1
+function! Fcitx2En()
+  let s:input_status = system("fcitx-remote")
+  if s:input_status == 2
+    let g:input_toggle = 1
+    let l:a = system("fcitx-remote -c")
+  endif
+endfunction
+function! Fcitx2Zh()
+  let s:input_status = system("fcitx-remote")
+  if s:input_status != 2 && g:input_toggle == 1
+    let l:a = system("fcitx-remote -o")
+    let g:input_toggle = 0
+  endif
+endfunction
 " 退出插入模式
 autocmd InsertLeave * call Fcitx2En()
 " 进入插入模式
@@ -568,9 +460,55 @@ set pastetoggle=<F4>
 " autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType python map <F12> :!python %<CR>
 
+map <F9> :NERDTreeToggle<CR>
+imap <F9> <ESC>:NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
+
 " 在 bash 中执行光标所在行
 nnoremap <leader>b :.w !bash<CR>
 
-" transparent support ctermfg=252
-hi Normal ctermbg=none
+nmap <F5> :YcmDiags<CR>
+" 跳转快捷键，可跳到 definition 和 declaration
+nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+
+" Save a file as root (,W)
+noremap <leader>W :w !sudo tee % > /dev/null<CR>
+
+" 选中文本复制至系统剪贴板
+vnoremap <Leader>y "+y
+" 系统剪贴板内容粘贴至 vim
+nmap <Leader>p "+p
+vmap <C-x> "+c
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" 跳转至右方窗口
+nnoremap <Leader>wl <C-W>l
+" 跳转至左方窗口
+nnoremap <Leader>wh <C-W>h
+" 跳转至上方窗口
+nnoremap <Leader>wk <C-W>k
+" 跳转至下方窗口
+nnoremap <Leader>wj <C-W>j
+
+" tab 快捷键
+nnoremap <Leader>tn :tabnext<cr>
+nnoremap <Leader>tp :tabprevious<cr>
+
+" 设置 markdown filetype
+nnoremap <leader>md :set filetype=markdown<CR>
 
