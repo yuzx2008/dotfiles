@@ -18,7 +18,7 @@ Plugin 'gmarik/Vundle.vim'
 " vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
 let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'
@@ -50,7 +50,6 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 
-" Git plugin not hosted on GitHub
 Plugin 'wincent/command-t'
 
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -115,6 +114,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 
+Plugin 'suan/vim-instant-markdown'
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+
 Plugin 'jiangmiao/auto-pairs'
 
 " quick google search
@@ -123,14 +126,10 @@ Plugin 'szw/vim-g'
 Plugin 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
-Plugin 'Lokaltog/vim-easymotion'
-
 Plugin 'rking/ag.vim'
 let g:agprg="ag --vimgrep"
 " configure ag.vim to always start searching from your project root instead of the cwd
 let g:ag_working_path_mode="r"
-
-Plugin 'tpope/vim-eunuch'
 
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 
@@ -494,6 +493,8 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 vnoremap <Leader>y "+y
 " 系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
+" 方便拷贝黏贴，鼠标双击，拷贝，鼠标双击，黏贴
+vmap <leader>p "0p
 vmap <C-x> "+c
 
 " Reselect visual block after indent/outdent
