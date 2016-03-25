@@ -407,6 +407,10 @@ set ttimeoutlen=150
 " transparent support ctermfg=252
 hi Normal ctermbg=none
 
+if exists('$TMUX')
+  set term=screen-256color
+endif
+
 " 调用 astyle 格式化代码，和 F3 有啥区别？
 func FormartSrc()
   exec "w"
