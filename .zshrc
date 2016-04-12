@@ -55,7 +55,8 @@ ENABLE_CORRECTION="true"
 plugins=(git ubuntu history-substring-search github gradle zsh-syntax-highlighting tmux tmuxinator vi-mode autojump)
 # User configuration
 
-export USR_SERVER=/home/yuzx/server
+# echo $HOME
+export USR_SERVER=$HOME/server
 export JAVA_HOME=$USR_SERVER/jdk8
 export ANT_HOME=$USR_SERVER/ant
 export GRADLE_HOME=$USR_SERVER/gradle
@@ -77,7 +78,8 @@ export NODE_HOME=$USR_SERVER/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
 export PATH=$PATH:$USR_SERVER/bin:$USR_SERVER/sbin:$NODE_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USR_SERVER/lib
-export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
+export PATH=$PATH:$JAVA_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin
+export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$SCALA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$KAFKA_HOME/bin
 export PATH=$PATH:$SBT_HOME/bin
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
