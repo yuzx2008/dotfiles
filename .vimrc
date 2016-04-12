@@ -495,6 +495,7 @@ vnoremap <Leader>y "+y
 nmap <Leader>p "+p
 " 方便拷贝黏贴，鼠标双击，拷贝，鼠标双击，黏贴
 vmap <leader>p "0p
+vmap <C-v> "0p
 vmap <C-x> "+c
 
 " Reselect visual block after indent/outdent
