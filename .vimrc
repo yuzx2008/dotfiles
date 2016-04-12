@@ -18,7 +18,7 @@ Plugin 'gmarik/Vundle.vim'
 " vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
 
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
 let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'
@@ -169,7 +169,7 @@ Bundle 'Lokaltog/vim-powerline'
 " vim 有一个状态栏，加 powline 则有两状态栏
 set laststatus=2
 " 指定配色方案为 256 色
-" set t_Co=256
+set t_Co=256
 let g:Powline_symbols='fancy'
 set statusline+=%{fugitive#statusline()} "  Git Hotness
 
