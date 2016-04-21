@@ -1,12 +1,104 @@
+" 读取 .vimrc 的内容，开启后会出现 ,c 的对话框一闪而过
+" source ~/.vimrc
 
-" 读取 .vimrc 的内容
-source ~/.vimrc
+" 设置快捷键前缀，即：<leader>
+let mapleader=","
+
+" Highlight searches（高亮搜索结果）
+set hlsearch
+" Clear search highlight by hitting enter
+nnoremap <silent> <CR> :noh<CR>
+
+" Ignore case of searches
+set ignorecase smartcase
+
+" Highlight dynamically as pattern is typed（搜索时大小写不敏感）
+set incsearch
+
+" Disable error bells
+set noerrorbells
+
+" Show the current mode
+set showmode
+
+" Start scrolling three lines before the horizontal window border
+set scrolloff=3
+
+" 设置历史记录数
+set history=1000
+
+" Enable line numbers（行号）
+set number
+
+" 选中文本复制至系统剪贴板
+vnoremap <leader>y "+y
+" 系统剪贴板内容粘贴至 vim
+nmap <leader>p "+p
+" 方便拷贝黏贴，鼠标双击，拷贝，鼠标双击，黏贴
+vmap <leader>p "0p
+vmap <C-v> "0p
+vmap <C-x> "+c
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" 跳转至右方窗口
+nnoremap <leader>wl <C-W>l
+" 跳转至左方窗口
+nnoremap <leader>wh <C-W>h
+" 跳转至上方窗口
+nnoremap <leader>wk <C-W>k
+" 跳转至下方窗口
+nnoremap <leader>wj <C-W>j
+
+" idea
+" https://github.com/saaguero/ideavimrc/blob/master/.ideavimrc
 
 " 格式化代码
-:map \r :action ReformatCode<CR>
+map \r :action ReformatCode<CR>
 
 " 查找 action
 " :actionlist [pattern]
 " 执行 action
 " :action {name}
+
+nnoremap <space>q :action CloseContent<cr>
+
+nnoremap <space>c :action GotoClass<CR>
+nnoremap <space>t :action GotoSymbol<cr>
+nnoremap <space>a :action GotoAction<cr>
+nnoremap <space>] :action GotoImplementation<cr>
+nnoremap <space>[ :action GotoSuperMethod<cr>
+nnoremap <space>e :action SearchEverywhere<cr>
+
+nnoremap <space>uf :action FindUsages<cr>
+nnoremap <space>uh :action HighlightUsagesInFile<cr>
+
+nnoremap <space>rr :action RenameElement<cr>
+
+nnoremap <space>op :action PreviousOccurence<cr>
+nnoremap <space>on :action NextOccurence<cr>
+nnoremap <space>mp :action MethodUp<cr>
+nnoremap <space>mn :action MethodDown<cr>
+
+nnoremap \xr :action RunClass<cr>
+nnoremap \xR :action Run<cr>
+nnoremap \xd :action DebugClass<cr>
+nnoremap \xD :action Debug<cr>
+
+" built-in navigation to navigated items works better
+nnoremap <space>\ :action VimFilePrevious<cr>
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+" but preserve ideavim defaults
+nnoremap g<c-o> <c-o>
+nnoremap g<c-i> <c-i>
+
+" built in search looks better (在 idea14 不 work)
+" nnoremap <space>f :action Find<cr>
+" but preserve ideavim search
+" nnoremap g/ /
+
+" yiw -> <space>gf -> /<c-r>0
 
