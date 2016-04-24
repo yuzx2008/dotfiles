@@ -65,6 +65,8 @@ map \r :action ReformatCode<CR>
 
 nnoremap <space>q :action CloseContent<cr>
 
+nnoremap <space>d :action GotoDeclaration<cr>
+nnoremap <space>f :action GotoFile<cr>
 nnoremap <space>c :action GotoClass<CR>
 nnoremap <space>t :action GotoSymbol<cr>
 nnoremap <space>a :action GotoAction<cr>
@@ -88,7 +90,7 @@ nnoremap \xd :action DebugClass<cr>
 nnoremap \xD :action Debug<cr>
 
 " built-in navigation to navigated items works better
-nnoremap <space>\ :action VimFilePrevious<cr>
+" nnoremap <space>\ :action VimFilePrevious<cr>
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>
 " but preserve ideavim defaults

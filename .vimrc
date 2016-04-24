@@ -1,5 +1,6 @@
 " be iMproved, required
 set nocompatible
+
 " required
 filetype off
 
@@ -9,6 +10,7 @@ let mapleader=","
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
@@ -47,22 +49,13 @@ let g:ycm_use_ultisnips_completer=0
 
 Plugin 'tpope/vim-fugitive'
 
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-
-Plugin 'wincent/command-t'
-
 " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file://~/.vim/by_yuzx'
+" Plugin 'file://~/.vim/yuzx'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
-
-" =================
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
@@ -173,7 +166,6 @@ set t_Co=256
 let g:Powline_symbols='fancy'
 set statusline+=%{fugitive#statusline()} "  Git Hotness
 
-" =================
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -182,7 +174,6 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
@@ -213,7 +204,7 @@ set encoding=utf-8 nobomb
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 " Don’t add empty newlines at the end of files
-set binary
+" set binary
 set noeol
 
 " Centralize backups, swapfiles and undo history
@@ -224,8 +215,9 @@ if exists("&undodir")
 endif
 
 " Don’t create backups when editing files in certain directories
-set backupskip=/tmp/*,/home/yuzx/data/temp
+set backupskip=/tmp/*
 
+" 例如文件中的 /* vim: set expandtab ts=4 sw=4 sts=4 tw=100: */
 " Respect modeline in files
 set modeline
 set modelines=4
@@ -294,7 +286,7 @@ set title
 set showcmd
 
 " Start scrolling three lines before the horizontal window border
-set scrolloff=3
+set scrolloff=5
 
 " Automatic commands
 if has("autocmd")
@@ -362,16 +354,11 @@ func SetFileHeaderPart()
         call setline(1,"#!/usr/bin/env python")
         call append(line("."),"# coding=utf-8")
         call append(line(".")+1, "")
-
-    elseif &filetype == 'ruby'
-        call setline(1,"#!/usr/bin/env ruby")
-        call append(line("."),"# encoding: utf-8")
-        call append(line(".")+1, "")
     else
         call setline(1, "/*************************************************************************")
         call append(line("."),   "  > File Name   : ".expand("%"))
-        call append(line(".")+1, "  > Author      : yuzx2008")
-        call append(line(".")+2, "  > Mail        : yuzx2008@xx.com")
+        call append(line(".")+1, "  > Author      : yuzx")
+        call append(line(".")+2, "  > Mail        : yuzx2008@gmail.com")
         call append(line(".")+3, "  > Created Time: ".strftime("%c"))
         call append(line(".")+4, " ************************************************************************/")
         call append(line(".")+5, "")
@@ -517,4 +504,11 @@ nnoremap <Leader>tp :tabprevious<cr>
 
 " 设置 markdown filetype
 nnoremap <leader>md :set filetype=markdown<CR>
+
+" http://vimcasts.org/episodes/the-edit-command/
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
