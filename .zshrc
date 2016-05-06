@@ -82,6 +82,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin
 export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$SCALA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$KAFKA_HOME/bin
 export PATH=$PATH:$SBT_HOME/bin
+export PATH=$PATH:$MAVEN_HOME/bin
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 export PATH=$PATH:$HBASE_HOME/bin
 export PATH=$PATH:/usr/local/go/bin
