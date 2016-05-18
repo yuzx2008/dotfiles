@@ -5,7 +5,8 @@ if has("unix")
     " Use 14pt Monaco
     set guifont=Monaco:h14
   else
-    set guifont=Courier\ 10\ Pitch\ 10
+    " Courier\ 10\ Pitch\ 10
+    set guifont=DejaVu\ Sans\ Mono\ 9
     cd /home/yuzx/kuaipan
   endif
 elseif has('win32') || has('win64')
