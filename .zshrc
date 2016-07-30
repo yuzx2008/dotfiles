@@ -139,8 +139,8 @@ alias start_zk="zkServer.sh start"
 alias stop_zk="zkServer.sh stop"
 alias start_hbase="start-hbase.sh"
 alias stop_hbase="stop-hbase.sh"
-alias start_kafka="cd ~/server/kafka; bin/kafka-server-start.sh -daemon config/server.properties"
-alias stop_kafka="cd ~/server/kafka; bin/kafka-server-stop.sh"
+alias start_kafka="cd /usr/local/kafka; bin/kafka-server-start.sh -daemon config/server.properties"
+alias stop_kafka="cd /usr/local/kafka; bin/kafka-server-stop.sh"
 
 bindkey -v
 
