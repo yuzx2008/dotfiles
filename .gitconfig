@@ -82,6 +82,7 @@
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
+	editor = vim
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	# [default] trailing-space: looks for spaces at the end of a line
@@ -127,6 +128,7 @@
 
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
+	tool = vimdiff
 
 [push]
 	# 默认值，Git 2.0 从 'matching' 变更为 'simple'
@@ -137,3 +139,6 @@
   # 见 'git help config' 查找 'push.default' 获取更多信息。
 	default = simple 
 
+[user]
+	email = yuzhixing@sensetime.com
+	name = yuzx

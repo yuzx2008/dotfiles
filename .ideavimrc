@@ -43,15 +43,6 @@ vmap <C-x> "+c
 vnoremap < <gv
 vnoremap > >gv
 
-" 跳转至右方窗口
-nnoremap <leader>wl <C-W>l
-" 跳转至左方窗口
-nnoremap <leader>wh <C-W>h
-" 跳转至上方窗口
-nnoremap <leader>wk <C-W>k
-" 跳转至下方窗口
-nnoremap <leader>wj <C-W>j
-
 " idea
 " https://github.com/saaguero/ideavimrc/blob/master/.ideavimrc
 

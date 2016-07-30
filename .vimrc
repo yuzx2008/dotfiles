@@ -490,13 +490,10 @@ vnoremap < <gv
 vnoremap > >gv
 
 " 跳转至右方窗口
-nnoremap <Leader>wl <C-W>l
-" 跳转至左方窗口
-nnoremap <Leader>wh <C-W>h
-" 跳转至上方窗口
-nnoremap <Leader>wk <C-W>k
-" 跳转至下方窗口
-nnoremap <Leader>wj <C-W>j
+"nnoremap <Leader>wl <C-W>l
+"nnoremap <Leader>wh <C-W>h
+"nnoremap <Leader>wk <C-W>k
+"nnoremap <Leader>wj <C-W>j
 
 " tab 快捷键
 nnoremap <Leader>tn :tabnext<cr>
