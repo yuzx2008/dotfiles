@@ -65,6 +65,7 @@ export GRADLE_HOME=/usr/local/gradle
 export GROOVY_HOME=/usr/local/groovy
 export SCALA_HOME=/usr/local/scala
 export SBT_HOME=/usr/local/sbt
+export ZINC_HOME=/usr/local/zinc
 export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 # hadoop
 export HADOOP_PREFIX=/usr/local/hadoop
@@ -75,7 +76,7 @@ export KAFKA_HOME=/usr/local/kafka
 export GOROOT=/usr/local/go
 export NODE_HOME=/usr/local/node
 export NODE_PATH=/usr/local/lib/node_modules
-export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin
+export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$ZINC_HOME/bin
 export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$HBASE_HOME/bin
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
@@ -141,6 +142,8 @@ alias start_hbase="start-hbase.sh"
 alias stop_hbase="stop-hbase.sh"
 alias start_kafka="cd /usr/local/kafka; bin/kafka-server-start.sh -daemon config/server.properties"
 alias stop_kafka="cd /usr/local/kafka; bin/kafka-server-stop.sh"
+alias start_zinc="zinc -nailed -start"
+alias start_zinc="zinc -shutdown"
 
 bindkey -v
 
