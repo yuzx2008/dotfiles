@@ -166,6 +166,14 @@ set t_Co=256
 let g:Powline_symbols='fancy'
 set statusline+=%{fugitive#statusline()} "  Git Hotness
 
+" xml html 编辑插件
+Plugin 'mattn/emmet-vim'
+
+" for macosx 自动切换输入法
+if has('mac')
+  Plugin 'ybian/smartim'
+endif
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
