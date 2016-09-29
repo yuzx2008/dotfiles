@@ -1,19 +1,19 @@
 ! https://wiki.archlinux.org/index.php/Xterm
 
-! A comma separated list of font names that are checked in order when trying to find glyphs for characters. 
+! A comma separated list of font names that are checked in order when trying to find glyphs for characters.
 ! Man for coding, nothing beats the terminus font.. nothing! Also, notice that boldFont, italicFont, and boldItalicFont are specified as well. This makes a huge difference you will notice right away.
-URxvt*font: xft:DejaVu Sans Mono for Powerline:pixelsize=12,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Zen Hei,xft:WenQuanYi Bitmap Song,xft:Droid Sans Fallback,xft:DejaVu Sans
-! URxvt*boldFont: DejaVu Sans Mono for Powerline:style=Bold:size=24,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Bitmap Song:style=Bold
-! URxvt*italicFont: xft:DejaVu Sans Mono for Powerline:style=Oblique:size=14,xft:WenQuanYi Bitmap Song
-! URxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:style=Bold Oblique:size=14,xft:WenQuanYi Bitmap Song
-URxvt*letterSpace: -1
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Zen Hei
+! URxvt*boldFont: DejaVu Sans Mono:style=Bold:size=12,xft:WenQuanYi Zen Hei Mono
+! URxvt*italicFont: xft:DejaVu Sans Mono:style=Oblique:size=12,xft:WenQuanYi Bitmap Song
+! URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=Bold Oblique:size=12,xft:WenQuanYi Bitmap Song
+URxvt*letterSpace: -2
 
 ! Start as a login shell by prepending a - to argv[0] of the shell. Again, for tmux, this is super-helpful and causes your bash login files like ~/.bash_profile to be loaded.
 URxvt*loginShell: true
 ! Specifies the terminal type name to be set in the TERM environment variable. I use tmux so this is helpful.
-URxvt*termName: screen-256color
+URxvt*termName: rxvt-unicode-256color
 ! Create the window with the specified X window geometry [default 80x24].. base it on your $LINES and $COLUMNS.
-URxvt*geometry: 120x84
+URxvt*geometry: 100x84
 URxvt*scrollColor: #777777
 URxvt*scrollstyle: plain
 ! True: scroll to bottom when a non-special key pressed. Special keys are those which are intercepted by rxvt for special handling andnt passed onto the shell
@@ -70,10 +70,12 @@ Xft.rgba: rgb
 Xft.hinting: True
 Xft.scale: 1.0
 Xft.minspace: True
-! Hintstyle is the amount of font reshaping done to line up to the grid. 
-! Hinting values are: hintnone, hintslight, hintmedium, and hintfull. 
-! hintslight will make the font more fuzzy to line up to the grid but will be better in retaining font shape, while hintfull will be a crisp font that aligns well to the pixel grid but will lose a greater amount of font shape. Preferences vary.
-Xft.hintstyle: hintfull
+! Hintstyle is the amount of font reshaping done to line up to the grid.
+! Hinting values are: hintnone, hintslight, hintmedium, and hintfull.
+! hintslight will make the font more fuzzy to line up to the grid but will be better in retaining font shape,
+!   while hintfull will be a crisp font that aligns well to the pixel grid but will lose a greater amount of font shape.
+!   Preferences vary.
+Xft.hintstyle: hintlight
 
 ! Solarized color scheme for the X Window System
 !
