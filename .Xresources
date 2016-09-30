@@ -7,7 +7,7 @@
 
 ! A comma separated list of font names that are checked in order when trying to find glyphs for characters.
 ! Man for coding, nothing beats the terminus font.. nothing! Also, notice that boldFont, italicFont, and boldItalicFont are specified as well. This makes a huge difference you will notice right away.
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Zen Hei
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:WenQuanYi Zen Hei Sharp:style=Regular
 
 ! The font list to use for displaying bold, italic or bold italic characters, respectively.
 ! If specified and non-empty, then the syntax is the same as for the font-resource, and the given font list will be used as
@@ -15,9 +15,9 @@ URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:WenQuanYi Zen Hei Mono,xft:Wen
 ! If unset (the default), a suitable font list will be synthesized by "morphing" the normal text font list into the desired
 !    shape. If that is not possible, replacement fonts of the desired shape will be tried.
 !  	 If set, but empty, then this specific style is disabled and the normal text font will being used for the given style.
-URxvt*boldFont: DejaVu Sans Mono:style=Bold:size=12,xft:WenQuanYi Zen Hei Mono
-URxvt*italicFont: xft:DejaVu Sans Mono:style=Oblique:size=12,xft:WenQuanYi Bitmap Song
-URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=Bold Oblique:size=12,xft:WenQuanYi Bitmap Song
+! URxvt*boldFont: DejaVu Sans Mono:style=Bold:size=12,xft:WenQuanYi Zen Hei Mono
+! URxvt*italicFont: xft:DejaVu Sans Mono:style=Oblique:size=12,xft:WenQuanYi Zen Hei Mono
+! URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=Bold Oblique:size=12,xft:WenQuanYi Zen Hei Mono
 
 ! Compile frills: Amount to adjust the computed character width by to control overall letter spacing. Negative values will
 !   tighten up the letter spacing, positive values will space letters out more. Useful to work around odd font metrics;
