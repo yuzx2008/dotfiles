@@ -1,62 +1,125 @@
 ! https://wiki.archlinux.org/index.php/Xterm
 
+! Note that when reading X resources, urxvt recognizes two class names: Rxvt and URxvt.
+! The class name Rxvt allows resources common to both urxvt and the original rxvt to be easily configured, while the class name URxvt allows resources unique to urxvt,
+! 	to be shared between different urxvt configurations. If no resources are specified, suitable defaults will be used.
+! Command-line arguments can be used to override resource settings.
+
 ! A comma separated list of font names that are checked in order when trying to find glyphs for characters.
 ! Man for coding, nothing beats the terminus font.. nothing! Also, notice that boldFont, italicFont, and boldItalicFont are specified as well. This makes a huge difference you will notice right away.
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:WenQuanYi Zen Hei Mono,xft:WenQuanYi Zen Hei
-! URxvt*boldFont: DejaVu Sans Mono:style=Bold:size=12,xft:WenQuanYi Zen Hei Mono
-! URxvt*italicFont: xft:DejaVu Sans Mono:style=Oblique:size=12,xft:WenQuanYi Bitmap Song
-! URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=Bold Oblique:size=12,xft:WenQuanYi Bitmap Song
+
+! The font list to use for displaying bold, italic or bold italic characters, respectively.
+! If specified and non-empty, then the syntax is the same as for the font-resource, and the given font list will be used as
+!    is, which makes it possible to substitute completely different font styles for bold and italic.
+! If unset (the default), a suitable font list will be synthesized by "morphing" the normal text font list into the desired
+!    shape. If that is not possible, replacement fonts of the desired shape will be tried.
+!  	 If set, but empty, then this specific style is disabled and the normal text font will being used for the given style.
+URxvt*boldFont: DejaVu Sans Mono:style=Bold:size=12,xft:WenQuanYi Zen Hei Mono
+URxvt*italicFont: xft:DejaVu Sans Mono:style=Oblique:size=12,xft:WenQuanYi Bitmap Song
+URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=Bold Oblique:size=12,xft:WenQuanYi Bitmap Song
+
+! Compile frills: Amount to adjust the computed character width by to control overall letter spacing. Negative values will
+!   tighten up the letter spacing, positive values will space letters out more. Useful to work around odd font metrics;
+!   resource letterSpace.
 URxvt*letterSpace: -2
 
 ! Start as a login shell by prepending a - to argv[0] of the shell. Again, for tmux, this is super-helpful and causes your bash login files like ~/.bash_profile to be loaded.
 URxvt*loginShell: true
+
 ! Specifies the terminal type name to be set in the TERM environment variable. I use tmux so this is helpful.
 URxvt*termName: rxvt-unicode-256color
+
 ! Create the window with the specified X window geometry [default 80x24].. base it on your $LINES and $COLUMNS.
 URxvt*geometry: 100x84
+
+! Use the specified colour for the scrollbar [default #B2B2B2].
 URxvt*scrollColor: #777777
+
+! Set scrollbar style to rxvt, plain, next or xterm. plain is the author favourite.
 URxvt*scrollstyle: plain
+
 ! True: scroll to bottom when a non-special key pressed. Special keys are those which are intercepted by rxvt for special handling andnt passed onto the shell
 URxvt*scrollTtyKeypress: true
-! Do not scroll to bottom when tty receives output
+
+! True: scroll to bottom when tty receives output; option -si.  False: do not scroll to bottom when tty receives output; option +si.
 URxvt*scrollTtyOutput: false
-! Do not scroll with scrollback buffer when tty recieves new lines, adds some speed.. also, I use tmux scrollback buffers.
+
+! True: scroll with scrollback buffer when tty receives new lines (i.e.  try to show the same lines) and scrollTtyOutput is False; option -sw. False: do not scroll with scrollback buffer when tty receives new lines; option +sw.
+! adds some speed.. also, I use tmux scrollback buffers.
 URxvt*scrollWithBuffer: false
+
+! Turn on/off secondary screen (default enabled).
 URxvt*secondaryScreen: true
+
+! Turn on/off secondary screen scroll (default enabled). If this option is enabled, scrolls on the secondary screen will change the scrollback buffer and, when secondaryScreen is off, switching to/from the secondary screen will instead scroll the screen up.
 URxvt*secondaryScroll: true
+
 ! For speed. When receiving lots of lines, urxvt will only scroll once in a while (around 60x/sec), resulting in fewer updates. This can result in urxvt not ever displaying some of the lines it receives
 URxvt*skipScroll: true
+
 ! Disable the scrollbar.. why waste valuable screen real-estate when you should be using tmux scrollback?
 URxvt*scrollBar: false
+
+
+! True: place the scrollbar on the right of the window; option -sr.  False: place the scrollbar on the left of the window; option +sr.
 URxvt*scrollBar_right: false
+
+! True: display an rxvt scrollbar without a trough; option -st.  False: display an rxvt scrollbar with a trough; option +st.
 URxvt*scrollBar_floating: false
+
 ! Fade the text by the given percentage when focus is lost. This is neat, when I switch to a different window, or switch to a different machine ala synergy, it will fade the screen slightly.
 URxvt*fading: 30
+
+! True: inhibit writing record into the system log file utmp; option -ut. False: write record into the system log file utmp [default]; option +ut.
 URxvt*utmpInhibit: false
+
+! True: set the urgency hint for the wm on receipt of a bell character.  False: do not set the urgency hint [default].
+! urxvt resets the urgency hint on every focus change.
 URxvt*urgentOnBell: false
-! Use visual bell on receipt of a bell character. Helpful to be used with inputrc and tmux.
+
+! True: use visual bell on receipt of a bell character; option -vb.  False: no visual bell [default]; option +vb.
+! Helpful to be used with inputrc and tmux.
 URxvt*visualBell: false
+
+! True: de-iconify (map) on receipt of a bell character. False: no de-iconify (map) on receipt of a bell character [default].
 URxvt*mapAlert: true
+
+! True: the mouse wheel scrolls a page full. False: the mouse wheel scrolls five lines [default].
 URxvt*mouseWheelScrollPage: false
+
 ! Use the specified colour as the windows background colour [default White]. Why in the world would you default white unless you are old-school... as in 70s.
 ! URxvt*background: Black
+
 ! Use the specified colour as the windows foreground colour [default Black]. see above.
 ! URxvt*foreground: White
+
 ! Use the specified colour to disp1ay underlined characters when the foreground colour is the default. Makes it easier to notice, rxvt-unicode authors choice as well.
 URxvt*colorUL: yellow
+
 ! If set, use the specified colour as the colour for the underline itself. If unset, use the foreground colour
 URxvt*underlineColor:  yellow
+
 ! Save number lines in the scrollback buffer [default 64]. This resource is limited on most machines to 65535. I am a power-user, so I always use a multiplexer. Tmux if its available, otherwise screen. So I use the scrollback buffer in tmux or screen, which is much nicer.
 URxvt*saveLines: 0
+
 ! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases performance, on most it greatly helps it. The slowdown is small, so it should normally be enabled.
 URxvt*buffered: true
+
+! Turn on/off hold window after exit support. If enabled, urxvt will not immediately destroy its window when the program executed within it exits. Instead, it will wait till it is being killed or closed by the user.
 URxvt*hold: false
+
+! Internal border of number pixels. This resource is limited to 100; option -b.
 URxvt*internalBorder:
+
 ! Specify a command pipe for vt100 printer [default lpr]. Use Print to initiate a screen dump to the printer and Ctrl-Print or Shift-Print to include the scrollback
 URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+
 ! Comma-separated list(s) of perl extension scripts (default: "default") to use in this terminal instance, blank disables. By setting these both to blank, it completely disables perl from being initialized, thus much faster and smaller footprint. Plus it is more secure.
 URxvt*perl-ext-common:
+
 URxvt*perl-ext:
+
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 URxvt*depth: bitdepth
 
@@ -70,6 +133,7 @@ Xft.rgba: rgb
 Xft.hinting: True
 Xft.scale: 1.0
 Xft.minspace: True
+
 ! Hintstyle is the amount of font reshaping done to line up to the grid.
 ! Hinting values are: hintnone, hintslight, hintmedium, and hintfull.
 ! hintslight will make the font more fuzzy to line up to the grid but will be better in retaining font shape,
