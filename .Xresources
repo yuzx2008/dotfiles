@@ -30,8 +30,15 @@ URxvt*loginShell: true
 ! Specifies the terminal type name to be set in the TERM environment variable. I use tmux so this is helpful.
 URxvt*termName: rxvt-unicode-256color
 
+! Specifies number of lines (pixel height) to insert between each row of the display [default 0]; option -lsp.
+URxvt*lineSpace: 0
+
+! True: the mouse wheel scrolls a page full. False: the mouse wheel scrolls five lines [default].
+URxvt*mouseWheelScrollPage: false
+
 ! Create the window with the specified X window geometry [default 80x24].. base it on your $LINES and $COLUMNS.
-URxvt*geometry: 100x84
+! 会造成 ubuntu 下双击两次标题栏来实现最大化
+! URxvt*geometry: 100x84
 
 ! Use the specified colour for the scrollbar [default #B2B2B2].
 URxvt*scrollColor: #777777
@@ -85,9 +92,6 @@ URxvt*visualBell: false
 ! True: de-iconify (map) on receipt of a bell character. False: no de-iconify (map) on receipt of a bell character [default].
 URxvt*mapAlert: true
 
-! True: the mouse wheel scrolls a page full. False: the mouse wheel scrolls five lines [default].
-URxvt*mouseWheelScrollPage: false
-
 ! Use the specified colour as the windows background colour [default White]. Why in the world would you default white unless you are old-school... as in 70s.
 ! URxvt*background: Black
 
@@ -115,10 +119,15 @@ URxvt*internalBorder:
 ! Specify a command pipe for vt100 printer [default lpr]. Use Print to initiate a screen dump to the printer and Ctrl-Print or Shift-Print to include the scrollback
 URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
 
-! Comma-separated list(s) of perl extension scripts (default: "default") to use in this terminal instance, blank disables. By setting these both to blank, it completely disables perl from being initialized, thus much faster and smaller footprint. Plus it is more secure.
-URxvt*perl-ext-common:
+! Comma-separated list(s) of perl extension scripts (default: "default") to use in this terminal instance, blank disables.
+! Extension names can be prefixed with a "-" sign to prohibit using them. This can be useful to selectively disable some extensions loaded by default, or specified via the "perl-ext-common" resource. For example, "default,-selection" will use all the default extension except "selection".
+! If both of these resources are the empty string, then the perl interpreter will not be initialized.
+! The idea behind two options is that perl-ext-common will be used for extensions that should be available to all instances, while perl-ext is used for specific instances.
+URxvt*perl-ext-common: default
+URxvt*perl-ext: default
 
-URxvt*perl-ext:
+! Colon-separated list of additional directories that hold extension scripts. When looking for perl extensions, urxvt will first look in these directories, then in $URXVT_PERL_LIB, $HOME/.urxvt/ext and lastly in /usr/lib/urxvt/perl/.
+! URxvt*perl-lib:
 
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 URxvt*depth: bitdepth
