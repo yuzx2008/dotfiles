@@ -7,7 +7,7 @@ if has("unix")
   else
     " Courier\ 10\ Pitch\ 10
     set guifont=DejaVu\ Sans\ Mono\ 9
-    cd /home/yuzx/kuaipan
+    cd $HOME/docs
   endif
 elseif has('win32') || has('win64')
   set guifont=Consolas:h11
