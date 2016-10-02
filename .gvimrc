@@ -16,5 +16,10 @@ endif
 
 " Better line-height
 " set linespace=8
-
+set guioptions-=r
+set guioptions-=l
+set guioptions-=R
+set guioptions-=L
+set guioptions-=b
+set guioptions-=T
 
