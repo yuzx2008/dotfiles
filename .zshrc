@@ -48,6 +48,11 @@ ENABLE_CORRECTION="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Tmux states this should be screen-256color, but you may need to change it on
+# systems without the proper terminfo
+ZSH_TMUX_FIXTERM_WITH_256COLOR=true
+# auto start tmux
+# ZSH_TMUX_AUTOSTART=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
