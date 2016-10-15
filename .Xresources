@@ -18,10 +18,13 @@ xterm*faceName: DejaVu Sans Mono:style=Book:antialias=True:pixelsize=12
 xterm*faceNameDoublesize: WenQuanYi Zen Hei Mono:style=Regular:antialias=True:pixelsize=12
 
 ! Specify the pointsize for fonts selected from the FreeType library if support for that library was compiled into xterm.
-xterm*faceSize: 8
+xterm*faceSize: 12
+
+! write a title string encoded in UTF-8. The window manager is responsible for drawing window titles.
+xterm*utf8Title: true
 
 ! Specifies the name of the normal font.  The default is “fixed”.
-xterm*font: 7x13
+! xterm*font: 7x13
 
 ! Specifies whether or not the scrollbar should be displayed on the right rather than the left.  The default is “false”.
 xterm*rightScrollBar: true
