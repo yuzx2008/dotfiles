@@ -1,3 +1,7 @@
+# By default, there is a 0.4 second delay after you hit the <ESC> key and when the mode change is registered.
+# This results in a very jarring and frustrating transition between modes.
+# This can result in issues with other terminal commands that depended on this delay. If you have issues try raising the delay.
+export KEYTIMEOUT=10
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -153,8 +157,15 @@ alias stop_zinc="zinc -shutdown"
 bindkey -v
 
 # Use vim cli mode
-bindkey '^P' up-history
-bindkey '^N' down-history
+# bindkey '^P' up-history
+# bindkey '^N' down-history
+
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # backspace and ^h working even after
 # returning from command mode
