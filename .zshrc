@@ -164,8 +164,8 @@ bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
 # bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
 
 # backspace and ^h working even after
 # returning from command mode
