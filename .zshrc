@@ -85,6 +85,8 @@ export KAFKA_HOME=/usr/local/kafka
 export GOROOT=/usr/local/go
 export NODE_HOME=/usr/local/node
 export NODE_PATH=/usr/local/lib/node_modules
+export ANDROID_NDK=/usr/local/android-ndk
+export ANDROID_SDK=/usr/local/android-sdk
 export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$ZINC_HOME/bin
 export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$HBASE_HOME/bin
@@ -93,6 +95,8 @@ export PATH=$PATH:$ZOOKEEPER_HOME/bin
 export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$NODE_HOME/bin
+export PATH=$PATH:$ANDROID_NDK
+export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/server/lib
 export PKG_CONFIG_PATH=$HOME/server/lib/pkgconfig:$PKG_CONFIG_PATH
 # cuda
