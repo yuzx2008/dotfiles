@@ -43,32 +43,12 @@ let g:ycm_min_num_of_chars_for_completion=1
 " 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
 let g:ycm_use_ultisnips_completer=0
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-
-Plugin 'tpope/vim-fugitive'
-
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file://~/.vim/yuzx'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
-" Trigger configuration. Do not use <tab> if you use YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-let g:UltiSnipsUsePythonVersion = 2
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " filesystem tree
 Plugin 'scrooloose/nerdtree'
@@ -103,18 +83,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
-
-Plugin 'suan/vim-instant-markdown'
-let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 0
-
 Plugin 'jiangmiao/auto-pairs'
-
-" quick google search
-Plugin 'szw/vim-g'
 
 Plugin 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
@@ -123,8 +92,6 @@ Plugin 'rking/ag.vim'
 let g:agprg="ag --vimgrep"
 " configure ag.vim to always start searching from your project root instead of the cwd
 let g:ag_working_path_mode="r"
-
-Plugin 'vim-scripts/DeleteTrailingWhitespace'
 
 " all lanugage support
 Plugin 'sheerun/vim-polyglot'
@@ -154,25 +121,18 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" ansible yaml support
-Plugin 'chase/vim-ansible-yaml'
-
-" PowerLine 插件，状态栏增强展示
-Bundle 'Lokaltog/vim-powerline'
 " vim 有一个状态栏，加 powline 则有两状态栏
 set laststatus=2
-" 指定配色方案为 256 色
-set t_Co=256
-let g:Powline_symbols='fancy'
-set statusline+=%{fugitive#statusline()} "  Git Hotness
-
-" xml html 编辑插件
-Plugin 'mattn/emmet-vim'
-
-" for macosx 自动切换输入法
-if has('mac')
-  Plugin 'ybian/smartim'
+" 开启 256 色支持，t_Co 即 Terminal Color
+if !has('gui_running')
+  set t_Co=256
 endif
+let g:lightline = {
+      \ 'colorscheme': 'wombat'
+      \ }
+Bundle 'itchyny/lightline.vim'
+
+" Plugin 'isnowfy/python-vim-instant-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -295,16 +255,6 @@ set showcmd
 
 " Start scrolling three lines before the horizontal window border
 set scrolloff=5
-
-" Automatic commands
-if has("autocmd")
-  " Enable file type detection
-  filetype on
-  " Treat .json files as .js
-  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-  " Treat .md files as Markdown
-  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-endif
 
 au BufNewFile,BufRead *.conf.j2 set filetype=dosini
 au BufNewFile,BufRead *.conf    set filetype=dosini
@@ -488,10 +438,9 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 vnoremap <Leader>y "+y
 " 系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
-" 方便拷贝黏贴，鼠标双击，拷贝，鼠标双击，黏贴
-vmap <leader>p "0p
-vmap <C-v> "0p
-vmap <C-x> "+c
+" vmap <leader>p "0p
+" vmap <C-v> "0p
+" vmap <C-x> "+c
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -503,17 +452,6 @@ vnoremap > >gv
 "nnoremap <Leader>wk <C-W>k
 "nnoremap <Leader>wj <C-W>j
 
-" tab 快捷键
-nnoremap <Leader>tn :tabnext<cr>
-nnoremap <Leader>tp :tabprevious<cr>
-
 " 设置 markdown filetype
 nnoremap <leader>md :set filetype=markdown<CR>
-
-" http://vimcasts.org/episodes/the-edit-command/
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
 
