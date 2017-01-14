@@ -127,23 +127,25 @@ set laststatus=2
 if !has('gui_running')
   set t_Co=256
 endif
-let g:lightline = {
-      \ 'colorscheme': 'wombat'
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat'
+"       \ }
 Bundle 'itchyny/lightline.vim'
 
-" Plugin 'isnowfy/python-vim-instant-markdown'
+Plugin 'yuzx2008/python-vim-instant-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
 
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" 简要帮助文档
+" :PluginList       - 列出所有已配置的插件
+" :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+"
+" 查阅 :h vundle 获取更多细节和wiki以及FAQ
+" 将你自己对非插件片段放在这行之后
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 " set clipboard=unnamed " for mac osx
