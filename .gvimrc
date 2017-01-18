@@ -14,6 +14,9 @@ elseif has('win32') || has('win64')
   cd H:\kuaipan
 endif
 
+map <silent> <S-Insert> "+p
+imap <silent> <S-Insert> <Esc>"+pa
+
 " Better line-height
 " set linespace=8
 set guioptions-=r
