@@ -134,6 +134,8 @@ Bundle 'itchyny/lightline.vim'
 
 Plugin 'yuzx2008/python-vim-instant-markdown'
 
+Plugin 'fatih/vim-go'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
