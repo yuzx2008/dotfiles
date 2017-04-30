@@ -103,6 +103,9 @@ export PKG_CONFIG_PATH=$HOME/server/lib/pkgconfig:$PKG_CONFIG_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:/usr/local/lzo-2.06/lib:$LD_LIBRARY_PATH
+# GOPATH
+export GOPATH=$HOME/data/git_m/go_test
+export PATH=$PATH:$GOPATH/bin
 # umask 0000
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
