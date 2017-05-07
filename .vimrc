@@ -42,6 +42,8 @@ let g:ycm_complete_in_comments=1
 let g:ycm_min_num_of_chars_for_completion=1
 " 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
 let g:ycm_use_ultisnips_completer=0
+" 和切换输入法键冲突，使用 Ctrl-b 替换 Ctrl-space
+let g:ycm_key_invoke_completion = '<C-b>'
 
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file://~/.vim/yuzx'
