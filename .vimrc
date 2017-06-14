@@ -442,8 +442,10 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " 选中文本复制至系统剪贴板
 vnoremap <Leader>y "+y
+vnoremap c "+y
+vnoremap v "+p
 " 系统剪贴板内容粘贴至 vim
-nmap <Leader>p "+p
+map <Leader>p "+p
 " vmap <leader>p "0p
 " vmap <C-v> "0p
 " vmap <C-x> "+c
