@@ -134,7 +134,13 @@ endif
 "       \ }
 Bundle 'itchyny/lightline.vim'
 
-Plugin 'yuzx2008/python-vim-instant-markdown'
+" Plugin 'yuzx2008/python-vim-instant-markdown'
+Plugin 'suan/vim-instant-markdown'
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_open_to_the_world = 0
+let g:instant_markdown_allow_unsafe_content = 1
+let g:instant_markdown_allow_external_content = 1
 
 Plugin 'fatih/vim-go'
 
@@ -462,4 +468,5 @@ vnoremap > >gv
 
 " 设置 markdown filetype
 nnoremap <leader>md :set filetype=markdown<CR>
+nnoremap <leader>mp :InstantMarkdownPreview<CR>
 
