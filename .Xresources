@@ -51,7 +51,8 @@ xterm*bellIsUrgent: true
 
 ! Fix the 'Alt' key
 ! If you use the Alt key for keyboard shortcuts, you will need this in your resource file:
-xterm**metaSendsEscape: true
+xterm*metaSendsEscape: false
+xterm*altSendsEscape: false
 
 ! Lines of text can sometimes be too close together, or they may appear to be too widely spaced. For one example, using DejaVu Sans Mono, the low underscore glyph may butt against CJK glyphs or the cursor block in the line below. Line spacing, called leading by typographers, can be adjusted using the scaleHeight resource. Here, the line spacing is widened:
 xterm*scaleHeight: 1.01
