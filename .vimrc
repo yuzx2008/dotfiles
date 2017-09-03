@@ -156,6 +156,16 @@ let g:instant_markdown_allow_external_content = 1
 
 Plugin 'fatih/vim-go'
 
+Plugin 'vim-latex/vim-latex'
+" vim 默认把空 tex 文件设为 plaintex 不是 tex，导致 latex-suite 不被加载
+let g:tex_flavor='latex'
+" grep 总生成文件名
+set grepprg=grep\ -nH\ $*
+" set iskeyword+=:
+" autocmd BufEnter *.tex set sw=2
+" 正向搜索设置，编译用 /ll，/ls 预览
+let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
