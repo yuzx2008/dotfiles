@@ -20,7 +20,7 @@ Plugin 'gmarik/Vundle.vim'
 " vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
 let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'
@@ -54,18 +54,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " filesystem tree
 Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?" }
+" vim in xterm 打开时屏幕会有乱码闪现
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
