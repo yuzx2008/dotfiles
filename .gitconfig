@@ -83,6 +83,7 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	editor = vim
+	quotepath = false
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	# [default] trailing-space: looks for spaces at the end of a line
@@ -135,10 +136,11 @@
   # push.default 为 'matching'，git 将推送和远程同名的所有本地分支。
   # Git 2.0 开始，Git 缺省采用更保守的 'simple' 模式，
   # 只推送当前分支到远程关联的同名分支，即 'git push' 推送当前分支。
-  # 
+  #
   # 见 'git help config' 查找 'push.default' 获取更多信息。
-	default = simple 
+	default = simple
 
 [user]
 	email = yuzhixing@sensetime.com
-	name = yuzx
+  lname = yuzx
+
