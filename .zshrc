@@ -87,6 +87,7 @@ export NODE_HOME=/usr/local/node
 export NODE_PATH=/usr/local/lib/node_modules
 export ANDROID_NDK=/usr/local/android-ndk
 export ANDROID_SDK=/usr/local/android-sdk
+export OOZIE_CLIENT_HOME=/usr/local/oozie-client
 export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$ZINC_HOME/bin
 export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$HBASE_HOME/bin
@@ -97,6 +98,7 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$NODE_HOME/bin
 export PATH=$PATH:$ANDROID_NDK
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
+export PATH=$PATH:$OOZIE_CLIENT_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/server/lib
 export PKG_CONFIG_PATH=$HOME/server/lib/pkgconfig:$PKG_CONFIG_PATH
 # cuda
