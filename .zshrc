@@ -108,6 +108,10 @@ export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:/usr/local/lzo-2.06/lib:$LD_
 # GOPATH
 export GOPATH=$HOME/data/git_m/go_test
 export PATH=$PATH:$GOPATH/bin
+# texlive 2017
+export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH
 # umask 0000
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
