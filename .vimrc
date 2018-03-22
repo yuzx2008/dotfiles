@@ -491,3 +491,10 @@ cmap <M-h> <Left>
 cmap <M-j> <Down>
 cmap <M-k> <Up>
 cmap <M-l> <Right>
+
+" Insert mode
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
