@@ -103,9 +103,6 @@ Plugin 'sheerun/vim-polyglot'
 " change surroundins - cs/ds/ysiw/yss
 Plugin 'tpope/vim-surround'
 
-" do syntax check
-Plugin 'scrooloose/syntastic'
-
 " http://editorconfig.org/ && ~/.editorconfig
 Plugin 'editorconfig/editorconfig-vim'
 
