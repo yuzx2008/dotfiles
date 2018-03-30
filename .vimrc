@@ -20,37 +20,9 @@ Plugin 'gmarik/Vundle.vim'
 " vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
 
-" Plugin 'Valloric/YouCompleteMe'
-" 设 error warning 提示符，如没设，ycm 以 syntastic 的 g:syntastic_warning_symbol g:syntastic_error_symbol 为准
-let g:ycm_error_symbol='>>'
-let g:ycm_warning_symbol='>*'
-" 全局配置文件路径
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" 开启基于 tag 的补全，可在这之后添加需要的标签路径
-let g:ycm_collect_identifiers_from_tags_files = 1
-" 开启语义补全
-let g:ycm_seed_identifiers_with_syntax = 1
-" 在接受补全后不分裂出一个窗口显示接受的项
-set completeopt-=preview
-" 不显示开启vim时检查ycm_extra_conf文件的信息
-let g:ycm_confirm_extra_conf=0
-" 每次重新生成匹配项，禁止缓存匹配项
-let g:ycm_cache_omnifunc=0
-" 在注释中也可以补全
-let g:ycm_complete_in_comments=1
-" 输入第一个字符就开始补全
-let g:ycm_min_num_of_chars_for_completion=1
-" 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
-let g:ycm_use_ultisnips_completer=0
-" 和切换输入法键冲突，使用 Ctrl-b 替换 Ctrl-space
-let g:ycm_key_invoke_completion = '<C-b>'
-
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file://~/.vim/yuzx'
-
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " filesystem tree
 Plugin 'scrooloose/nerdtree'
@@ -100,9 +72,6 @@ let g:ag_working_path_mode="r"
 " all lanugage support
 Plugin 'sheerun/vim-polyglot'
 
-" change surroundins - cs/ds/ysiw/yss
-Plugin 'tpope/vim-surround'
-
 " http://editorconfig.org/ && ~/.editorconfig
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -132,14 +101,6 @@ endif
 "       \ 'colorscheme': 'wombat'
 "       \ }
 Bundle 'itchyny/lightline.vim'
-
-" Plugin 'yuzx2008/python-vim-instant-markdown'
-Plugin 'suan/vim-instant-markdown'
-let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 0
-let g:instant_markdown_open_to_the_world = 0
-let g:instant_markdown_allow_unsafe_content = 1
-let g:instant_markdown_allow_external_content = 1
 
 Plugin 'fatih/vim-go'
 
@@ -474,24 +435,4 @@ vnoremap > >gv
 "nnoremap <Leader>wh <C-W>h
 "nnoremap <Leader>wk <C-W>k
 "nnoremap <Leader>wj <C-W>j
-
-" 设置 markdown filetype
-nnoremap <leader>md :set filetype=markdown<CR>
-nnoremap <leader>mp :InstantMarkdownPreview<CR>
-
-imap <M-h> <Left>
-imap <M-j> <Down>
-imap <M-k> <Up>
-imap <M-l> <Right>
-
-cmap <M-h> <Left>
-cmap <M-j> <Down>
-cmap <M-k> <Up>
-cmap <M-l> <Right>
-
-" Insert mode
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
 
