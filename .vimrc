@@ -479,19 +479,3 @@ vnoremap > >gv
 nnoremap <leader>md :set filetype=markdown<CR>
 nnoremap <leader>mp :InstantMarkdownPreview<CR>
 
-imap <M-h> <Left>
-imap <M-j> <Down>
-imap <M-k> <Up>
-imap <M-l> <Right>
-
-cmap <M-h> <Left>
-cmap <M-j> <Down>
-cmap <M-k> <Up>
-cmap <M-l> <Right>
-
-" Insert mode
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-
