@@ -10,8 +10,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ys"
 # ZSH_THEME="robbyrussell"
+ZSH_THEME="ys"
+# ZSH_THEME="agnoster"
 DEFAULT_USER="yuzx"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -68,7 +69,7 @@ plugins=(git ubuntu history-substring-search github gradle zsh-syntax-highlighti
 export JAVA_HOME=/usr/local/jdk8
 export M2_HOME=/usr/local/maven
 # export MAVEN_OPTS="-Xms256m -Xmx512m"
-export MAVEN_OPTS="-Xmx2g -XX:ReservedCodeCacheSize=512m"
+export MAVEN_OPTS="-Xms2g -Xmx4g -XX:ReservedCodeCacheSize=512m"
 export ANT_HOME=/usr/local/ant
 export GRADLE_HOME=/usr/local/gradle
 export GROOVY_HOME=/usr/local/groovy
@@ -104,7 +105,8 @@ export PKG_CONFIG_PATH=$HOME/server/lib/pkgconfig:$PKG_CONFIG_PATH
 # cuda
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:/usr/local/lzo-2.06/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/yuzx/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
 # GOPATH
 export GOPATH=$HOME/data/git_m/go_test
 export PATH=$PATH:$GOPATH/bin
@@ -112,6 +114,8 @@ export PATH=$PATH:$GOPATH/bin
 # export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
 # export MANPATH=/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH
 # export INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 # umask 0000
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
