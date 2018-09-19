@@ -7,27 +7,20 @@ filetype off
 " 设置快捷键前缀，即：<Leader>
 let mapleader=","
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
+" Make sure you use single quotes
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
 
-" vim-colors-solarized
-Plugin 'altercation/vim-colors-solarized'
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" filesystem tree
-Plugin 'scrooloose/nerdtree'
-" vim in xterm 打开时屏幕会有乱码闪现
-" Plugin 'Xuyuanp/nerdtree-git-plugin'
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -59,24 +52,35 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 
-Plugin 'jiangmiao/auto-pairs'
+" Using a non-master branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-Plugin 'Chiel92/vim-autoformat'
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" vim-colors-solarized
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 let g:agprg="ag --vimgrep"
 " configure ag.vim to always start searching from your project root instead of the cwd
 let g:ag_working_path_mode="r"
 
 " all lanugage support
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " http://editorconfig.org/ && ~/.editorconfig
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " fuzzy file find
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/software/* " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -100,11 +104,11 @@ endif
 " let g:lightline = {
 "       \ 'colorscheme': 'wombat'
 "       \ }
-Bundle 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
-Plugin 'vim-latex/vim-latex'
+Plug 'vim-latex/vim-latex'
 " vim 默认把空 tex 文件设为 plaintex 不是 tex，导致 latex-suite 不被加载
 let g:tex_flavor='latex'
 " grep 总生成文件名
@@ -115,17 +119,10 @@ set grepprg=grep\ -nH\ $*
 let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
+" Initialize plugin system
+call plug#end()
 
-" 简要帮助文档
-" :PluginList       - 列出所有已配置的插件
-" :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
-" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
-" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
-"
-" 查阅 :h vundle 获取更多细节和wiki以及FAQ
-" 将你自己对非插件片段放在这行之后
+filetype plugin indent on
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 " set clipboard=unnamed " for mac osx
