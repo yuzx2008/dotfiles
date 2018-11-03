@@ -118,6 +118,10 @@ set grepprg=grep\ -nH\ $*
 " 正向搜索设置，编译用 /ll，/ls 预览
 let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
 
+Plug 'tyru/open-browser.vim'
+
+Plug 'previm/previm'
+
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
@@ -239,8 +243,14 @@ au BufNewFile,BufRead *.conf.j2 set filetype=dosini
 au BufNewFile,BufRead *.conf    set filetype=dosini
 au BufNewFile,BufRead *.json    set filetype=javascript
 au BufNewFile,BufRead *.less    set filetype=css
-au BufNewFile,BufRead *.md      set filetype=markdown
+" au BufNewFile,BufRead *.md      set filetype=markdown
 au BufNewFile,BufRead .aliases  set filetype=sh
+
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
 
 " to bottom if log
 au BufNewFile,BufRead *.log normal G
