@@ -17,6 +17,11 @@ call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
+" :Matrix
+Plug 'uguu-org/vim-matrix-screensaver'
+
+" Plug 'yonchu/accelerated-smooth-scroll'
+
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree'
@@ -117,6 +122,13 @@ set grepprg=grep\ -nH\ $*
 " autocmd BufEnter *.tex set sw=2
 " 正向搜索设置，编译用 /ll，/ls 预览
 let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
+
+" MarkdownPreview
+" open preview window in markdown buffer
+" MarkdownPreviewStop
+" close the preview window and server
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
