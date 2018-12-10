@@ -27,15 +27,15 @@ xterm*utf8Title: true
 
 ! Specifies the name of the normal font.  The default is “fixed”.
 ! xterm*font: 7x13
+!
+! Specifies whether or not the scrollbar should be displayed.  The default is “false”.
+xterm*scrollBar: false
 
 ! Specifies whether or not the scrollbar should be displayed on the right rather than the left.  The default is “false”.
-xterm*rightScrollBar: true
+xterm*rightScrollBar: false
 
 ! Specifies the number of lines to save beyond the top of the screen when a scrollbar is turned on.  The default is “64”.
 xterm*saveLines: 10240
-
-! Specifies whether or not the scrollbar should be displayed.  The default is “false”.
-xterm*scrollBar: true
 
 ! Specifies the terminal type name to be set in the TERM environment variable.
 xterm*termName: xterm-256color
@@ -43,6 +43,7 @@ xterm*termName: xterm-256color
 ! Specifies the preferred size and position of the VT102 window.  There is no default for this resource.
 ! Tip: If the popup menu windows show only as small boxes, it is probably because you have a line similar to this, xterm*geometry: 80x32, in your resources file. This does start xterm in an 80 column by 32 row main window, but it also forces the menu windows to be 80 pixels by 32 pixels! Replace the incorrect line with this
 xterm*vt100.geometry: 80x60
+
 ! 双屏扩展显示时总是找不到北
 ! xterm.maximized: true
 
