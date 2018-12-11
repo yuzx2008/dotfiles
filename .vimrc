@@ -17,6 +17,11 @@ call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
+" :Matrix
+Plug 'uguu-org/vim-matrix-screensaver'
+
+" Plug 'yonchu/accelerated-smooth-scroll'
+
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree'
@@ -118,9 +123,15 @@ set grepprg=grep\ -nH\ $*
 " 正向搜索设置，编译用 /ll，/ls 预览
 let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
 
-Plug 'tyru/open-browser.vim'
+" MarkdownPreview
+" open preview window in markdown buffer
+" MarkdownPreviewStop
+" close the preview window and server
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
 
-Plug 'previm/previm'
+" Plug 'tyru/open-browser.vim'
+" Plug 'previm/previm'
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -246,10 +257,10 @@ au BufNewFile,BufRead *.less    set filetype=css
 " au BufNewFile,BufRead *.md      set filetype=markdown
 au BufNewFile,BufRead .aliases  set filetype=sh
 
-augroup PrevimSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
+" augroup PrevimSettings
+"     autocmd!
+"     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+" augroup END
 
 
 " to bottom if log
