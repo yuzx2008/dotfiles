@@ -52,6 +52,7 @@ xterm*bellIsUrgent: true
 
 ! Fix the 'Alt' key
 ! If you use the Alt key for keyboard shortcuts, you will need this in your resource file:
+xterm*eightBitInput: false
 xterm*metaSendsEscape: false
 xterm*altSendsEscape: false
 
@@ -160,6 +161,7 @@ Xft.hintstyle: hintlight
 ! Ctrl-M 最大化
 ! Ctrl-R 恢复
 ! Ctrl shift C & Ctrl shift V
+! Ctrl <KeyPress> P: print()
 *VT100*translations: #override \n\
   Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
   ~Shift~Ctrl<Btn2Up>: insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
@@ -168,4 +170,5 @@ Xft.hintstyle: hintlight
   Ctrl <Key>R: restore() \n\
   Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
 
