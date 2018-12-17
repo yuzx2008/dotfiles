@@ -123,15 +123,8 @@ set grepprg=grep\ -nH\ $*
 " 正向搜索设置，编译用 /ll，/ls 预览
 let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
 
-" MarkdownPreview
-" open preview window in markdown buffer
-" MarkdownPreviewStop
-" close the preview window and server
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
-
-" Plug 'tyru/open-browser.vim'
-" Plug 'previm/previm'
+Plug 'tyru/open-browser.vim'
+Plug 'previm/previm'
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -254,7 +247,7 @@ au BufNewFile,BufRead *.conf.j2 set filetype=dosini
 au BufNewFile,BufRead *.conf    set filetype=dosini
 au BufNewFile,BufRead *.json    set filetype=javascript
 au BufNewFile,BufRead *.less    set filetype=css
-" au BufNewFile,BufRead *.md      set filetype=markdown
+au BufNewFile,BufRead *.md      set filetype=markdown
 au BufNewFile,BufRead .aliases  set filetype=sh
 
 " augroup PrevimSettings
@@ -302,9 +295,8 @@ else
 endif
 colorscheme solarized
 
-" 新建 .c, .h, .sh, .java，自动插入文件头
+" new .c, .h, .sh, .java，自动插入
 func SetFileHeaderPart()
-    "如果文件类型为.sh文件
     if &filetype == 'sh'
         call setline(1,"\#!/bin/bash")
         call append(line("."), "")
@@ -410,16 +402,9 @@ autocmd FileType python map <F12> :!python %<CR>
 
 map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
-" map <C-n> :NERDTreeToggle<CR>
 
 " 在 bash 中执行光标所在行
 nnoremap <leader>b :.w !bash<CR>
-
-nmap <F5> :YcmDiags<CR>
-" 跳转快捷键，可跳到 definition 和 declaration
-nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -449,8 +434,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " 跳转至右方窗口
-"nnoremap <Leader>wl <C-W>l
-"nnoremap <Leader>wh <C-W>h
-"nnoremap <Leader>wk <C-W>k
-"nnoremap <Leader>wj <C-W>j
+" nnoremap <Leader>wl <C-W>l
+" nnoremap <Leader>wh <C-W>h
+" nnoremap <Leader>wk <C-W>k
+" nnoremap <Leader>wj <C-W>j
 
