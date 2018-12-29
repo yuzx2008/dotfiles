@@ -126,6 +126,25 @@ let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
 Plug 'tyru/open-browser.vim'
 Plug 'previm/previm'
 
+Plug 'ervandew/supertab'
+
+Plug 'majutsushi/tagbar'
+" Add support for markdown files in tagbar.
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/.vim/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '»',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
