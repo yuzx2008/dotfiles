@@ -458,3 +458,8 @@ vnoremap > >gv
 " nnoremap <Leader>wk <C-W>k
 " nnoremap <Leader>wj <C-W>j
 
+" echo $HOME
+set dictionary=/Users/yuzx/docs/vim-dict.txt
+" 默认使用字典需要 c-x c-k，可以通过下面命令加到默认补全列表中
+set complete-=k complete+=k
+
