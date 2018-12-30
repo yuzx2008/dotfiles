@@ -29,22 +29,6 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"-------------------
-" :ERDtree 打开 NERD_tree
-" :NERDtreeClose 关闭 NERD_tree
-" o 打开关闭文件或者目录
-" t 在标签页中打开
-" T 在后台标签页中打开
-" ! 执行此文件
-" p 到上层目录
-" P 到根目录
-" K 到第一个节点
-" J 到最后一个节点
-" u 打开上层目录
-" m 显示文件系统菜单（添加、删除、移动操作）
-" r 递归刷新当前目录
-" R 递归刷新当前根目录
-"---------------------
 " 设置NERDTree子窗口宽度
 let NERDTreeWinSize=32
 " 设置NERDTree子窗口位置
@@ -205,6 +189,7 @@ set number
 
 " Highlight current line（高亮当前行/列）
 set cursorline
+
 " 高亮当前列
 " set cursorcolumn
 
@@ -226,6 +211,7 @@ set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 
 " Highlight searches（高亮搜索结果）
 set hlsearch
+
 " Clear search highlight by hitting enter
 nnoremap <silent> <CR> :noh<CR>
 
@@ -416,7 +402,7 @@ autocmd InsertLeave * call Fcitx2En()
 set pastetoggle=<F4>
 
 " Python 设置，如：不要 tab 等，.editconfig
-" autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType python map <F12> :!python %<CR>
 
 map <F9> :NERDTreeToggle<CR>
@@ -438,15 +424,10 @@ noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
-" 选中文本复制至系统剪贴板
 vnoremap <Leader>y "+y
-vnoremap c "+y
-vnoremap v "+p
-" 系统剪贴板内容粘贴至 vim
 map <Leader>p "+p
-" vmap <leader>p "0p
-" vmap <C-v> "0p
-" vmap <C-x> "+c
+" 方便多处替换
+vmap <Leader>v "0p
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
