@@ -195,6 +195,10 @@ bindkey '^w' backward-kill-word
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
 
+# home/end
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+
 # Avoid "zsh: no matches found: xxxx"
 # or alias scp='noglob scp'
 unsetopt nomatch
