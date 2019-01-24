@@ -177,8 +177,6 @@ alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
 alias beeline_n1="/usr/local/hive/bin/beeline -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn1.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
 alias beeline_n2="/usr/local/hive/bin/beeline -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn2.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
 
-alias sudo='sudo env PATH=$PATH'
-
 bindkey -v
 
 # Use vim cli mode
