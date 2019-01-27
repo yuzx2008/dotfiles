@@ -100,8 +100,9 @@ export PATH=$PATH:$NODE_HOME/bin
 export PATH=$PATH:$ANDROID_NDK
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export PATH=$PATH:$OOZIE_CLIENT_HOME/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/server/lib
-export PKG_CONFIG_PATH=$HOME/server/lib/pkgconfig:$PKG_CONFIG_PATH
+export PATH=$PATH:/opt/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib:/opt/qt5/5.12.0/gcc_64/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/lib/pkgconfig:/opt/qt5/5.12.0/gcc_64/lib/pkgconfig
 # cuda
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
