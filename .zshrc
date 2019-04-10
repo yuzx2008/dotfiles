@@ -110,7 +110,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:
 export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/yuzx/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
 # GOPATH
-export GOPATH=$HOME/data/git_m/go_test
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 # texlive 2017
