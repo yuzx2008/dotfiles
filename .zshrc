@@ -101,6 +101,8 @@ export PATH=$PATH:$ANDROID_NDK
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export PATH=$PATH:$OOZIE_CLIENT_HOME/bin
 export PATH=$PATH:/opt/bin
+# swift 4 tensorflow
+export PATH=$PATH:/opt/usr/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib:/opt/qt5/5.12.0/gcc_64/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/lib/pkgconfig:/opt/qt5/5.12.0/gcc_64/lib/pkgconfig
 # cuda
