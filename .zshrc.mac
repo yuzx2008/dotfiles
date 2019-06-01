@@ -86,7 +86,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin
 # GOPATH
-export GOPATH=$HOME/data/git_m/go_test
+export GOPATH=$HOME/go
+export GO111MODULE=on
 export PATH=$PATH:$GOPATH/bin
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
 
