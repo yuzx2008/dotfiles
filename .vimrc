@@ -18,14 +18,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 
 " :Matrix
-Plug 'uguu-org/vim-matrix-screensaver'
+" Plug 'uguu-org/vim-matrix-screensaver'
 
 " Plug 'yonchu/accelerated-smooth-scroll'
 
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -42,7 +42,7 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 
 " Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -50,6 +50,8 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
 
+" :IndentGuidesEnable :IndentGuidesDisable :IndentGuidesToggle
+" let g:indent_guides_enable_on_vim_startup = 1
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'jiangmiao/auto-pairs'
@@ -95,21 +97,10 @@ endif
 "       \ }
 Plug 'itchyny/lightline.vim'
 
-Plug 'fatih/vim-go'
-
-Plug 'vim-latex/vim-latex'
-" vim 默认把空 tex 文件设为 plaintex 不是 tex，导致 latex-suite 不被加载
-let g:tex_flavor='latex'
-" grep 总生成文件名
-set grepprg=grep\ -nH\ $*
-" set iskeyword+=:
-" autocmd BufEnter *.tex set sw=2
-" 正向搜索设置，编译用 /ll，/ls 预览
-let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
-
 Plug 'tyru/open-browser.vim'
 Plug 'previm/previm'
 
+" Supertab is a vim plugin which allows you to use <Tab> for all your insert completion needs (:help ins-completion).
 Plug 'ervandew/supertab'
 
 Plug 'majutsushi/tagbar'
@@ -284,10 +275,15 @@ set ruler
 set shortmess=atI
 
 " Show the current mode
-set showmode
+" set showmode
+" 因 itchyny/lightline.vim，不再需要显示 mode
+set noshowmode
 
 " Show the filename in the window titlebar
 set title
+if has('title')
+  set title titlestring=%F%y%m%r
+endif
 
 " Show the (partial) command as it’s being typed（状态栏显示正输入的命令）
 set showcmd
