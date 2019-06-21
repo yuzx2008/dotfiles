@@ -57,6 +57,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'Chiel92/vim-autoformat'
+let g:formatdef_my_cpp = '"astyle --style=attach --pad-oper --lineend=linux"'
+let g:formatters_cpp = ['my_cpp']
+au BufWrite *.cpp,*.cxx,*.c,*.h,*.hpp :Autoformat
 noremap <F3> :Autoformat<CR><CR>
 
 Plug 'rking/ag.vim'
@@ -395,7 +398,6 @@ if exists('$TMUX')
   set term=screen-256color
 endif
 
-" 调用 astyle 格式化代码，和 F3 有啥区别？
 func FormartSrc()
   exec "w"
   if &filetype == 'c'
