@@ -263,7 +263,8 @@ set ignorecase
 set incsearch
 
 " Enable mouse in all modes（Vim 可鼠标，防止终端下无法拷贝）
-set mouse=a
+" set mouse=a
+set mouse=c
 
 " Disable error bells
 set noerrorbells
