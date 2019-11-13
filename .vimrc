@@ -57,12 +57,10 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'Chiel92/vim-autoformat'
+let g:formatdef_my_cpp = '"astyle --style=attach --pad-oper --lineend=linux"'
+let g:formatters_cpp = ['my_cpp']
+au BufWrite *.cpp,*.cxx,*.c,*.h,*.hpp :Autoformat
 noremap <F3> :Autoformat<CR><CR>
-
-Plug 'rking/ag.vim'
-let g:agprg="ag --vimgrep"
-" configure ag.vim to always start searching from your project root instead of the cwd
-let g:ag_working_path_mode="r"
 
 " all lanugage support
 Plug 'sheerun/vim-polyglot'
@@ -70,21 +68,22 @@ Plug 'sheerun/vim-polyglot'
 " http://editorconfig.org/ && ~/.editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
-" fuzzy file find
-Plug 'kien/ctrlp.vim'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/software/* " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" %f 文件
+" %l 行
+" %c 列
+" %m 匹配行的文本
+set grepformat=%f:%l:%c:%m
 
-" ctrlp 默认 grep 搜索，效率低。用 ag 替换，速度非常快（忽略 software 文件夹得内容）
+Plug 'ctrlpvim/ctrlp.vim'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command = 'ag %s -l --ignore "software/" --nocolor -g ""'
-  " Ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
+
+Plug 'dkprice/vim-easygrep'
 
 " vim 有一个状态栏，加 powline 则有两状态栏
 set laststatus=2
@@ -260,7 +259,8 @@ set ignorecase
 set incsearch
 
 " Enable mouse in all modes（Vim 可鼠标，防止终端下无法拷贝）
-set mouse=a
+" set mouse=a
+set mouse=c
 
 " Disable error bells
 set noerrorbells
@@ -395,7 +395,6 @@ if exists('$TMUX')
   set term=screen-256color
 endif
 
-" 调用 astyle 格式化代码，和 F3 有啥区别？
 func FormartSrc()
   exec "w"
   if &filetype == 'c'

@@ -80,7 +80,7 @@ export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 # hadoop
 export HADOOP_PREFIX=/usr/local/hadoop
 export HBASE_HOME=/usr/local/hbase
-export SPARK_HOME=/usr/local/spark
+export SPARK_HOME=/usr/local/spark2
 export ZOOKEEPER_HOME=/usr/local/zookeeper
 export KAFKA_HOME=/usr/local/kafka
 export GOROOT=/usr/local/go
