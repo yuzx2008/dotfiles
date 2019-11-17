@@ -62,7 +62,7 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu history-substring-search github gradle zsh-syntax-highlighting tmux tmuxinator vi-mode autojump)
+plugins=(git ubuntu history-substring-search github gradle zsh-syntax-highlighting tmux tmuxinator vi-mode autojump kubectl)
 # User configuration
 
 # echo $HOME
@@ -121,6 +121,7 @@ export GO111MODULE=on
 # export INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export MINIKUBE_HOME=/data2/minikube
 # umask 0000
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
@@ -179,11 +180,13 @@ alias start_oozie="/usr/local/oozie/bin/oozied.sh start"
 alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
 
 
-alias beeline_n1="/usr/local/hive/bin/beeline -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn1.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
-alias beeline_n2="/usr/local/hive/bin/beeline -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn2.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
+# alias beeline_n1="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn1.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
+# alias beeline_n2="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn2.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
+alias beeline_n1="/usr/local/hive2/bin/beeline -n hive -p admin -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods\""
+alias beeline_n2="/usr/local/hive2/bin/beeline -n hive -p admin -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods\""
 
 # ag='sudo apt'，与 /usr/bin/ag 冲突
-unalias ag
+# unalias ag
 
 bindkey -v
 
@@ -227,3 +230,11 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 # export HTTPS_PROXY="https://172.16.1.221:3128/"
 # export FTP_PROXY="http://myproxy.server.com:8080/"
 # export NO_PROXY="localhost,127.0.0.1"
+
+# or Or when using Oh-My-Zsh, edit the ~/.zshrc file and update the plugins= line to include the kubectl plugin.
+# if [ $commands[kubectl]  ]; then
+#     source <(kubectl completion zsh)
+# fi
+
+
+
