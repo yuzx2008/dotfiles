@@ -57,9 +57,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'Chiel92/vim-autoformat'
-let g:formatdef_my_cpp = '"astyle --style=attach --pad-oper --lineend=linux"'
-let g:formatters_cpp = ['my_cpp']
-au BufWrite *.cpp,*.cxx,*.c,*.h,*.hpp :Autoformat
 noremap <F3> :Autoformat<CR><CR>
 
 " all lanugage support
