@@ -57,9 +57,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'Chiel92/vim-autoformat'
-let g:formatdef_my_cpp = '"astyle --style=attach --pad-oper --lineend=linux"'
-let g:formatters_cpp = ['my_cpp']
-au BufWrite *.cpp,*.cxx,*.c,*.h,*.hpp :Autoformat
 noremap <F3> :Autoformat<CR><CR>
 
 " all lanugage support
@@ -446,6 +443,13 @@ set pastetoggle=<F4>
 " Python 设置，如：不要 tab 等，.editconfig
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType python map <F12> :!python %<CR>
+
+" YAML 设置，支持 .yml .yaml
+" ai = auto indent，自动退格对齐
+" set tabstop=2，一个 tab 2 个空格宽
+" set shiftwidth=2，退格对齐以 2 空格为准
+" set expandtab tab 变空格
+autocmd FileType yaml setlocal ai ts=2 sw=2 et
 
 map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
