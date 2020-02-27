@@ -94,7 +94,7 @@ endif
 Plug 'itchyny/lightline.vim'
 
 Plug 'tyru/open-browser.vim'
-Plug 'previm/previm'
+Plug 'yuzx2008/previm'
 
 " Supertab is a vim plugin which allows you to use <Tab> for all your insert completion needs (:help ins-completion).
 Plug 'ervandew/supertab'
