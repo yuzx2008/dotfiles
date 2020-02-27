@@ -39,7 +39,7 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
-let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
+let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git', '.DS_Store', '.DocumentRevisions*', '.Trashes', '.fseventsd', '.TemporaryItems']
 
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
