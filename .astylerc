@@ -1,0 +1,56 @@
+
+# http://astyle.sourceforge.net/astyle.html#_default_brace_style
+
+# 和 Java 一样，Java style uses attached braces.
+--style=attach
+
+# 缩进用 2 空格
+indent=spaces=2
+
+max-code-length=120
+break-after-logical
+
+# Converts tabs into spaces in the non-indentation part of the line.
+convert-tabs
+
+# -S  switch 整体缩进
+indent-switches
+
+# -K cases 整体缩进
+indent-cases
+
+# -N namespace 整体缩进
+# indent-namespaces
+
+# -xW 预处理模块缩进
+indent-preproc-block
+
+# -w 宏定义模块缩进
+indent-preproc-define
+
+# -p 操作符前后填空格
+pad-oper
+
+# -xe 删除多余空行
+# delete-empty-lines
+
+# -j 单行语句加大括号
+add-braces
+
+# *、& 靠近变量名
+# align-pointer=name
+
+# *、& 靠近类型
+align-pointer=type
+
+#
+# Indent C++ comments beginning in column one. By default C++ comments beginning in column one are assumed to be commented?out code and not indented.
+# This option will allow the comments to be indented with the code.
+#
+--indent-col1-comments
+
+#
+# Indent a C type, C#, or Java file. C type files are C, C++, C++/CLI, and Objective-C.  The option is usually set from the file extension for each file.
+#
+--mode=c
+
