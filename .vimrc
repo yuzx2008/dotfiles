@@ -35,13 +35,16 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
 
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
 " all lanugage support
 " Plug 'sheerun/vim-polyglot'
+
+" http://editorconfig.org/ && ~/.editorconfig
+Plug 'editorconfig/editorconfig-vim'
 
 " %f 文件
 " %l 行
