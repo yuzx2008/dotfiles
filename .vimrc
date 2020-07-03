@@ -40,6 +40,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
+Plug 'tarekbecker/vim-yaml-formatter'
+
 " all lanugage support
 " Plug 'sheerun/vim-polyglot'
 
@@ -122,6 +124,8 @@ let g:tagbar_type_go = {
  \ 'ctagsargs' : '-sort -silent'
 \ }
 
+
+Plug 'pearofducks/ansible-vim'
 
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
