@@ -127,6 +127,10 @@ let g:tagbar_type_go = {
 
 Plug 'pearofducks/ansible-vim'
 
+Plug 'godlygeek/tabular'
+Plug 'gabrielelana/vim-markdown'
+Plug 'joker1007/vim-markdown-quote-syntax'
+
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
