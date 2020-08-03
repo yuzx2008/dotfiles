@@ -240,5 +240,7 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 # fi
 
 export KUBECONFIG=$HOME/.kube/config.dev:$HOME/.kube/config.diamond:$HOME/.kube/config.aliyun-hb2:$HOME/.kube/config.aliyun-hd1:$HOME/.kube/config.minikube:$HOME/.kube/config.dev-diamond
-
+# export GIT_TRACE_PACKET=1
+# export GIT_TRACE=1
+# export GIT_CURL_VERBOSE=1
 
