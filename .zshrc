@@ -71,7 +71,6 @@ export M2_HOME=/usr/local/maven
 # export MAVEN_OPTS="-Xms256m -Xmx512m"
 export MAVEN_OPTS="-Xms2g -Xmx4g -XX:ReservedCodeCacheSize=512m"
 export ANT_HOME=/usr/local/ant
-export FINDBUGS_HOME=/usr/local/findbugs
 export GRADLE_HOME=/usr/local/gradle
 export GROOVY_HOME=/usr/local/groovy
 export SCALA_HOME=/usr/local/scala
@@ -81,8 +80,7 @@ export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 # hadoop
 export HADOOP_PREFIX=/usr/local/hadoop
 export HBASE_HOME=/usr/local/hbase
-export SPARK_HOME=/usr/local/spark2
-export FLINK_HOME=/usr/local/flink
+export SPARK_HOME=/usr/local/spark
 export ZOOKEEPER_HOME=/usr/local/zookeeper
 export KAFKA_HOME=/usr/local/kafka
 export GOROOT=/usr/local/go
@@ -91,11 +89,10 @@ export NODE_PATH=/usr/local/lib/node_modules
 export ANDROID_NDK=/usr/local/android-ndk
 export ANDROID_SDK=/usr/local/android-sdk
 export OOZIE_CLIENT_HOME=/usr/local/oozie-client
-export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$ZINC_HOME/bin:FINDBUGS_HOME/bin
+export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$ANT_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$ZINC_HOME/bin
 export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin
 export PATH=$PATH:$HBASE_HOME/bin
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
-export PATH=$PATH:$FLINK_HOME/bin
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=$PATH:$GOROOT/bin
@@ -125,6 +122,7 @@ export GO111MODULE=on
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export MINIKUBE_HOME=/data2/minikube
+export R_HOME=/data2/R
 # umask 0000
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
@@ -239,8 +237,5 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 #     source <(kubectl completion zsh)
 # fi
 
-export KUBECONFIG=$HOME/.kube/config.dev:$HOME/.kube/config.diamond:$HOME/.kube/config.aliyun-hb2:$HOME/.kube/config.aliyun-hd1:$HOME/.kube/config.minikube:$HOME/.kube/config.dev-diamond
-# export GIT_TRACE_PACKET=1
-# export GIT_TRACE=1
-# export GIT_CURL_VERBOSE=1
+
 
