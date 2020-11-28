@@ -134,7 +134,8 @@ Plug 'joker1007/vim-markdown-quote-syntax'
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'google/vim-jsonnet'
+" rust
+Plug 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
