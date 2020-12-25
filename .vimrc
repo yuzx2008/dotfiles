@@ -137,6 +137,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " rust
 Plug 'rust-lang/rust.vim'
 
+" snippet 引擎
+Plug 'SirVer/ultisnips'
+" snippet 代码
+Plug 'yuzx2008/vim-snippets'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+" 跳至下个 tab stop
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
