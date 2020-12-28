@@ -81,7 +81,7 @@ export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 # hadoop
 export HADOOP_PREFIX=/usr/local/hadoop
 export HBASE_HOME=/usr/local/hbase
-export SPARK_HOME=/usr/local/spark2
+export SPARK_HOME=/usr/local/spark3
 export FLINK_HOME=/usr/local/flink
 export ZOOKEEPER_HOME=/usr/local/zookeeper
 export KAFKA_HOME=/usr/local/kafka
@@ -117,6 +117,8 @@ export LD_LIBRARY_PATH=/home/yuzx/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
 # GOPATH
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/mysql/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
 export GO111MODULE=on
 # texlive 2017
 # export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
@@ -125,7 +127,7 @@ export GO111MODULE=on
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export MINIKUBE_HOME=/data2/minikube
-export R_HOME=/data2/R
+export R_HOME=/usr/lib/R
 # umask 0000
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
