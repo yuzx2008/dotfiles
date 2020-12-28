@@ -127,9 +127,22 @@ let g:tagbar_type_go = {
 
 Plug 'pearofducks/ansible-vim'
 
+" snippet 引擎
+Plug 'SirVer/ultisnips'
+" snippet 代码
+Plug 'yuzx2008/vim-snippets'
+let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/.vim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+" 跳至下个 tab stop
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
 Plug 'godlygeek/tabular'
 Plug 'gabrielelana/vim-markdown'
 Plug 'joker1007/vim-markdown-quote-syntax'
+" 和 snippets 冲突
+let g:markdown_enable_insert_mode_mappings = 0
 
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -137,15 +150,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " rust
 Plug 'rust-lang/rust.vim'
 
-" snippet 引擎
-Plug 'SirVer/ultisnips'
-" snippet 代码
-Plug 'yuzx2008/vim-snippets'
-
-let g:UltiSnipsExpandTrigger="<tab>"
-" 跳至下个 tab stop
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -354,6 +359,9 @@ autocmd BufNewFile * normal G
 
 " help ttimeoutlen
 set ttimeoutlen=150
+" timeoutlen is used for mapping delays
+" ttimeoutlen is used for key code delays
+" set timeoutlen=1000 ttimeoutlen=0
 
 " transparent support ctermfg=252
 hi Normal ctermbg=none
