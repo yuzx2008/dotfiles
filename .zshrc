@@ -127,7 +127,7 @@ export GO111MODULE=on
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export MINIKUBE_HOME=/data2/minikube
-export R_HOME=/usr/lib/R
+export R_LIBS_USER=/data2/R
 # umask 0000
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
