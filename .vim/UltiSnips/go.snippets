@@ -1,0 +1,18 @@
+
+snippet test "for test function"
+
+func Test${1:func}(t *testing.T) {
+	var tests = []struct {
+		input string
+		want  bool
+	}{
+		{"", true},
+	}
+	for _, test := range tests {
+		if got := $1(test.input); got != test.want {
+			t.Errorf("IsPalindrome2(%q) = %v", test.input, got)
+		}
+	}
+}
+
+endsnippet
