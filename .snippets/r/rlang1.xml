@@ -1,0 +1,19 @@
+<snippets>
+  <snippet>
+    <txt>
+      <![CDATA[
+library(showtext)
+library(sysfonts)
+
+font_add("SHSans", "SourceHanSansSC-Regular.otf");
+showtext_auto(enable = TRUE)
+
+
+]]>
+    </txt>
+    <ab>r.showtext</ab>
+    <desc>引入 ShowText 包，解决中文乱码问题</desc>
+    <ctx>R</ctx>
+  </snippet>
+
+</snippets>
