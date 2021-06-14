@@ -198,6 +198,10 @@ alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
 alias beeline_n1="/usr/local/hive2/bin/beeline -n hive -p admin -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods\""
 alias beeline_n2="/usr/local/hive2/bin/beeline -n hive -p admin -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods\""
 
+alias antlr4='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+alias grun='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+
+
 # ag='sudo apt'，与 /usr/bin/ag 冲突
 # unalias ag
 
