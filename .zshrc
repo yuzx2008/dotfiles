@@ -114,8 +114,8 @@ export PATH=$PATH:/opt/usr/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib:/opt/qt5/5.12.0/gcc_64/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/lib/pkgconfig:/opt/qt5/5.12.0/gcc_64/lib/pkgconfig
 # cuda
-export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda-8.0/bin:/usr/local/TensorRT-2.1.2/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64:/usr/local/TensorRT-2.1.2/lib:$LD_LIBRARY_PATH
 
 export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/yuzx/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
@@ -135,7 +135,12 @@ export MINIKUBE_HOME=/data2/minikube
 export R_LIBS_USER=/data2/R
 export STACK_ROOT=/data2/.stack
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# 4 rJava
+export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 # umask 0000
+
+source $HOME/.cargo/env
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
 
@@ -253,7 +258,7 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 #     source <(kubectl completion zsh)
 # fi
 
-export KUBECONFIG=$HOME/.kube/config.dev:$HOME/.kube/config.diamond:$HOME/.kube/config.aliyun-hb2:$HOME/.kube/config.aliyun-hd1:$HOME/.kube/config.minikube:$HOME/.kube/config.dev-diamond:$HOME/.kube/config.bigdata
+export KUBECONFIG=$HOME/.kube/config
 # export GIT_TRACE_PACKET=1
 # export GIT_TRACE=1
 # export GIT_CURL_VERBOSE=1
