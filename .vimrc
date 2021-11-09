@@ -35,7 +35,7 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
@@ -127,6 +127,7 @@ let g:tagbar_type_go = {
 
 Plug 'pearofducks/ansible-vim'
 
+let g:UltiSnipsUsePythonVersion=3
 " snippet 引擎
 Plug 'SirVer/ultisnips'
 " snippet 代码
