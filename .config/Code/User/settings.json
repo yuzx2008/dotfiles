@@ -1,0 +1,95 @@
+{
+    "explorer.confirmDragAndDrop": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "keyboard.dispatch": "keyCode",
+    "explorer.confirmDelete": false,
+    "editor.dragAndDrop": false,
+    "editor.folding": false,
+    "editor.minimap.enabled": false,
+    "editor.selectionHighlight": false,
+    "scm.diffDecorations": "none",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex -> xelatex",
+            "tools": [
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "%DOC%.tex"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "window.menuBarVisibility": "visible",
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.fontFamily": "'DejaVu Sans Mono', '文泉驿等宽正黑', 'Courier New', 'monospace', monospace, 'Droid Sans Fallback'",
+    "files.autoSave": "afterDelay",
+    "update.mode": "manual",
+    "vim.hlsearch": true,
+    "vim.replaceWithRegister": true,
+    "vim.useSystemClipboard": true,
+    "vim.vimrc.enable": true,
+    "vim.leader": ",",
+    "vim.cursorStylePerMode.visualline": "block",
+    "vim.cursorStylePerMode.visualblock": "block",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.replace": "block",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.insert": "block",
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx-remote",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx-remote -t {im}",
+    "vim.autoSwitchInputMethod.defaultIM": "1",
+    "workbench.sideBar.location": "right",
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false,
+    "editor.guides.indentation": false,
+    "editor.guides.highlightActiveIndentation": false,
+    "editor.foldingHighlight": false,
+    "editor.fontSize": 12,
+    "cmake.configureOnOpen": true,
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "C_Cpp.clang_format_style": "Google",
+    "[cpp]": {
+        "editor.quickSuggestions": true
+    },
+    "[c]": {
+        "editor.quickSuggestions": true
+    },
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.intelliSenseCachePath": "/data2/cache",
+    "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.intelliSenseEngineFallback": "Enabled"
+}
