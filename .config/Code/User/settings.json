@@ -57,15 +57,14 @@
     "update.mode": "manual",
     "vim.hlsearch": true,
     "vim.replaceWithRegister": true,
-    "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
     "vim.leader": ",",
-    "vim.cursorStylePerMode.visualline": "block",
-    "vim.cursorStylePerMode.visualblock": "block",
-    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.visualline": "underline",
+    "vim.cursorStylePerMode.visualblock": "underline",
+    "vim.cursorStylePerMode.visual": "underline",
     "vim.cursorStylePerMode.replace": "block",
     "vim.cursorStylePerMode.normal": "block",
-    "vim.cursorStylePerMode.insert": "block",
+    "vim.cursorStylePerMode.insert": "block-outline",
     "vim.autoSwitchInputMethod.enable": true,
     "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx-remote",
     "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx-remote -t {im}",
@@ -92,12 +91,24 @@
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.intelliSenseEngine": "Default",
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
-    "mssql.connections": [
-        {
-            "server": "{{put-server-name-here}}",
-            "database": "{{put-database-name-here}}",
-            "user": "{{put-username-here}}",
-            "password": "{{put-password-here}}"
-        }
-    ]
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "files.associations": {
+        "*.rmd": "markdown"
+    },
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "vim.statusBarColorControl": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    }
 }
