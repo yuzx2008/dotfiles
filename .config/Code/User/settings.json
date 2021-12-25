@@ -137,5 +137,9 @@
     },
     "[r]": {
         "editor.defaultFormatter": "Mikhail-Arkhipov.r"
-    }
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "terminal.integrated.fontSize": 11
 }
