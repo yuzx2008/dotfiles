@@ -54,14 +54,20 @@ Plug 'editorconfig/editorconfig-vim'
 " %m 匹配行的文本
 set grepformat=%f:%l:%c:%m
 
-Plug 'ctrlpvim/ctrlp.vim'
+" c-f 切换 mru/files/buf
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
+  let g:ctrlp_working_path_mode = 'ra'
+  " 可 c-p 后 c-r 切换
+  let g:ctrlp_regexp = 1
+  let g:ctrlp_by_filename = 1
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'dkprice/vim-easygrep'
 
@@ -139,11 +145,11 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 
-Plug 'godlygeek/tabular'
-Plug 'gabrielelana/vim-markdown'
-Plug 'joker1007/vim-markdown-quote-syntax'
-" 和 snippets 冲突
-let g:markdown_enable_insert_mode_mappings = 0
+" Plug 'godlygeek/tabular'
+" Plug 'gabrielelana/vim-markdown'
+" Plug 'joker1007/vim-markdown-quote-syntax'
+" " 和 snippets 冲突
+" let g:markdown_enable_insert_mode_mappings = 0
 
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -487,9 +493,8 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
+" Recently vim can merge signcolumn and number column into one
+set signcolumn=number
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -564,10 +569,13 @@ augroup end
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current line.
+" Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -602,7 +610,7 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that

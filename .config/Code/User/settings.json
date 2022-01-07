@@ -60,7 +60,7 @@
     "vim.cursorStylePerMode.visual": "underline",
     "vim.cursorStylePerMode.replace": "block",
     "vim.cursorStylePerMode.normal": "block",
-    "vim.cursorStylePerMode.insert": "block-outline",
+    "vim.cursorStylePerMode.insert": "line",
     "vim.autoSwitchInputMethod.enable": true,
     "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx-remote",
     "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx-remote -t {im}",
@@ -71,7 +71,7 @@
     "editor.guides.indentation": false,
     "editor.guides.highlightActiveIndentation": false,
     "editor.foldingHighlight": false,
-    "editor.fontSize": 12,
+    "editor.fontSize": 11,
     "cmake.configureOnOpen": true,
     "C_Cpp.updateChannel": "Insiders",
     "C_Cpp.clang_format_fallbackStyle": "Google",
@@ -127,12 +127,19 @@
       ],
     "workbench.editor.untitled.hint": "hidden",
     "workbench.sideBar.location": "right",
-    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Visual Studio Dark - C++",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
         "statusBar.debuggingBackground": "#005f5f"
-    }
+    },
+    "[r]": {
+        "editor.defaultFormatter": "Mikhail-Arkhipov.r"
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "terminal.integrated.fontSize": 11
 }

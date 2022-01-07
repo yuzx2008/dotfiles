@@ -11,13 +11,13 @@ xterm*utf8: true
 
 ! Specify the pattern for scalable fonts selected from the FreeType library if support for that library was compiled into xterm.  There is no default value.
 ! fc-list :scalable=true:spacing=mono: family
-! DejaVu Sans Mono:style=Book
-xterm*faceName: DejaVu Sans Mono:style=Book:antialias=True:pixelsize=12
+! DejaVu Sans Mono:style=Book:antialias=True:pixelsize=12
+xterm*faceName: Noto Emoji:style=Regular:antialias=True:pixelsize=11
 
 ! Specify a double-width scalable font for cases where an application requires this, e.g., in CJK applications.  There is no default value.
 ! If the application uses double-wide characters and this resource is not given, xterm will use a scaled version of the font given by faceName.
 ! WenQuanYi Zen Hei, WenQuanYi Zen Hei Mono, WenQuanYi Zen Hei Sharp, WenQuanYi Zen Micro Hei, WenQuanYi Zen Micro Hei Mono
-xterm*faceNameDoublesize: WenQuanYi Zen Hei:style=Regular:antialias=True:pixelsize=12
+xterm*faceNameDoublesize: Noto Emoji:style=Regular:antialias=True:pixelsize=11
 
 ! Specify the pointsize for fonts selected from the FreeType library if support for that library was compiled into xterm.
 ! xterm*faceSize: 12
@@ -164,6 +164,10 @@ Xft.hintstyle: hintlight
 ! Ctrl <KeyPress> P: print()
 ! Ctrl <Key>M: maximize() \n\
 ! Ctrl <Key>R: restore() \n\ 会覆盖 vim 的 ctrl r 和 term 的 ctrl r 搜索历史命令
+! Meta<Key>h: string(0x1b) string("[1;5D") \n\
+! Meta<Key>i: string(0x1b) string("[1;5A") \n\
+! Meta<Key>k: string(0x1b) string("[1;5B") \n\
+! Meta<Key>l: string(0x1b) string("[1;5C")
 *VT100*translations: #override \n\
   Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
   ~Shift~Ctrl<Btn2Up>: insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
