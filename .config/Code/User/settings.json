@@ -104,7 +104,6 @@
         "**/.metals": true,
         "**/.ammonite": true
     },
-    "java.home": "/usr/local/jdk11",
     "java.configuration.maven.globalSettings": "/usr/local/maven/conf/settings.xml",
     "java.maven.downloadSources": true,
     "java.maven.updateSnapshots": false,
