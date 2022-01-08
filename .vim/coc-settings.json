@@ -15,10 +15,10 @@
       "initializationOptions": {
         "buildDirectory": "build"
       }
-    },
-    "markdownlint.config": {
-      "default": true,
-      "line_length": false
     }
+  },
+  "markdownlint.config": {
+    "default": true,
+    "line_length": false
   }
 }
