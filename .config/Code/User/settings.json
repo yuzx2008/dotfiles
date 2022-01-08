@@ -140,5 +140,16 @@
     "editor.quickSuggestions": {
         "strings": true
     },
-    "terminal.integrated.fontSize": 11
+    "terminal.integrated.fontSize": 11,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true
+    },
+    "markdownlint.config": {
+        "default": true,
+        "MD007": { "indent": 2 },
+        "no-hard-tabs": false,
+        // because many files include lines longer than the conventional 80 character limit
+        "MD013": false
+    },
+    "markdownlint.focusMode": true
 }
