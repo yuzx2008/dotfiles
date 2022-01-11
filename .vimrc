@@ -17,15 +17,15 @@ Plug 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" 设置NERDTree子窗口宽度
+" 窗口宽度
 let NERDTreeWinSize=32
-" 设置NERDTree子窗口位置
+" 窗口位置
 let NERDTreeWinPos="left"
 " 显示隐藏文件
 let NERDTreeShowHidden=1
-" NERDTree 子窗口中不显示冗余帮助信息
+" 不显示冗余帮助信息
 let NERDTreeMinimalUI=1
-" 删除文件时自动删除文件对应 buffer
+" 删除文件时自动删除对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 
@@ -80,6 +80,22 @@ endif
 " let g:lightline = {
 "       \ 'colorscheme': 'wombat'
 "       \ }
+function! CocCurrentFunction()
+  return get(b:, 'coc_current_function', '')
+endfunction
+
+" \ 'colorscheme': 'wombat',
+" \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
 Plug 'itchyny/lightline.vim'
 
 Plug 'tyru/open-browser.vim'
@@ -130,7 +146,6 @@ let g:tagbar_type_go = {
  \ 'ctagsargs' : '-sort -silent'
 \ }
 
-
 Plug 'pearofducks/ansible-vim'
 
 let g:UltiSnipsUsePythonVersion=3
@@ -143,7 +158,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 " 跳至下个 tab stop
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
 
 " Plug 'godlygeek/tabular'
 " Plug 'gabrielelana/vim-markdown'
@@ -281,29 +295,23 @@ set showcmd
 " Start scrolling three lines before the horizontal window border
 set scrolloff=5
 
-au BufNewFile,BufRead *.conf    set filetype=dosini
-au BufNewFile,BufRead *.md      set filetype=markdown
-au BufNewFile,BufRead .aliases  set filetype=sh
-
-" augroup PrevimSettings
-"     autocmd!
-"     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-" augroup END
-
+au BufNewFile,BufRead *.conf set filetype=dosini
+au BufNewFile,BufRead *.{md,mkd,rmd,mark*}  set filetype=markdown
+au BufNewFile,BufRead .aliases set filetype=sh
 
 " to bottom if log
 au BufNewFile,BufRead *.log normal G
 
-" 设置 markdown 格式自动换行
+" no wrapping by default. Use `:set wrap` to re-enable
+set nowrap
+
+" markdown 自动换行
 autocmd FileType markdown set wrap
 
 " open help in new tab
 cabbrev help tab help
 
-" no wrapping by default. Use `:set wrap` to re-enable
-set nowrap
-
-" 设置匹配模式，输入一个左括号时会匹配相应的右括号
+" 匹配模式，输入左括号匹配右括号
 set showmatch
 
 " 设置 C/C++ 自动对齐
@@ -362,15 +370,15 @@ func SetFileHeaderPart()
     endif
 endfunc
 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetFileHeaderPart()"
-" 新建文件后，自动定位到文件末尾
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetFileHeaderPart()"
+
+" 新建文件自动定位文件尾
 autocmd BufNewFile * normal G
 
-" help ttimeoutlen
-set ttimeoutlen=150
 " timeoutlen is used for mapping delays
 " ttimeoutlen is used for key code delays
 " set timeoutlen=1000 ttimeoutlen=0
+set ttimeoutlen=150
 
 " transparent support ctermfg=252
 hi Normal ctermbg=none
@@ -403,7 +411,7 @@ func FormartSrc()
 endfunc
 map <F6> :call FormartSrc()<CR><CR>
 
-" fcitx 退出插入模式时，切换为英文输入法
+" fcitx 退出插入模式，切换英文输入
 let g:input_toggle = 1
 function! Fcitx2En()
   let s:input_status = system("fcitx-remote")
@@ -422,7 +430,7 @@ endfunction
 " 退出插入模式
 autocmd InsertLeave * call Fcitx2En()
 " 进入插入模式
-"autocmd InsertEnter * call Fcitx2Zh()
+" autocmd InsertEnter * call Fcitx2Zh()
 
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
@@ -489,7 +497,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-" set cmdheight=2
+" set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -521,7 +529,8 @@ endfunction
 " else
 "   inoremap <silent><expr> <c-@> coc#refresh()
 " endif
-inoremap <silent><expr> <c-.> coc#refresh()
+" :h map-special-chars
+inoremap <silent><expr> <c-k> coc#refresh()
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -621,7 +630,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
