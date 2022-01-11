@@ -187,12 +187,12 @@ set ttyfast
 
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
-
+set fileencoding=utf-8
+set termencoding=utf-8
 " 自动判断文件编码时，依次尝试
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
 
 " Don’t add empty newlines at the end of files
-" set binary
 set noeol
 
 " Centralize backups, swapfiles and undo history
@@ -214,6 +214,7 @@ set modelines=4
 
 " Highlight current line（高亮当前行/列）
 set cursorline
+set nocursorcolumn
 
 " 高亮当前列
 " set cursorcolumn
@@ -252,6 +253,7 @@ set mouse=c
 
 " Disable error bells
 set noerrorbells
+set novisualbell
 
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
@@ -474,6 +476,9 @@ vnoremap > >gv
 set dictionary=$HOME/docs/vim-dict.txt
 " 默认使用字典需要 c-x c-k，可以通过下面命令加到默认补全列表中
 set complete-=k complete+=k
+
+" no menu window
+set completeopt=menu
 
 " coc
 " TextEdit might fail if hidden is not set.

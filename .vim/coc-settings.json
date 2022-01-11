@@ -19,6 +19,8 @@
   },
   "markdownlint.config": {
     "default": true,
-    "line_length": false
+    "line_length": false,
+    "MD045": false,
+    "MD024": false
   }
 }
