@@ -172,6 +172,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 
 Plug 'jalvesaq/Nvim-R'
+let R_auto_start = 2
+let R_assign = 0
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
