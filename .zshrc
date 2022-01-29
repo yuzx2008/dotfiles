@@ -62,7 +62,11 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+<<<<<<< HEAD
 plugins=(git ubuntu history-substring-search github gradle zsh-syntax-highlighting tmux tmuxinator vi-mode autojump kubectl zsh-autosuggestions)
+=======
+plugins=(git ubuntu history-substring-search github zsh-syntax-highlighting tmux tmuxinator vi-mode vim-interaction autojump kubectl kubectx vscode sudo rust mvn golang ag)
+>>>>>>> 4ceeac65a471d2574ead2b188d6e0d651693f725
 # User configuration
 
 # echo $HOME
@@ -273,10 +277,9 @@ export KUBECONFIG=$HOME/.kube/config
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/yuzx/go/bin/mc mc
 
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -287,5 +290,4 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
