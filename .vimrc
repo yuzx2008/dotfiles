@@ -146,7 +146,8 @@ let g:tagbar_type_go = {
  \ 'ctagsargs' : '-sort -silent'
 \ }
 
-Plug 'pearofducks/ansible-vim'
+" 会导致普通 yaml 文件缩进 tab 问题
+" Plug 'pearofducks/ansible-vim'
 
 let g:UltiSnipsUsePythonVersion=3
 " snippet 引擎
@@ -447,6 +448,7 @@ autocmd FileType python map <F12> :!python %<CR>
 " set shiftwidth=2，退格对齐以 2 空格为准
 " set expandtab tab 变空格
 autocmd FileType yaml setlocal ai ts=2 sw=2 et
+" autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
@@ -652,3 +654,9 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" :help :highlight-link
+highlight link markdownItalic NONE
+highlight clear htmlItalic
+syn match kramdownId "{#[^}]*}"
+syn cluster markdownInline add=kramdownId
+highlight def link kramdownId Identifier
