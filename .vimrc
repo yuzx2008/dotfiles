@@ -381,7 +381,7 @@ autocmd BufNewFile * normal G
 " timeoutlen is used for mapping delays
 " ttimeoutlen is used for key code delays
 " set timeoutlen=1000 ttimeoutlen=0
-set ttimeoutlen=150
+set ttimeoutlen=50
 
 " transparent support ctermfg=252
 hi Normal ctermbg=none
