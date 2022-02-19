@@ -62,11 +62,7 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-<<<<<<< HEAD
-plugins=(git ubuntu history-substring-search github gradle zsh-syntax-highlighting tmux tmuxinator vi-mode autojump kubectl zsh-autosuggestions)
-=======
 plugins=(git ubuntu history-substring-search github zsh-syntax-highlighting tmux tmuxinator vi-mode vim-interaction autojump kubectl kubectx vscode sudo rust mvn golang ag)
->>>>>>> 4ceeac65a471d2574ead2b188d6e0d651693f725
 # User configuration
 
 # echo $HOME
@@ -141,7 +137,7 @@ export R_LIBS_USER=/data2/R
 export STACK_ROOT=/data2/.stack
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH=/opt/miniconda3/bin:$PATH
+export PATH="/opt/miniconda3/bin:$PATH"
 # 4 rJava
 export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 # umask 0000
