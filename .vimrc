@@ -417,16 +417,16 @@ map <F6> :call FormartSrc()<CR><CR>
 " fcitx 退出插入模式，切换英文输入
 let g:input_toggle = 1
 function! Fcitx2En()
-  let s:input_status = system("fcitx-remote")
+  let s:input_status = system("fcitx5-remote")
   if s:input_status == 2
     let g:input_toggle = 1
-    let l:a = system("fcitx-remote -c")
+    let l:a = system("fcitx5-remote -c")
   endif
 endfunction
 function! Fcitx2Zh()
-  let s:input_status = system("fcitx-remote")
+  let s:input_status = system("fcitx5-remote")
   if s:input_status != 2 && g:input_toggle == 1
-    let l:a = system("fcitx-remote -o")
+    let l:a = system("fcitx5-remote -o")
     let g:input_toggle = 0
   endif
 endfunction
