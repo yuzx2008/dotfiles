@@ -57,6 +57,9 @@ set-option -g status on
 # For curl icanhazip.com
 set-option -g status-interval 60
 
+# vim esc 回到 normal mode 0 delay
+set-option -sg escape-time 0
+
 # set-option -g status-justify "centre"
 set -g status-left-length 22
 
@@ -68,6 +71,11 @@ set -g status-right-length 80
 # set -g status-right ""
 set -g status-right '#[fg=colour136]#(echo $USER)@#H %Y-%m-%d %H:%M'
 
+# for neovim, autoread
+set-option -g focus-events on
+
+# for neovim, termguicolors
+set-option -sa terminal-overrides ',xterm-256color:RGB'
 
 #### COLOUR (Solarized 256)
 
