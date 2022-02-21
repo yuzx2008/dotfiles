@@ -86,6 +86,10 @@ Xft.minspace: True
 !   Preferences vary.
 Xft.hintstyle: hintlight
 
+! Tells xterm whether to use the PRIMARY or CLIPBOARD for SELECT tokens in the selection mechanism.
+! The default is "false", which tells it to use PRIMARY
+xterm*selectToClipboard: true
+
 ! Solarized color scheme for the X Window System
 !
 ! http://ethanschoonover.com/solarized
