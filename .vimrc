@@ -178,7 +178,7 @@ let R_assign = 0
 
 " lintr etc.
 Plug 'dense-analysis/ale'
-let g:ale_r_lintr_options = "with_defaults(line_length_linter(120))"
+let g:ale_r_lintr_options = "with_defaults(line_length_linter(120), commented_code_linter = NULL)"
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -707,3 +707,5 @@ inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
 autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
 
 let maplocalleader = ','
+
+autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
