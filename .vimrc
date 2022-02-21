@@ -414,26 +414,45 @@ func FormartSrc()
 endfunc
 map <F6> :call FormartSrc()<CR><CR>
 
+if !exists("g:os")
+  if has("win64") || has("win32")
+    let g:os = "Windows"
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
+endif
+
 " fcitx 退出插入模式，切换英文输入
-let g:input_toggle = 1
 function! Fcitx2En()
-  let s:input_status = system("fcitx5-remote")
-  if s:input_status == 2
-    let g:input_toggle = 1
-    let l:a = system("fcitx5-remote -c")
+  if g:os == "Darwin"
+    let s:input_status = system("im-select")
+    if s:input_status != "com.apple.keylayout.ABC"
+      let l:a = system("im-select com.apple.keylayout.ABC")
+    endif
+  elseif g:os == "Linux"
+    let s:input_status = system("fcitx5-remote")
+    if s:input_status == 2
+      let l:a = system("fcitx5-remote -c")
+    endif
   endif
 endfunction
 function! Fcitx2Zh()
-  let s:input_status = system("fcitx5-remote")
-  if s:input_status != 2 && g:input_toggle == 1
-    let l:a = system("fcitx5-remote -o")
-    let g:input_toggle = 0
+  if g:os == "Darwin"
+    let s:input_status = system("im-select")
+    if s:input_status != "com.apple.keylayout.ABC"
+      let l:a = system("im-select com.sogou.inputmethod.sogou.pinyin")
+    endif
+  elseif g:os == "Linux"
+    let s:input_status = system("fcitx5-remote")
+    if s:input_status != 2
+      let l:a = system("fcitx5-remote -o")
+    endif
   endif
 endfunction
 " 退出插入模式
 autocmd InsertLeave * call Fcitx2En()
 " 进入插入模式
-" autocmd InsertEnter * call Fcitx2Zh()
+autocmd InsertEnter * call Fcitx2Zh()
 
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
