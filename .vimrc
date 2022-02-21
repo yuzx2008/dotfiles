@@ -698,3 +698,12 @@ let &t_EI = "\<Esc>[2 q" . "\<Esc>]12;rgb:9E/9E/9E\x7"
 " 4 -> solid underscore  不闪烁的下划线
 " 5 -> blinking vertical bar  闪烁的竖线
 " 6 -> solid vertical bar  不闪烁的竖线
+
+" map <Esc>[13;5u <C-CR>
+" ~/.vim/plugged/Nvim-R/R/common_global.vim
+nnoremap <C-CR> :call SendLineToR("down")<CR>
+xnoremap <C-CR> :call SendSelectionToR("echo", "down", "normal")<CR>
+inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
+autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
+
+let maplocalleader = ','
