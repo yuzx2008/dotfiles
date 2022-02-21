@@ -176,6 +176,10 @@ Plug 'jalvesaq/Nvim-R'
 let R_auto_start = 2
 let R_assign = 0
 
+" lintr etc.
+Plug 'dense-analysis/ale'
+let g:ale_r_lintr_options = "with_defaults(line_length_linter(120))"
+
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
