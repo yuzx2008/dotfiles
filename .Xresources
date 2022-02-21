@@ -169,15 +169,10 @@ Xft.hintstyle: hintlight
 ! Meta<Key>k: string(0x1b) string("[1;5B") \n\
 ! Meta<Key>l: string(0x1b) string("[1;5C")
 ! 5 Ctrl modifier, 13 ASCII value for a Carriage Return
+! Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
 *VT100*translations: #override \n\
   Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
-  ~Shift~Ctrl<Btn2Up>: insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
-  ~Shift<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1) \n\
-  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-  Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
   <Key>Home: string(0x1b) string("[1~") \n\
   <Key>End: string(0x1b) string("[4~") \n\
   Ctrl ~Meta ~Shift <Key>Enter: string(0x1b) string("[13;5u")
-
-
 
