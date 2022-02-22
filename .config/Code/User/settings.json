@@ -199,9 +199,9 @@
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.colorCustomizations": {
-        "statusBar.background": "#5f0000",
-        "statusBar.noFolderBackground": "#5f0000",
-        "statusBar.debuggingBackground": "#5f0000"
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
     },
     "[r]": {
         "editor.defaultFormatter": "Mikhail-Arkhipov.r"
@@ -221,5 +221,18 @@
         "MD013": false
     },
     "markdownlint.focusMode": true,
-    "remote.downloadExtensionsLocally": true
+    "remote.downloadExtensionsLocally": true,
+    "gopls": {
+      // tracing
+      "verboseOutput": true
+    },
+    "go.trace.server": "verbose",
+    // View -> Output, There will be a drop-down menu titled Tasks in the top-right corner. Select the gopls (server) item, which will contain the gopls logs
+    "go.languageServerFlags": [
+
+        "-rpc.trace"
+    ],
+    "go.editorContextMenuCommands": {
+        "playground": false
+    }
 }

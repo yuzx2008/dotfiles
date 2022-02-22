@@ -179,6 +179,8 @@ let R_assign = 0
 " lintr etc.
 Plug 'dense-analysis/ale'
 let g:ale_r_lintr_options = "with_defaults(line_length_linter(120), commented_code_linter = NULL)"
+" disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
+let g:ale_disable_lsp = 1
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system

@@ -22,7 +22,8 @@
     "default": true,
     "line_length": false,
     "MD045": false,
-    "MD024": false
+    "MD024": false,
+    "MD013": false
   },
   "diagnostic-languageserver.filetypes": {
     "vim": "vint",
