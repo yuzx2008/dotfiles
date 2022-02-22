@@ -46,5 +46,6 @@
     "sh": "shfmt",
     "blade": "blade-formatter",
     "cmake": "cmake-format"
-  }
+  },
+  "diagnostic.displayByAle": true
 }
