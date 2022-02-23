@@ -176,11 +176,16 @@ Plug 'jalvesaq/Nvim-R'
 let R_auto_start = 2
 let R_assign = 0
 
+" 打开文件，:ALEInfo 查看可用 linters
 " lintr etc.
 Plug 'dense-analysis/ale'
 let g:ale_r_lintr_options = "with_defaults(line_length_linter(120), commented_code_linter = NULL)"
 " disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
 let g:ale_disable_lsp = 1
+" Enable lintr only
+let b:ale_linters = ['lintr']
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -458,7 +463,7 @@ endfunction
 " 退出插入模式
 autocmd InsertLeave * call Fcitx2En()
 " 进入插入模式
-autocmd InsertEnter * call Fcitx2Zh()
+" autocmd InsertEnter * call Fcitx2Zh()
 
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
@@ -681,9 +686,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " :help :highlight-link
 highlight link markdownItalic NONE
+highlight link markdownBoldItalic NONE
+highlight link markdownBoldItalicDelimiter NONE
 highlight clear htmlItalic
-syn match kramdownId "{#[^}]*}"
-syn cluster markdownInline add=kramdownId
+syntax match kramdownId "{#[^}]*}"
+syntax cluster markdownInline add=kramdownId
 highlight def link kramdownId Identifier
 
 " Set cursor shape and color
