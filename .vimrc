@@ -688,10 +688,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 highlight link markdownItalic NONE
 highlight link markdownBoldItalic NONE
 highlight link markdownBoldItalicDelimiter NONE
-highlight clear htmlItalic
-syntax match kramdownId "{#[^}]*}"
-syntax cluster markdownInline add=kramdownId
-highlight def link kramdownId Identifier
 
 " Set cursor shape and color
 " INSERT mode
