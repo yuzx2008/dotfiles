@@ -177,8 +177,8 @@ let R_auto_start = 2
 let R_assign = 0
 
 " 打开文件，:ALEInfo 查看可用 linters
-" lintr etc.
-Plug 'dense-analysis/ale'
+" lintr etc
+" Plug 'dense-analysis/ale'
 let g:ale_r_lintr_options = "with_defaults(line_length_linter(120), commented_code_linter = NULL)"
 " disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
 let g:ale_disable_lsp = 1
