@@ -30,7 +30,8 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go'
+let g:go_bin_path = "/home/yuzx/go/bin"
 
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
