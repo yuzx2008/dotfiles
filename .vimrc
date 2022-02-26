@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " 窗口宽度
 let NERDTreeWinSize=32
 " 窗口位置
@@ -321,6 +321,7 @@ set nowrap
 
 " markdown 自动换行
 autocmd FileType markdown set wrap
+autocmd FileType markdown %retab! 2
 
 " open help in new tab
 cabbrev help tab help
