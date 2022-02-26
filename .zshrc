@@ -261,6 +261,7 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 # if [ $commands[kubectl]  ]; then
 #     source <(kubectl completion zsh)
 # fi
+source <(golangci-lint completion zsh)
 
 export KUBECONFIG=$HOME/.kube/config
 # export GIT_TRACE_PACKET=1
@@ -275,7 +276,7 @@ complete -o nospace -C /home/yuzx/go/bin/mc mc
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -286,4 +287,5 @@ else
     fi
 fi
 unset __conda_setup
+# <<< conda initialize <<<
 
