@@ -1,5 +1,6 @@
 {
     "explorer.confirmDragAndDrop": false,
+    // "http.proxy": "http://172.16.1.135:3128",
     "explorer.confirmDelete": false,
     "keyboard.dispatch": "keyCode",
     "editor.suggestSelection": "recentlyUsedByPrefix",
