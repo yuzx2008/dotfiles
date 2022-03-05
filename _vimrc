@@ -154,7 +154,7 @@ let g:tagbar_type_go = {
 
 let g:UltiSnipsUsePythonVersion=3
 " snippet 引擎
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " snippet 代码
 Plug 'yuzx2008/vim-snippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/.vim/UltiSnips']
@@ -728,3 +728,11 @@ source $VIMRUNTIME/menu.vim
 " 解决console输出乱码
 language messages zh_CN.utf-8
 cd c:\Users\yuzx\docs
+
+" No annoying sound on errors
+set noerrorbells
+set vb t_vb=
+
+" Properly disable sound on errors on MacVim
+autocmd GUIEnter * set vb t_vb=
+
