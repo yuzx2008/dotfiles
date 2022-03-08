@@ -1,0 +1,5 @@
+patch:
+  "style/font_point": 16     # 字號，只認數字的，不認「五號」、「小五」這樣的
+  "style/horizontal": true      # 候選橫排
+  "style/display_tray_icon": true  # 顯示托盤圖標
+  "style/color_scheme": starcraft    # 這項用於選中下面定義的新方案
