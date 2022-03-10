@@ -1,6 +1,15 @@
 " be iMproved, required
 set nocompatible
 
+" annoying sound on errors
+set noerrorbells
+set vb t_vb=
+
+" properly disable sound on errors on GUI
+if has('gui_running')
+  autocmd GUIEnter * set vb t_vb=
+endif
+
 " required
 filetype off
 
