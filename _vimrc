@@ -1,25 +1,18 @@
 " be iMproved, required
 set nocompatible
 
-" annoying sound on errors
-set noerrorbells
-set vb t_vb=
-
-" properly disable sound on errors on GUI
-if has('gui_running')
-  autocmd GUIEnter * set vb t_vb=
-endif
-
 " required
 filetype off
 
 " 设置快捷键前缀，即：<Leader>
 let mapleader=","
 
+set rtp+=$VIM/vimfiles/autoload/plug.vim
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin('c:/vim/vimfiles/plugged')
 
 " On-demand loading
 Plug 'scrooloose/nerdtree'
@@ -161,7 +154,7 @@ let g:tagbar_type_go = {
 
 let g:UltiSnipsUsePythonVersion=3
 " snippet 引擎
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " snippet 代码
 Plug 'yuzx2008/vim-snippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/.vim/UltiSnips']
@@ -234,11 +227,12 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
 set noeol
 
 " Centralize backups, swapfiles and undo history
-" set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
+set backupdir=$VIM/vimfiles/backups
+set directory=$VIM/vimfiles/swaps
 if exists("&undodir")
-  set undodir=~/.vim/undo
+  set undodir=$VIM/vimfiles/undo
 endif
+
 " Don’t create backups when editing files in certain directories
 " set backupskip=/tmp/*
 
@@ -725,3 +719,20 @@ autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "functio
 let maplocalleader = ','
 
 autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
+
+" gvim 字体（用 \ 转义空格，最后指定大小 11）
+set guifont=Courier\ New:h9
+" 解决菜单乱码
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+" 解决console输出乱码
+language messages zh_CN.utf-8
+cd c:\Users\yuzx\docs
+
+" No annoying sound on errors
+set noerrorbells
+set vb t_vb=
+
+" Properly disable sound on errors on MacVim
+autocmd GUIEnter * set vb t_vb=
+
