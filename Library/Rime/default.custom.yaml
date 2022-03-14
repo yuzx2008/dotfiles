@@ -5,7 +5,7 @@ patch:
     "/" : "、"
   punctuator/half_shape:
     "/" : "、"
-  switches:            
+  switches:
     - name: ascii_mode
       reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，
       states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。
@@ -21,3 +21,21 @@ patch:
   "switcher/hotkeys":  # 這個列表裏每項定義一個快捷鍵，使哪個都中
     - "Control+grave"  # 你看寫法並不是 Ctrl+` 而是與 IBus 一致的表示法
     - F4
+  # 可用 Caps_Lock, Shift_L, Shift_R, Control_L, control_R
+  # Mac 鼠鬚管不區分左、右，因此只有 Shift_L, Control_L 設定起作用
+  # 切換策略
+  # inline_ascii 臨時西文編輯區輸入字母、數字、符號、空格等，回車上屏後自動復位到中文
+  # commit_text 已輸入候選文字上屏並切換至西文輸入模式
+  # commit_code 已輸入編碼字符上屏並切換至西文輸入模式
+  # noop，屏蔽該切換鍵
+  #
+  # 如果要把 Caps Lock 設爲只改變字母的大小寫而不做中西文切換，可將 Caps_Lock 對應的切換方式設爲 noop
+  # 如果要以 Caps Lock 切換到西文模式，默認輸出小寫字母，請置 ascii_composer/good_old_caps_lock: false
+  # 如果要以 Caps Lock 切換到西文模式，默認輸出大寫字母，請使用以下設置：
+  # ascii_composer/good_old_caps_lock: true
+  ascii_composer/switch_key:
+    # Caps_Lock: commit_code
+    Shift_L: commit_code
+    Shift_R: commit_code
+    # Control_L: commit_code
+    # Control_R: commit_code
