@@ -289,3 +289,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# 用于更新 toolchain
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+# 用于更新 rustup
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
