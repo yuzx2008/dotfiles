@@ -132,7 +132,7 @@ export GO111MODULE=on
 # export INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export MINIKUBE_HOME=/data2/minikube
+export MINIKUBE_HOME=/data2
 export R_LIBS_USER=/data2/R
 export STACK_ROOT=/data2/.stack
 export PATH="$PATH:$HOME/.local/bin"
