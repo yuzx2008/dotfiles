@@ -235,5 +235,6 @@
     ],
     "go.editorContextMenuCommands": {
         "playground": false
-    }
+    },
+    "redhat.telemetry.enabled": true
 }
