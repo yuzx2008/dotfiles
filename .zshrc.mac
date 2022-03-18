@@ -71,8 +71,6 @@ export USR_SERVER=$HOME/server
 export ANT_HOME=$USR_SERVER/ant
 export ZOOKEEPER_HOME=$USR_SERVER/zookeeper
 export KAFKA_HOME=$USR_SERVER/kafka
-export SPARK_HOME=$USR_SERVER/spark2
-export PATH=$PATH:$SPARK_HOME/bin
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 export PATH=$PATH:$KAFKA_HOME/bin
 export ANDROID_NDK=/Users/yuzx/android-ndk-r14b
@@ -83,7 +81,7 @@ export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 export MAVEN_OPTS="-Xmx2g -XX:ReservedCodeCacheSize=512m"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOROOT=/usr/local/opt/go/libexec
+# export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin
 # GOPATH
 export GOPATH=$HOME/go
