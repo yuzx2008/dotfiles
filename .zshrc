@@ -132,12 +132,12 @@ export GO111MODULE=on
 # export INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export MINIKUBE_HOME=/data2
+export MINIKUBE_HOME=/data2/yuzx
 export R_LIBS_USER=/data2/R
 export STACK_ROOT=/data2/.stack
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/opt/miniconda3/bin:$PATH"
+# export PATH="/opt/miniconda3/bin:$PATH"
 # 4 rJava
 export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 # umask 0000
