@@ -83,7 +83,7 @@ export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 export MAVEN_OPTS="-Xmx2g -XX:ReservedCodeCacheSize=512m"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOROOT=/usr/local/opt/go/libexec
+export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 # GOPATH
 export GOPATH=$HOME/go
