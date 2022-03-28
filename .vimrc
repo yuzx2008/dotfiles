@@ -50,7 +50,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
-Plug 'tarekbecker/vim-yaml-formatter'
+" 导致 retab 失效
+" Plug 'tarekbecker/vim-yaml-formatter'
 
 " all lanugage support
 " Plug 'sheerun/vim-polyglot'
@@ -729,3 +730,5 @@ autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "functio
 let maplocalleader = ','
 
 autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
+
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
