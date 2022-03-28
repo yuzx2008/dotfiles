@@ -38,9 +38,22 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 
+if !exists("g:os")
+  if has("win64") || has("win32")
+    let g:os = "Windows"
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
+endif
+
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go'
-let g:go_bin_path = "/home/yuzx/go/bin"
+
+if g:os == "Darwin"
+  let g:go_bin_path = "/Users/yuzx/go/bin"
+elseif g:os == "Linux"
+  let g:go_bin_path = "/home/yuzx/go/bin"
+endif
 
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
@@ -440,14 +453,6 @@ func FormartSrc()
   exec "e! %"
 endfunc
 map <F6> :call FormartSrc()<CR><CR>
-
-if !exists("g:os")
-  if has("win64") || has("win32")
-    let g:os = "Windows"
-  else
-    let g:os = substitute(system('uname'), '\n', '', '')
-  endif
-endif
 
 " fcitx 退出插入模式，切换英文输入
 function! Fcitx2En()
