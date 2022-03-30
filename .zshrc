@@ -144,6 +144,9 @@ export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 
 export PATH="${PATH}:${HOME}/.krew/bin"
 
+export GOPROXY=https://goproxy.cn
+export GOPRIVATE=gitlab.bj.sensetime.com/diamond/*
+
 source $HOME/.cargo/env
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)

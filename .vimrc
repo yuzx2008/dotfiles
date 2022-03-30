@@ -38,9 +38,22 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
 
+if !exists("g:os")
+  if has("win64") || has("win32")
+    let g:os = "Windows"
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
+endif
+
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go'
-let g:go_bin_path = "/home/yuzx/go/bin"
+
+if g:os == "Darwin"
+  let g:go_bin_path = "/Users/yuzx/go/bin"
+elseif g:os == "Linux"
+  let g:go_bin_path = "/home/yuzx/go/bin"
+endif
 
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
@@ -50,7 +63,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
-Plug 'tarekbecker/vim-yaml-formatter'
+" 导致 retab 失效
+" Plug 'tarekbecker/vim-yaml-formatter'
 
 " all lanugage support
 " Plug 'sheerun/vim-polyglot'
@@ -440,14 +454,6 @@ func FormartSrc()
 endfunc
 map <F6> :call FormartSrc()<CR><CR>
 
-if !exists("g:os")
-  if has("win64") || has("win32")
-    let g:os = "Windows"
-  else
-    let g:os = substitute(system('uname'), '\n', '', '')
-  endif
-endif
-
 " fcitx 退出插入模式，切换英文输入
 function! Fcitx2En()
   if g:os == "Darwin"
@@ -729,3 +735,5 @@ autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "functio
 let maplocalleader = ','
 
 autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
+
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
