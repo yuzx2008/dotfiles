@@ -147,5 +147,15 @@
 [http]
 	postBuffer = 524288000
 [credential]
-	helper = cache
+	helper = store
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[lfs]
+	url = http://devcenter.bj.sensetime.com/api/v1/lfs/
 
+# 更换 https
+[url "https://github.com"]
+  insteadOf = git://github.com
