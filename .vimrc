@@ -47,13 +47,12 @@ if !exists("g:os")
 endif
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go'
-
-if g:os == "Darwin"
-  let g:go_bin_path = "/Users/yuzx/go/bin"
-elseif g:os == "Linux"
-  let g:go_bin_path = "/home/yuzx/go/bin"
-endif
+" Plug 'fatih/vim-go'
+" if g:os == "Darwin"
+"   let g:go_bin_path = "/Users/yuzx/go/bin"
+" elseif g:os == "Linux"
+"   let g:go_bin_path = "/home/yuzx/go/bin"
+" endif
 
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
@@ -736,4 +735,4 @@ let maplocalleader = ','
 
 autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
 
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')

@@ -1,10 +1,12 @@
 {
   "languageserver": {
-    "go": {
+    "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     },
     "cmake": {
       "command": "cmake-language-server",
@@ -46,6 +48,6 @@
     "sh": "shfmt",
     "blade": "blade-formatter",
     "cmake": "cmake-format"
-  },
-  "diagnostic.displayByAle": true
+  }
+  //"diagnostic.displayByAle": true
 }
