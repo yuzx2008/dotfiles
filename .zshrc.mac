@@ -71,6 +71,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 # GOPATH
+export GOPROXY=https://goproxy.cn
+export GOPRIVATE=gitlab.bj.sensetime.com/diamond/*
 export GOPATH=$HOME/go
 export GO111MODULE=on
 export PATH=$PATH:$GOPATH/bin

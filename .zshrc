@@ -121,6 +121,8 @@ export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPT
 export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/yuzx/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
 # GOPATH
+export GOPROXY=https://goproxy.cn
+export GOPRIVATE=gitlab.bj.sensetime.com/diamond/*
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/mysql/bin
@@ -143,9 +145,6 @@ export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 # umask 0000
 
 export PATH="${PATH}:${HOME}/.krew/bin"
-
-export GOPROXY=https://goproxy.cn
-export GOPRIVATE=gitlab.bj.sensetime.com/diamond/*
 
 source $HOME/.cargo/env
 
