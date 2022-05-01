@@ -4,7 +4,7 @@
     "explorer.confirmDelete": false,
     "keyboard.dispatch": "keyCode",
     "editor.suggestSelection": "recentlyUsedByPrefix",
-    "editor.fontFamily": "'DejaVu Sans Mono', '文泉驿等宽正黑', 'Courier New', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Courier New', 'DejaVu Sans Mono', '文泉驿等宽正黑', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.dragAndDrop": false,
@@ -87,7 +87,7 @@
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.intelliSenseEngine": "Default",
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
-    "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
+    "markdown-preview-enhanced.previewTheme": "atom-light.css",
     "r.terminalPath": "radian",
     "files.autoSave": "afterDelay",
     "files.exclude": {
@@ -131,12 +131,12 @@
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
+        "statusBar.background": "#5f0000",
+        "statusBar.noFolderBackground": "#5f0000",
+        "statusBar.debuggingBackground": "#5f0000"
     },
     "[r]": {
-        "editor.defaultFormatter": "Mikhail-Arkhipov.r"
+        "editor.defaultFormatter": "Ikuyadeu.r"
     },
     "editor.quickSuggestions": {
         "strings": true
@@ -177,5 +177,6 @@
         "all,-ST1020,-ST1003,-ST1006,-ST1000,-ST1023,-U1000"
     ],
     "redhat.telemetry.enabled": false,
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "r.alwaysUseActiveTerminal": true
 }

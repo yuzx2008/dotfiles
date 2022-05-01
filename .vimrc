@@ -195,9 +195,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " rust
 Plug 'rust-lang/rust.vim'
 
-Plug 'jalvesaq/Nvim-R'
-let R_auto_start = 2
-let R_assign = 0
+" Plug 'jalvesaq/Nvim-R'
+" let R_auto_start = 2
+" let R_assign = 0
 
 " 打开文件，:ALEInfo 查看可用 linters
 " lintr etc
@@ -497,8 +497,8 @@ autocmd FileType python map <F12> :!python %<CR>
 " set tabstop=2，一个 tab 2 个空格宽
 " set shiftwidth=2，退格对齐以 2 空格为准
 " set expandtab tab 变空格
-autocmd FileType yaml setlocal ai ts=2 sw=2 et
-" autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" autocmd FileType yaml setlocal ai ts=2 sw=2 et
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
@@ -726,10 +726,10 @@ let &t_EI = "\<Esc>[2 q" . "\<Esc>]12;rgb:9E/9E/9E\x7"
 
 " map <Esc>[13;5u <C-CR>
 " ~/.vim/plugged/Nvim-R/R/common_global.vim
-nnoremap <C-CR> :call SendLineToR("down")<CR>
-xnoremap <C-CR> :call SendSelectionToR("echo", "down", "normal")<CR>
-inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
-autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
+" nnoremap <C-CR> :call SendLineToR("down")<CR>
+" xnoremap <C-CR> :call SendSelectionToR("echo", "down", "normal")<CR>
+" inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
+" autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
 
 let maplocalleader = ','
 
