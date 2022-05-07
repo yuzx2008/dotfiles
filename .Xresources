@@ -48,7 +48,8 @@ xterm*vt100.geometry: 80x60
 ! xterm.maximized: true
 
 ! Enable bell urgency
-xterm*bellIsUrgent: true
+xterm*bellIsUrgent: false
+XTerm*visualBell: false
 
 ! Fix the 'Alt' key
 ! If you use the Alt key for keyboard shortcuts, you will need this in your resource file:

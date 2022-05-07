@@ -62,7 +62,7 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu history-substring-search github zsh-syntax-highlighting tmux tmuxinator vi-mode vim-interaction autojump kubectl kubectx vscode sudo rust mvn golang ag)
+plugins=(git history-substring-search zsh-syntax-highlighting vi-mode)
 # User configuration
 
 # echo $HOME
@@ -160,6 +160,7 @@ fi
 # eval 'dircolors ~/.dircolors'
 
 source $ZSH/oh-my-zsh.sh
+# eval "$(starship init zsh)"
 
 # You may need to manually set your language environment
 export LANG=zh_CN.UTF-8
@@ -263,33 +264,19 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 # if [ $commands[kubectl]  ]; then
 #     source <(kubectl completion zsh)
 # fi
-source <(golangci-lint completion zsh)
+
+# source <(golangci-lint completion zsh)
 
 export KUBECONFIG=$HOME/.kube/config
 # export GIT_TRACE_PACKET=1
 # export GIT_TRACE=1
 # export GIT_CURL_VERBOSE=1
 
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+[[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
 # autoload -U compinit && compinit -u
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/yuzx/go/bin/mc mc
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /home/yuzx/go/bin/mc mc
 
 # 用于更新 toolchain
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
