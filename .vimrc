@@ -210,6 +210,9 @@ let b:ale_linters = ['lintr']
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 
+" json filetype=jsonc 允许 json 中包含注释
+Plug 'neoclide/jsonc.vim'
+
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
