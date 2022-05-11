@@ -351,7 +351,8 @@ autocmd FileType markdown set wrap
 " autocmd FileType yaml %retab! 2
 " autocmd FileType ruby autocmd BufWrite <buffer> RuboCop -a
 " :h autocommand-pattern
-autocmd BufWritePre *.md,*.yml,*.yaml :%retab! 2
+auto BufWritePre * set nopaste
+auto BufWritePre *.md,*.yml,*.yaml %retab! 2
 
 " open help in new tab
 cabbrev help tab help

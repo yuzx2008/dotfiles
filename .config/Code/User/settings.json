@@ -4,7 +4,7 @@
     "explorer.confirmDelete": false,
     "keyboard.dispatch": "keyCode",
     "editor.suggestSelection": "recentlyUsedByPrefix",
-    "editor.fontFamily": "'Courier New', 'DejaVu Sans Mono', '文泉驿等宽正黑', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Noto Emoji','DejaVu Sans Mono', '文泉驿等宽正黑', 'Droid Sans Fallback'",
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.dragAndDrop": false,
