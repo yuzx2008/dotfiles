@@ -282,3 +282,10 @@ export KUBECONFIG=$HOME/.kube/config
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 # 用于更新 rustup
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+
+# export LANG=en_US.UTF-8
+export LANGUAGE=en_US:en
+export LC_TIME=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_NAME=en_US.UTF-8
+
