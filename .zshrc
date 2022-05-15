@@ -285,6 +285,12 @@ export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share
 
+# export LANG=en_US.UTF-8
+export LANGUAGE=en_US:en
+export LC_TIME=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_NAME=en_US.UTF-8
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -299,4 +305,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
