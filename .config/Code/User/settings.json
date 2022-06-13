@@ -180,5 +180,6 @@
     ],
     "redhat.telemetry.enabled": false,
     "workbench.iconTheme": "material-icon-theme",
-    "r.alwaysUseActiveTerminal": true
+    "r.alwaysUseActiveTerminal": true,
+    "workbench.tree.indent": 16
 }
