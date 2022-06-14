@@ -163,13 +163,12 @@
     "go.trace.server": "verbose",
     // View -> Output, There will be a drop-down menu titled Tasks in the top-right corner. Select the gopls (server) item, which will contain the gopls logs
     "go.languageServerFlags": [
-
         "-rpc.trace"
     ],
     "go.editorContextMenuCommands": {
         "playground": false
     },
-    "go.testFlags": ["-v"],
+    "go.testFlags": ["-v", "-count=1"],
     "[go]": {
         "editor.formatOnSave": false,
         "editor.defaultFormatter": "golang.go"
@@ -179,6 +178,8 @@
         "all,-ST1020,-ST1003,-ST1006,-ST1000,-ST1023,-U1000"
     ],
     "redhat.telemetry.enabled": false,
-    "workbench.iconTheme": "material-icon-theme",
-    "r.alwaysUseActiveTerminal": true
+    "r.alwaysUseActiveTerminal": true,
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.tree.indent": 16,
+    "workbench.iconTheme": "vs-minimal"
 }
