@@ -77,10 +77,18 @@
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.clang_format_style": "Google",
     "[cpp]": {
-        "editor.quickSuggestions": true
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
     },
     "[c]": {
-        "editor.quickSuggestions": true
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
     },
     "C_Cpp.formatting": "clangFormat",
     "C_Cpp.intelliSenseCachePath": "/data2/cache",
@@ -98,7 +106,8 @@
     },
     "files.associations": {
         "*.rmd": "markdown",
-        "*.inc": "cpp"
+        "*.inc": "cpp",
+        "bzlib.h": "c"
     },
     "files.watcherExclude": {
         "**/.bloop": true,
@@ -181,5 +190,6 @@
     "r.alwaysUseActiveTerminal": true,
     "go.toolsManagement.autoUpdate": true,
     "workbench.tree.indent": 16,
-    "workbench.iconTheme": "vs-minimal"
+    "workbench.iconTheme": "vs-minimal",
+    "security.workspace.trust.untrustedFiles": "open"
 }
