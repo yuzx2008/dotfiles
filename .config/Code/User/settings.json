@@ -105,9 +105,9 @@
         "**/.factorypath": true
     },
     "files.associations": {
-        "*.rmd": "markdown",
-        "*.inc": "cpp",
-        "bzlib.h": "c"
+        "*.rmd": "rmd",
+        "*.Rmd": "rmd",
+        "*.inc": "cpp"
     },
     "files.watcherExclude": {
         "**/.bloop": true,
