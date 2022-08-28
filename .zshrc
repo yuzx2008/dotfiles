@@ -86,13 +86,8 @@ export FLINK_HOME=/usr/local/flink
 export ZOOKEEPER_HOME=/usr/local/zookeeper
 export KAFKA_HOME=/usr/local/kafka
 export GOROOT=/usr/local/go
-export EMSDK=/data2/git_gh/emsdk
-export EMSCRIPTEN=$EMSDK/upstream/emscripten
-# export NODE_HOME=/usr/local/node
-# export NODE_PATH=/usr/local/lib/node_modules
+export NODE_HOME=/usr/local/node
 export YARN_HOME=/usr/local/yarn
-export NODE_HOME=$EMSDK/node/12.18.1_64bit
-export NODE_PATH=$NODE_HOME/lib/node_modules
 export ANDROID_NDK=/usr/local/android-ndk
 export ANDROID_SDK=/usr/local/android-sdk
 export OOZIE_CLIENT_HOME=/usr/local/oozie-client
@@ -105,15 +100,14 @@ export PATH=$PATH:$ZOOKEEPER_HOME/bin
 export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$NODE_HOME/bin:$YARN_HOME/bin
-export PATH=$PATH:$EMSCRIPTEN:$EMSDK
 export PATH=$PATH:$ANDROID_NDK
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export PATH=$PATH:$OOZIE_CLIENT_HOME/bin
 export PATH=$PATH:/opt/bin
 # swift 4 tensorflow
 export PATH=$PATH:/opt/usr/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib:/opt/qt5/5.12.0/gcc_64/lib
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/lib/pkgconfig:/opt/qt5/5.12.0/gcc_64/lib/pkgconfig
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/lib/pkgconfig
 # cuda
 export PATH=/usr/local/cuda-8.0/bin:/usr/local/TensorRT-2.1.2/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64:/usr/local/TensorRT-2.1.2/lib:$LD_LIBRARY_PATH
@@ -133,18 +127,27 @@ export GO111MODULE=on
 # export MANPATH=/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH
 # export INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=$PATH:$HOME/.rvm/bin
 export MINIKUBE_HOME=/data2/yuzx
 export R_LIBS_USER=/data2/R
 export STACK_ROOT=/data2/.stack
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 # export PATH="/opt/miniconda3/bin:$PATH"
 # 4 rJava
 export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 # umask 0000
 
-export PATH="${PATH}:${HOME}/.krew/bin"
+export PATH=$PATH:$HOME/.krew/bin
+export PATH=$PATH:/usr/local/libexec
+
+export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk-3-0/gtk-query-immodules-3.0
+export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0/gtk-query-immodules-2.0
+export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/local/lib/gtk-4.0
+export GTK_DEBUG=modules
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 source $HOME/.cargo/env
 
@@ -213,6 +216,8 @@ alias beeline_n2="/usr/local/hive2/bin/beeline -n hive -p admin -u \"jdbc:hive2:
 alias antlr4='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
 alias grun='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
 
+alias k=/usr/local/bin/kubectl
+alias o=/usr/local/bin/opensearch-cli
 
 # ag='sudo apt'，与 /usr/bin/ag 冲突
 # unalias ag
@@ -283,13 +288,15 @@ export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 # 用于更新 rustup
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
-export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share
 
 # export LANG=en_US.UTF-8
 export LANGUAGE=en_US:en
 export LC_TIME=en_US.UTF-8
-# export LC_MESSAGES=en_US.UTF-8
-# export LC_NAME=en_US.UTF-8
+#export LC_MESSAGES=en_US.UTF-8
+#export LC_NAME=en_US.UTF-8
+
+export NO_PROXY="*.sensetime.com"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -306,3 +313,5 @@ export LC_TIME=en_US.UTF-8
 # unset __conda_setup
 # <<< conda initialize <<<
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/yuzx/go/bin/mc mc
