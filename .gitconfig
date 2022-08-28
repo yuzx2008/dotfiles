@@ -154,8 +154,11 @@
 	required = true
 	clean = git-lfs clean -- %f
 [lfs]
-	url = http://devcenter.bj.sensetime.com/api/v1/lfs/
+	url = https://lfs.sensetime.com/
 
 # 更换 https
 [url "https://github.com"]
   insteadOf = git://github.com
+
+[status]
+  aheadBehind = false
