@@ -147,7 +147,7 @@
         "statusBar.debuggingBackground": "#005f5f"
     },
     "[r]": {
-        "editor.defaultFormatter": "Ikuyadeu.r"
+        "editor.defaultFormatter": "REditorSupport.r"
     },
     "editor.quickSuggestions": {
         "strings": true
@@ -191,5 +191,6 @@
     "go.toolsManagement.autoUpdate": true,
     "workbench.tree.indent": 16,
     "workbench.iconTheme": "vs-minimal",
-    "security.workspace.trust.untrustedFiles": "open"
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.defaultProfile.linux": "R Terminal"
 }
