@@ -2,7 +2,6 @@
 set nocompatible
 
 " annoying sound on errors
-set noerrorbells
 set vb t_vb=
 
 " properly disable sound on errors on GUI
@@ -23,17 +22,6 @@ call plug#begin('~/.vim/plugged')
 
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
-
-" Plug 'jiangmiao/auto-pairs'
-
-Plug 'Chiel92/vim-autoformat'
-noremap <F3> :Autoformat<CR><CR>
-
-" 导致 retab 失效
-" Plug 'tarekbecker/vim-yaml-formatter'
-
-" all lanugage support
-" Plug 'sheerun/vim-polyglot'
 
 " http://editorconfig.org/ && ~/.editorconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -59,85 +47,18 @@ if executable('ag')
 endif
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'dkprice/vim-easygrep'
-
 " vim 有一个状态栏，加 powline 则有两状态栏
 set laststatus=2
+
 " 开启 256 色支持，t_Co 即 Terminal Color
 if !has('gui_running')
   set t_Co=256
 endif
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat'
-"       \ }
-function! CocCurrentFunction()
-  return get(b:, 'coc_current_function', '')
-endfunction
 
-" \ 'colorscheme': 'wombat',
-" \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
-      \ }
 Plug 'itchyny/lightline.vim'
 
 Plug 'tyru/open-browser.vim'
 Plug 'yuzx2008/previm'
-
-Plug 'majutsushi/tagbar'
-" Add support for markdown files in tagbar.
-let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : '~/.vim/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '»',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
-
-let g:tagbar_type_go = {
- \ 'ctagstype' : 'go',
- \ 'kinds'     : [
-  \ 'p:package',
-  \ 'i:imports:1',
-  \ 'c:constants',
-  \ 'v:variables',
-  \ 't:types',
-  \ 'n:interfaces',
-  \ 'w:fields',
-  \ 'e:embedded',
-  \ 'm:methods',
-  \ 'r:constructor',
-  \ 'f:functions'
- \ ],
- \ 'sro' : '.',
- \ 'kind2scope' : {
-  \ 't' : 'ctype',
-  \ 'n' : 'ntype'
- \ },
- \ 'scope2kind' : {
-  \ 'ctype' : 't',
-  \ 'ntype' : 'n'
- \ },
- \ 'ctagsbin'  : 'gotags',
- \ 'ctagsargs' : '-sort -silent'
-\ }
-
-" 会导致普通 yaml 文件缩进 tab 问题
-" Plug 'pearofducks/ansible-vim'
 
 let g:UltiSnipsUsePythonVersion=3
 " snippet 引擎
@@ -150,32 +71,11 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" Plug 'godlygeek/tabular'
-" Plug 'gabrielelana/vim-markdown'
-" Plug 'joker1007/vim-markdown-quote-syntax'
-" " 和 snippets 冲突
-" let g:markdown_enable_insert_mode_mappings = 0
-
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " rust
-Plug 'rust-lang/rust.vim'
-
-" Plug 'jalvesaq/Nvim-R'
-" let R_auto_start = 2
-" let R_assign = 0
-
-" 打开文件，:ALEInfo 查看可用 linters
-" lintr etc
-" Plug 'dense-analysis/ale'
-let g:ale_r_lintr_options = "with_defaults(line_length_linter(120), commented_code_linter = NULL)"
-" disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
-let g:ale_disable_lsp = 1
-" Enable lintr only
-let b:ale_linters = ['lintr']
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
+" Plug 'rust-lang/rust.vim'
 
 " json filetype=jsonc 允许 json 中包含注释
 Plug 'neoclide/jsonc.vim'
@@ -225,20 +125,12 @@ endif
 " Don’t create backups when editing files in certain directories
 " set backupskip=/tmp/*
 
-" 例如文件中的 /* vim: set expandtab ts=4 sw=4 sts=4 tw=100: */
-" Respect modeline in files
-set modeline
-set modelines=4
-
 " Enable line numbers（行号）
 " set number
 
 " Highlight current line（高亮当前行/列）
 set cursorline
 set nocursorcolumn
-
-" 高亮当前列
-" set cursorcolumn
 
 " Make tabs as wide as two spaces
 set tabstop=2
@@ -347,40 +239,10 @@ colorscheme solarized
 
 " new .c, .h, .sh, .java，自动插入
 func SetFileHeaderPart()
-    if &filetype == 'sh'
-        call setline(1,"\#!/bin/bash")
-        call append(line("."), "")
-    elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
-        call append(line(".")+1, "")
-    else
-        call setline(1, "/*************************************************************************")
-        call append(line("."),   "  > File Name   : ".expand("%"))
-        call append(line(".")+1, "  > Author      : yuzx")
-        call append(line(".")+2, "  > Mail        : yuzx2008@gmail.com")
-        call append(line(".")+3, "  > Created Time: ".strftime("%c"))
-        call append(line(".")+4, " ************************************************************************/")
-        call append(line(".")+5, "")
-    endif
-    if expand("%:e") == 'cpp'
-        call append(line(".")+6, "#include<iostream>")
-        call append(line(".")+7, "using namespace std;")
-        call append(line(".")+8, "")
-    endif
-    if &filetype == 'c'
-        call append(line(".")+6, "#include<stdio.h>")
-        call append(line(".")+7, "")
-    endif
-    if expand("%:e") == 'h'
-        call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
-        call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-        call append(line(".")+8, "#endif")
-    endif
-    if &filetype == 'java'
-        call append(line(".")+6,"public class ".expand("%:r"))
-        call append(line(".")+7,"")
-    endif
+  if &filetype == 'sh'
+    call setline(1,"\#!/bin/bash")
+    call append(line("."), "")
+  endif
 endfunc
 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetFileHeaderPart()"
@@ -504,14 +366,6 @@ vnoremap > >gv
 " nnoremap <Leader>wh <C-W>h
 " nnoremap <Leader>wk <C-W>k
 " nnoremap <Leader>wj <C-W>j
-
-" echo $HOME
-set dictionary=$HOME/docs/vim-dict.txt
-" 默认使用字典需要 c-x c-k，可以通过下面命令加到默认补全列表中
-set complete-=k complete+=k
-
-" no menu window
-set completeopt=menu
 
 " coc
 " TextEdit might fail if hidden is not set.
