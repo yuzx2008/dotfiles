@@ -21,39 +21,6 @@ let mapleader=","
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" On-demand loading
-Plug 'scrooloose/nerdtree'
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" 窗口宽度
-let NERDTreeWinSize=32
-" 窗口位置
-let NERDTreeWinPos="left"
-" 显示隐藏文件
-let NERDTreeShowHidden=1
-" 不显示冗余帮助信息
-let NERDTreeMinimalUI=1
-" 删除文件时自动删除对应 buffer
-let NERDTreeAutoDeleteBuffer=1
-let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
-
-if !exists("g:os")
-  if has("win64") || has("win32")
-    let g:os = "Windows"
-  else
-    let g:os = substitute(system('uname'), '\n', '', '')
-  endif
-endif
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go'
-" if g:os == "Darwin"
-"   let g:go_bin_path = "/Users/yuzx/go/bin"
-" elseif g:os == "Linux"
-"   let g:go_bin_path = "/home/yuzx/go/bin"
-" endif
-
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
 
@@ -555,7 +522,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-" set cmdheight=1
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -694,7 +661,8 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>e  :<C-u>CocCommand explorer<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
