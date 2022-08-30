@@ -51,6 +51,15 @@
     "sh": "shfmt",
     "blade": "blade-formatter",
     "cmake": "cmake-format"
+  },
+  "explorer": {
+    "width": 26,
+  },
+  "go": {
+    "goplsOptions": {
+      "completeUnimported": true
+    },
+    "goplsUseDaemon": false,
   }
   //"diagnostic.displayByAle": true
 }
