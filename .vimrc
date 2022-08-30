@@ -2,7 +2,6 @@
 set nocompatible
 
 " annoying sound on errors
-set noerrorbells
 set vb t_vb=
 
 " properly disable sound on errors on GUI
@@ -21,52 +20,8 @@ let mapleader=","
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" On-demand loading
-Plug 'scrooloose/nerdtree'
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && !has('gui_running') | NERDTree | endif
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" 窗口宽度
-let NERDTreeWinSize=32
-" 窗口位置
-let NERDTreeWinPos="left"
-" 显示隐藏文件
-let NERDTreeShowHidden=1
-" 不显示冗余帮助信息
-let NERDTreeMinimalUI=1
-" 删除文件时自动删除对应 buffer
-let NERDTreeAutoDeleteBuffer=1
-let NERDTreeIgnore=['\.vim$', '\~$', '.klive', '.Trash-*', '.git']
-
-if !exists("g:os")
-  if has("win64") || has("win32")
-    let g:os = "Windows"
-  else
-    let g:os = substitute(system('uname'), '\n', '', '')
-  endif
-endif
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go'
-" if g:os == "Darwin"
-"   let g:go_bin_path = "/Users/yuzx/go/bin"
-" elseif g:os == "Linux"
-"   let g:go_bin_path = "/home/yuzx/go/bin"
-" endif
-
 " vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
-
-" Plug 'jiangmiao/auto-pairs'
-
-Plug 'Chiel92/vim-autoformat'
-noremap <F3> :Autoformat<CR><CR>
-
-" 导致 retab 失效
-" Plug 'tarekbecker/vim-yaml-formatter'
-
-" all lanugage support
-" Plug 'sheerun/vim-polyglot'
 
 " http://editorconfig.org/ && ~/.editorconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -92,85 +47,18 @@ if executable('ag')
 endif
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'dkprice/vim-easygrep'
-
 " vim 有一个状态栏，加 powline 则有两状态栏
 set laststatus=2
+
 " 开启 256 色支持，t_Co 即 Terminal Color
 if !has('gui_running')
   set t_Co=256
 endif
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat'
-"       \ }
-function! CocCurrentFunction()
-  return get(b:, 'coc_current_function', '')
-endfunction
 
-" \ 'colorscheme': 'wombat',
-" \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
-      \ }
 Plug 'itchyny/lightline.vim'
 
 Plug 'tyru/open-browser.vim'
 Plug 'yuzx2008/previm'
-
-Plug 'majutsushi/tagbar'
-" Add support for markdown files in tagbar.
-let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : '~/.vim/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '»',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
-
-let g:tagbar_type_go = {
- \ 'ctagstype' : 'go',
- \ 'kinds'     : [
-  \ 'p:package',
-  \ 'i:imports:1',
-  \ 'c:constants',
-  \ 'v:variables',
-  \ 't:types',
-  \ 'n:interfaces',
-  \ 'w:fields',
-  \ 'e:embedded',
-  \ 'm:methods',
-  \ 'r:constructor',
-  \ 'f:functions'
- \ ],
- \ 'sro' : '.',
- \ 'kind2scope' : {
-  \ 't' : 'ctype',
-  \ 'n' : 'ntype'
- \ },
- \ 'scope2kind' : {
-  \ 'ctype' : 't',
-  \ 'ntype' : 'n'
- \ },
- \ 'ctagsbin'  : 'gotags',
- \ 'ctagsargs' : '-sort -silent'
-\ }
-
-" 会导致普通 yaml 文件缩进 tab 问题
-" Plug 'pearofducks/ansible-vim'
 
 let g:UltiSnipsUsePythonVersion=3
 " snippet 引擎
@@ -183,35 +71,81 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" Plug 'godlygeek/tabular'
-" Plug 'gabrielelana/vim-markdown'
-" Plug 'joker1007/vim-markdown-quote-syntax'
-" " 和 snippets 冲突
-" let g:markdown_enable_insert_mode_mappings = 0
-
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " rust
-Plug 'rust-lang/rust.vim'
-
-" Plug 'jalvesaq/Nvim-R'
-" let R_auto_start = 2
-" let R_assign = 0
-
-" 打开文件，:ALEInfo 查看可用 linters
-" lintr etc
-" Plug 'dense-analysis/ale'
-let g:ale_r_lintr_options = "with_defaults(line_length_linter(120), commented_code_linter = NULL)"
-" disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
-let g:ale_disable_lsp = 1
-" Enable lintr only
-let b:ale_linters = ['lintr']
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
+" Plug 'rust-lang/rust.vim'
 
 " json filetype=jsonc 允许 json 中包含注释
 Plug 'neoclide/jsonc.vim'
+
+Plug 'preservim/tagbar'
+nmap <F8> :TagbarToggle<CR>
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go'
+" 支持 struct 等 split-join
+" Plug 'AndrewRadev/splitjoin.vim'
+
+" 执行 make/GoBuild 时，自动保存
+set autowrite
+
+let g:go_test_timeout = '10s'
+let g:go_fmt_autosave = 0
+" goimports 比 gofmt 导入 package 更好，大 code base 会慢
+let g:go_fmt_command = "goimports"
+" 默认 snake_case
+" let g:go_addtags_transform = "camelcase"
+" let g:go_fmt_fail_silently = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" gometalinter 很快
+" let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+" let g:go_metalinter_deadline = "5s"
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>t <Plug>(go-test-func)
+autocmd FileType go nmap <Leader>co <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>ru <Plug>(go-run)
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -258,20 +192,12 @@ endif
 " Don’t create backups when editing files in certain directories
 " set backupskip=/tmp/*
 
-" 例如文件中的 /* vim: set expandtab ts=4 sw=4 sts=4 tw=100: */
-" Respect modeline in files
-set modeline
-set modelines=4
-
 " Enable line numbers（行号）
 " set number
 
 " Highlight current line（高亮当前行/列）
 set cursorline
 set nocursorcolumn
-
-" 高亮当前列
-" set cursorcolumn
 
 " Make tabs as wide as two spaces
 set tabstop=2
@@ -380,40 +306,10 @@ colorscheme solarized
 
 " new .c, .h, .sh, .java，自动插入
 func SetFileHeaderPart()
-    if &filetype == 'sh'
-        call setline(1,"\#!/bin/bash")
-        call append(line("."), "")
-    elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
-        call append(line(".")+1, "")
-    else
-        call setline(1, "/*************************************************************************")
-        call append(line("."),   "  > File Name   : ".expand("%"))
-        call append(line(".")+1, "  > Author      : yuzx")
-        call append(line(".")+2, "  > Mail        : yuzx2008@gmail.com")
-        call append(line(".")+3, "  > Created Time: ".strftime("%c"))
-        call append(line(".")+4, " ************************************************************************/")
-        call append(line(".")+5, "")
-    endif
-    if expand("%:e") == 'cpp'
-        call append(line(".")+6, "#include<iostream>")
-        call append(line(".")+7, "using namespace std;")
-        call append(line(".")+8, "")
-    endif
-    if &filetype == 'c'
-        call append(line(".")+6, "#include<stdio.h>")
-        call append(line(".")+7, "")
-    endif
-    if expand("%:e") == 'h'
-        call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
-        call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-        call append(line(".")+8, "#endif")
-    endif
-    if &filetype == 'java'
-        call append(line(".")+6,"public class ".expand("%:r"))
-        call append(line(".")+7,"")
-    endif
+  if &filetype == 'sh'
+    call setline(1,"\#!/bin/bash")
+    call append(line("."), "")
+  endif
 endfunc
 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetFileHeaderPart()"
@@ -433,29 +329,13 @@ if exists('$TMUX')
   set term=screen-256color
 endif
 
-func FormartSrc()
-  exec "w"
-  if &filetype == 'c'
-    exec "!astyle --style=ansi -a --suffix=none %"
-  elseif &filetype == 'cpp' || &filetype == 'hpp'
-    exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
-  elseif &filetype == 'perl'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'py'||&filetype == 'python'
-    exec "r !autopep8 -i --aggressive %"
-  elseif &filetype == 'java'
-    exec "!astyle --style=java --suffix=none %"
-  elseif &filetype == 'jsp'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'xml'
-    exec "!astyle --style=gnu --suffix=none %"
+if !exists("g:os")
+  if has("win64") || has("win32")
+    let g:os = "Windows"
   else
-    exec "normal gg=G"
-    return
+    let g:os = substitute(system('uname'), '\n', '', '')
   endif
-  exec "e! %"
-endfunc
-map <F6> :call FormartSrc()<CR><CR>
+endif
 
 " fcitx 退出插入模式，切换英文输入
 function! Fcitx2En()
@@ -496,6 +376,9 @@ set pastetoggle=<F4>
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType python map <F12> :!python %<CR>
 
+" go
+" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
+
 " YAML 设置，支持 .yml .yaml
 " ai = auto indent，自动退格对齐
 " set tabstop=2，一个 tab 2 个空格宽
@@ -508,7 +391,8 @@ map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
 
 " 在 bash 中执行光标所在行
-nnoremap <leader>b :.w !bash<CR>
+" GoGuild
+" nnoremap <leader>b :.w !bash<CR>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -521,7 +405,8 @@ endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 
 " Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
+" noremap <leader>W :w !sudo tee % > /dev/null<CR>
+cmap W! silent w !sudo tee % >/dev/null
 
 vnoremap <Leader>y "+y
 map <Leader>p "+p
@@ -532,20 +417,6 @@ vmap <Leader>v "0p
 vnoremap < <gv
 vnoremap > >gv
 
-" 跳转至右方窗口
-" nnoremap <Leader>wl <C-W>l
-" nnoremap <Leader>wh <C-W>h
-" nnoremap <Leader>wk <C-W>k
-" nnoremap <Leader>wj <C-W>j
-
-" echo $HOME
-set dictionary=$HOME/docs/vim-dict.txt
-" 默认使用字典需要 c-x c-k，可以通过下面命令加到默认补全列表中
-set complete-=k complete+=k
-
-" no menu window
-set completeopt=menu
-
 " coc
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -555,7 +426,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-" set cmdheight=1
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -564,36 +435,35 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Recently vim can merge signcolumn and number column into one
-set signcolumn=number
+" Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
+" NOTE: There's always complete item selected by default, you may want to enable no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
-" if has('nvim')
-"   inoremap <silent><expr> <c-space> coc#refresh()
-" else
-"   inoremap <silent><expr> <c-@> coc#refresh()
-" endif
 " :h map-special-chars
-inoremap <silent><expr> <c-k> coc#refresh()
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -607,15 +477,13 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -650,6 +518,7 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Run the Code Lens action on the current line.
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
+
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
@@ -662,14 +531,12 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
@@ -677,7 +544,7 @@ nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 Format :call CocActionAsync('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -688,7 +555,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -707,6 +574,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+" explorer
+nnoremap <silent><nowait> <space>x  :<C-u>CocCommand explorer<cr>
 
 " :help :highlight-link
 highlight link markdownItalic NONE

@@ -28,7 +28,8 @@
     "line_length": false,
     "MD045": false,
     "MD024": false,
-    "MD013": false
+    "MD013": false,
+    "MD046": false
   },
   "diagnostic-languageserver.filetypes": {
     "vim": "vint",
@@ -51,6 +52,15 @@
     "sh": "shfmt",
     "blade": "blade-formatter",
     "cmake": "cmake-format"
-  }
+  },
+  "explorer.file.column.indent.chars": " ",
+  "explorer.width": 26,
+  "explorer.file.child.template": "[indent][icon | 1] [filename omitCenter 1]",
+  "go.goplsOptions": {
+    "completeUnimported": true
+  },
+  "go.goplsUseDaemon": false,
+  // 避免傻傻地去验证 prometheus.yaml
+  "yaml.schemaStore.enable": false
   //"diagnostic.displayByAle": true
 }

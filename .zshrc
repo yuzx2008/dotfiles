@@ -23,7 +23,7 @@ DEFAULT_USER="yuzx"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=13
@@ -32,7 +32,7 @@ export UPDATE_ZSH_DAYS=13
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="false"
@@ -43,7 +43,7 @@ ENABLE_CORRECTION="false"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -62,7 +62,7 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search zsh-syntax-highlighting vi-mode)
+plugins=(history-substring-search zsh-syntax-highlighting vi-mode)
 # User configuration
 
 # echo $HOME
@@ -133,7 +133,6 @@ export R_LIBS_USER=/data2/R
 export STACK_ROOT=/data2/.stack
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
-# export PATH="/opt/miniconda3/bin:$PATH"
 # 4 rJava
 export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 # umask 0000
@@ -144,6 +143,8 @@ export PATH=$PATH:/usr/local/libexec
 export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk-3-0/gtk-query-immodules-3.0
 export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0/gtk-query-immodules-2.0
 export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/local/lib/gtk-4.0
+export PATH="/opt/miniconda3/bin:$PATH"
+
 export GTK_DEBUG=modules
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -206,7 +207,7 @@ alias start_zinc="zinc -nailed -start"
 alias stop_zinc="zinc -shutdown"
 alias start_oozie="/usr/local/oozie/bin/oozied.sh start"
 alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
-
+alias conda-b="conda activate base"
 
 # alias beeline_n1="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn1.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
 # alias beeline_n2="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn2.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
@@ -218,6 +219,13 @@ alias grun='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPAT
 
 alias k=/usr/local/bin/kubectl
 alias o=/usr/local/bin/opensearch-cli
+
+alias ls='ls --color=auto -Fh --group-directories-first'
+
+# if [ -f "/usr/bin/nvim" ]; then
+#     alias vim=nvim
+#     alias vimdiff="nvim -d"
+# fi
 
 # ag='sudo apt'，与 /usr/bin/ag 冲突
 # unalias ag
@@ -300,18 +308,52 @@ export NO_PROXY="*.sensetime.com"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/opt/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/opt/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/yuzx/go/bin/mc mc
+
+# zmodload zsh/zprof
+
+# Refresh environment variables in tmux.
+if [ -n "$TMUX" ]; then
+    function refresh {
+        sshauth=$(tmux show-environment | grep "^SSH_AUTH_SOCK")
+        if [ $sshauth ]; then
+            export $sshauth
+        fi
+        display=$(tmux show-environment | grep "^DISPLAY")
+        if [ $display ]; then
+            export $display
+        fi
+    }
+else
+    function refresh { }
+fi
+
+function preexec {
+    # Refresh environment if inside tmux
+    refresh
+}
+
+function precmd {
+}
+
+# Add yellow marker when connected over SSH
+if [ -n "$SSH_CONNECTION" ]; then
+    PS1="$sshsegment $PS1"
+    padding=""
+else
+    padding=" "
+fi
