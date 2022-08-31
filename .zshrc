@@ -316,3 +316,5 @@ unset __conda_setup
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/yuzx/go/bin/mc mc
+
+# zmodload zsh/zprof
