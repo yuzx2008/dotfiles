@@ -262,30 +262,6 @@ if exists('$TMUX')
   set term=screen-256color
 endif
 
-func FormartSrc()
-  exec "w"
-  if &filetype == 'c'
-    exec "!astyle --style=ansi -a --suffix=none %"
-  elseif &filetype == 'cpp' || &filetype == 'hpp'
-    exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
-  elseif &filetype == 'perl'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'py'||&filetype == 'python'
-    exec "r !autopep8 -i --aggressive %"
-  elseif &filetype == 'java'
-    exec "!astyle --style=java --suffix=none %"
-  elseif &filetype == 'jsp'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'xml'
-    exec "!astyle --style=gnu --suffix=none %"
-  else
-    exec "normal gg=G"
-    return
-  endif
-  exec "e! %"
-endfunc
-map <F6> :call FormartSrc()<CR><CR>
-
 if !exists("g:os")
   if has("win64") || has("win32")
     let g:os = "Windows"
@@ -368,12 +344,6 @@ vmap <Leader>v "0p
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-
-" 跳转至右方窗口
-" nnoremap <Leader>wl <C-W>l
-" nnoremap <Leader>wh <C-W>h
-" nnoremap <Leader>wk <C-W>k
-" nnoremap <Leader>wj <C-W>j
 
 " coc
 " TextEdit might fail if hidden is not set.
