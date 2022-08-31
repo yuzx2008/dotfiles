@@ -133,7 +133,6 @@ export R_LIBS_USER=/data2/R
 export STACK_ROOT=/data2/.stack
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
-# export PATH="/opt/miniconda3/bin:$PATH"
 # 4 rJava
 export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 # umask 0000
@@ -144,6 +143,8 @@ export PATH=$PATH:/usr/local/libexec
 export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk-3-0/gtk-query-immodules-3.0
 export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0/gtk-query-immodules-2.0
 export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/local/lib/gtk-4.0
+export PATH="/opt/miniconda3/bin:$PATH"
+
 export GTK_DEBUG=modules
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -206,7 +207,7 @@ alias start_zinc="zinc -nailed -start"
 alias stop_zinc="zinc -shutdown"
 alias start_oozie="/usr/local/oozie/bin/oozied.sh start"
 alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
-
+alias conda-b="conda activate base"
 
 # alias beeline_n1="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn1.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
 # alias beeline_n2="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn2.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
