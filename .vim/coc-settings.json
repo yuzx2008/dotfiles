@@ -53,8 +53,9 @@
     "blade": "blade-formatter",
     "cmake": "cmake-format"
   },
+  "explorer.file.column.indent.chars": " ",
   "explorer.width": 26,
-  "explorer.file.child.template": "[git | 2] [icon | 1] [filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]",
+  "explorer.file.child.template": "[indent][icon | 1] [filename omitCenter 1]",
   "go.goplsOptions": {
     "completeUnimported": true
   },
