@@ -80,6 +80,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " json filetype=jsonc 允许 json 中包含注释
 Plug 'neoclide/jsonc.vim'
 
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go'
+if g:os == "Darwin"
+  let g:go_bin_path = "/Users/yuzx/go/bin"
+elseif g:os == "Linux"
+  let g:go_bin_path = "/home/yuzx/go/bin"
+endif
+
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
@@ -335,6 +343,7 @@ noremap <leader>ss :call StripWhitespace()<CR>
 
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
+cmap W! silent w !sudo tee % >/dev/null
 
 vnoremap <Leader>y "+y
 map <Leader>p "+p
