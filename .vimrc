@@ -83,6 +83,16 @@ Plug 'neoclide/jsonc.vim'
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go'
 
+" 执行 make/GoBuild 时，自动保存
+set autowrite
+
+let g:go_test_timeout = '10s'
+let g:go_fmt_autosave = 0
+" goimports 比 gofmt 导入 package 更好，大 code base 会慢
+let g:go_fmt_command = "goimports"
+" 默认 snake_case
+" let g:go_addtags_transform = "camelcase"
+
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -95,7 +105,8 @@ endfunction
 
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>t <Plug>(go-test-func)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>co <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>ru <Plug>(go-run)
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -338,7 +349,8 @@ map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
 
 " 在 bash 中执行光标所在行
-nnoremap <leader>b :.w !bash<CR>
+" GoGuild
+" nnoremap <leader>b :.w !bash<CR>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -351,7 +363,7 @@ endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 
 " Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
+" noremap <leader>W :w !sudo tee % > /dev/null<CR>
 cmap W! silent w !sudo tee % >/dev/null
 
 vnoremap <Leader>y "+y
