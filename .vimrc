@@ -82,11 +82,6 @@ Plug 'neoclide/jsonc.vim'
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go'
-if g:os == "Darwin"
-  let g:go_bin_path = "/Users/yuzx/go/bin"
-elseif g:os == "Linux"
-  let g:go_bin_path = "/home/yuzx/go/bin"
-endif
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
