@@ -220,6 +220,13 @@ alias grun='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPAT
 alias k=/usr/local/bin/kubectl
 alias o=/usr/local/bin/opensearch-cli
 
+alias ls='ls --color=auto -Fh --group-directories-first'
+
+# if [ -f "/usr/bin/nvim" ]; then
+#     alias vim=nvim
+#     alias vimdiff="nvim -d"
+# fi
+
 # ag='sudo apt'，与 /usr/bin/ag 冲突
 # unalias ag
 
@@ -318,3 +325,35 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/yuzx/go/bin/mc mc
 
 # zmodload zsh/zprof
+
+# Refresh environment variables in tmux.
+if [ -n "$TMUX" ]; then
+    function refresh {
+        sshauth=$(tmux show-environment | grep "^SSH_AUTH_SOCK")
+        if [ $sshauth ]; then
+            export $sshauth
+        fi
+        display=$(tmux show-environment | grep "^DISPLAY")
+        if [ $display ]; then
+            export $display
+        fi
+    }
+else
+    function refresh { }
+fi
+
+function preexec {
+    # Refresh environment if inside tmux
+    refresh
+}
+
+function precmd {
+}
+
+# Add yellow marker when connected over SSH
+if [ -n "$SSH_CONNECTION" ]; then
+    PS1="$sshsegment $PS1"
+    padding=""
+else
+    padding=" "
+fi
