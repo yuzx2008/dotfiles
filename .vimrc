@@ -80,8 +80,41 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " json filetype=jsonc 允许 json 中包含注释
 Plug 'neoclide/jsonc.vim'
 
+Plug 'preservim/tagbar'
+nmap <F8> :TagbarToggle<CR>
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go'
+" 支持 struct 等 split-join
+" Plug 'AndrewRadev/splitjoin.vim'
 
 " 执行 make/GoBuild 时，自动保存
 set autowrite
@@ -92,6 +125,12 @@ let g:go_fmt_autosave = 0
 let g:go_fmt_command = "goimports"
 " 默认 snake_case
 " let g:go_addtags_transform = "camelcase"
+" let g:go_fmt_fail_silently = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" gometalinter 很快
+" let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+" let g:go_metalinter_deadline = "5s"
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -336,6 +375,9 @@ set pastetoggle=<F4>
 " Python 设置，如：不要 tab 等，.editconfig
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType python map <F12> :!python %<CR>
+
+" go
+" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
 
 " YAML 设置，支持 .yml .yaml
 " ai = auto indent，自动退格对齐
