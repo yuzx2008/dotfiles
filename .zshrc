@@ -44,7 +44,8 @@ source /usr/local/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/lib/zsh-history-substring-search.zsh
 # c-@ autosuggest-accept
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold"
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#3a3a3a"
 source /usr/local/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 setopt auto_cd
@@ -228,6 +229,8 @@ bindkey '^N' history-substring-search-down
 # home & end
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
+
+bindkey '^K' autosuggest-accept
 
 # Avoid "zsh: no matches found: xxxx"
 # or alias scp='noglob scp'

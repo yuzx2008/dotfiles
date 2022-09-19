@@ -131,6 +131,17 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " let g:go_metalinter_autosave = 1
 " let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 " let g:go_metalinter_deadline = "5s"
+" 当光标在标识符上，status line 自动显式 go-info，可设置更新时间 set updatetime=100，默认 800ms
+let g:go_auto_type_info = 1
+" :GoSameIds 自动
+let g:go_auto_sameids = 1
+
+" :A!/:AV!/:AH!/:AT!
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AH call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
