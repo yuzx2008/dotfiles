@@ -30,7 +30,7 @@ setopt HIST_IGNORE_ALL_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
 
-setopt CORRECT
+# setopt CORRECT
 # setopt CORRECT_ALL
 
 setopt NO_CASE_GLOB
