@@ -10,8 +10,14 @@ bind - split-window -v
 # unbind %
 # unbind '"'
 
+# Start window numbers at 1
+set-option -g base-index 1
+
+# The activity highlighting is a bit annoying
+setw -g monitor-activity off
+
 # To limit the scrollback buffer to 10000 lines
-set -g history-limit 10000
+set-option -g history-limit 10000
 
 # 开启鼠标支持
 #set-option -g mouse on
