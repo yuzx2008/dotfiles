@@ -4,11 +4,48 @@
 # If you have issues try raising the delay.
 export KEYTIMEOUT=10
 
+# 查询 options：setopt
+# 查询 bindkey
+
+# 默认不会保存 history 到文件，使得 c-p c-n 的搜索不起作用
+export HISTFILE=$HOME/.zsh_history
+# a billion，容易记住
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+# 确保命令进入文件，默认仅当 shell 退出时，避免意外退出导致丢失，另外可多终端共享
+setopt INC_APPEND_HISTORY
+export HISTTIMEFORMAT="[%F %T] "
+# share history across multiple zsh sessions
+setopt SHARE_HISTORY
+# append to history
+setopt APPEND_HISTORY
+# 添加时间戳，可 history -E -10
+setopt EXTENDED_HISTORY
+# 去重
+setopt HIST_FIND_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+# 重复命令不写入
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+# removes blank lines from history
+setopt HIST_REDUCE_BLANKS
+
+setopt CORRECT
+# setopt CORRECT_ALL
+
+setopt NO_CASE_GLOB
+# ls ~/d*<tab> 会展开
+setopt GLOB_COMPLETE
+
 # .oh-my-zsh 太慢，换这个 rust 开发的，非常快
 eval "$(starship init zsh)"
 
-source /usr/local/lib/zsh-history-substring-search.zsh
 source /usr/local/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/lib/zsh-history-substring-search.zsh
+# c-@ autosuggest-accept
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold"
+source /usr/local/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 setopt auto_cd
 
@@ -184,9 +221,11 @@ bindkey -v
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
-bindkey '^h' backward-delete-char
+# bind k and j for VI mode
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
 
-# home/end
+# home & end
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 
