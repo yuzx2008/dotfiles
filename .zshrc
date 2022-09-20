@@ -45,7 +45,7 @@ source /usr/local/lib/zsh-history-substring-search.zsh
 # c-@ autosuggest-accept
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#3a3a3a"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4e4e4e"
 source /usr/local/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 setopt auto_cd

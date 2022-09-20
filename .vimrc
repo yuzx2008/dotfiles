@@ -112,7 +112,8 @@ let g:tagbar_type_go = {
 \ }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go'
+let g:go_gopls_options = ['-remote="unix;/var/run/go/gopls-daemon-socket"']
+" Plug 'fatih/vim-go'
 " 支持 struct 等 split-join
 " Plug 'AndrewRadev/splitjoin.vim'
 
