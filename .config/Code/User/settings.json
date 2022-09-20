@@ -172,7 +172,7 @@
     "go.trace.server": "verbose",
     // View -> Output, There will be a drop-down menu titled Tasks in the top-right corner. Select the gopls (server) item, which will contain the gopls logs
     "go.languageServerFlags": [
-        "-remote=\"unix;/var/run/go/gopls-daemon-socket\"",
+        "-remote=unix;/var/run/go/gopls-daemon-socket",
         "-logfile=auto",
         "-debug=:0",
         "-rpc.trace"
