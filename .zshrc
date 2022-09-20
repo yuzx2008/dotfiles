@@ -1,69 +1,54 @@
 # By default, there is a 0.4 second delay after you hit the <ESC> key and when the mode change is registered.
 # This results in a very jarring and frustrating transition between modes.
-# This can result in issues with other terminal commands that depended on this delay. If you have issues try raising the delay.
+# This can result in issues with other terminal commands that depended on this delay.
+# If you have issues try raising the delay.
 export KEYTIMEOUT=10
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# 查询 options：setopt
+# 查询 bindkey
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="ys"
-# ZSH_THEME="agnoster"
-DEFAULT_USER="yuzx"
+# 默认不会保存 history 到文件，使得 c-p c-n 的搜索不起作用
+export HISTFILE=$HOME/.zsh_history
+# a billion，容易记住
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+# 确保命令进入文件，默认仅当 shell 退出时，避免意外退出导致丢失，另外可多终端共享
+setopt INC_APPEND_HISTORY
+export HISTTIMEFORMAT="[%F %T] "
+# share history across multiple zsh sessions
+setopt SHARE_HISTORY
+# append to history
+setopt APPEND_HISTORY
+# 添加时间戳，可 history -E -10
+setopt EXTENDED_HISTORY
+# 去重
+setopt HIST_FIND_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+# 重复命令不写入
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+# removes blank lines from history
+setopt HIST_REDUCE_BLANKS
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# setopt CORRECT
+# setopt CORRECT_ALL
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+setopt NO_CASE_GLOB
+# ls ~/d*<tab> 会展开
+setopt GLOB_COMPLETE
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# .oh-my-zsh 太慢，换这个 rust 开发的，非常快
+eval "$(starship init zsh)"
 
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
+source /usr/local/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/lib/zsh-history-substring-search.zsh
+# c-@ autosuggest-accept
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#3a3a3a"
+source /usr/local/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="false"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Tmux states this should be screen-256color, but you may need to change it on
-# systems without the proper terminfo
-ZSH_TMUX_FIXTERM_WITH_256COLOR=true
-# auto start tmux
-# ZSH_TMUX_AUTOSTART=true
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(history-substring-search zsh-syntax-highlighting vi-mode)
-# User configuration
+setopt auto_cd
 
 # echo $HOME
 export JAVA_HOME=/usr/local/jdk8
@@ -104,16 +89,19 @@ export PATH=$PATH:$ANDROID_NDK
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export PATH=$PATH:$OOZIE_CLIENT_HOME/bin
 export PATH=$PATH:/opt/bin
+
 # swift 4 tensorflow
 export PATH=$PATH:/opt/usr/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/lib/pkgconfig
+
 # cuda
 export PATH=/usr/local/cuda-8.0/bin:/usr/local/TensorRT-2.1.2/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64:/usr/local/TensorRT-2.1.2/lib:$LD_LIBRARY_PATH
 
 export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/yuzx/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
+
 # GOPATH
 export GOPROXY=https://goproxy.cn
 export GOPRIVATE=gitlab.bj.sensetime.com/diamond/*
@@ -122,10 +110,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/mysql/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
 export GO111MODULE=on
-# texlive 2017
-# export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
-# export MANPATH=/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH
-# export INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH=$PATH:$HOME/.rvm/bin
 export MINIKUBE_HOME=/data2/yuzx
@@ -135,14 +120,15 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 # 4 rJava
 export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
-# umask 0000
 
 export PATH=$PATH:$HOME/.krew/bin
 export PATH=$PATH:/usr/local/libexec
 
+# 4 fcitx
 export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk-3-0/gtk-query-immodules-3.0
 export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0/gtk-query-immodules-2.0
 export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/local/lib/gtk-4.0
+
 export PATH="/opt/miniconda3/bin:$PATH"
 
 export GTK_DEBUG=modules
@@ -163,9 +149,6 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 # eval 'dircolors ~/.dircolors'
 
-source $ZSH/oh-my-zsh.sh
-# eval "$(starship init zsh)"
-
 # You may need to manually set your language environment
 export LANG=zh_CN.UTF-8
 
@@ -177,20 +160,8 @@ else
   export EDITOR='vim'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias tmux="tmux -2"
 alias start_mysql="cd /usr/local/mysql ; sudo ./bin/mysqld_safe --user=mysql & ; cd -"
@@ -221,6 +192,22 @@ alias k=/usr/local/bin/kubectl
 alias o=/usr/local/bin/opensearch-cli
 
 alias ls='ls --color=auto -Fh --group-directories-first'
+alias ll='ls -lh'
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+alias -- -='cd -'
+alias 1='cd -1'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
 
 # if [ -f "/usr/bin/nvim" ]; then
 #     alias vim=nvim
@@ -232,10 +219,6 @@ alias ls='ls --color=auto -Fh --group-directories-first'
 
 bindkey -v
 
-# Use vim cli mode
-# bindkey '^P' up-history
-# bindkey '^N' down-history
-
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
@@ -243,20 +226,11 @@ bindkey '^N' history-substring-search-down
 # bindkey -M vicmd 'k' history-substring-search-up
 # bindkey -M vicmd 'j' history-substring-search-down
 
-# backspace and ^h working even after
-# returning from command mode
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-
-# ctrl-w removed word backwards
-bindkey '^w' backward-kill-word
-
-# ctrl-r starts searching history backward
-bindkey '^r' history-incremental-search-backward
-
-# home/end
+# home & end
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
+
+bindkey '^K' autosuggest-accept
 
 # Avoid "zsh: no matches found: xxxx"
 # or alias scp='noglob scp'
@@ -267,11 +241,6 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 
 # export PATH=/usr/local/cuda-9.2/bin:$PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH
-
-# export HTTP_PROXY="http://myproxy.server.com:8080/"
-# export HTTPS_PROXY="https://172.16.1.221:3128/"
-# export FTP_PROXY="http://myproxy.server.com:8080/"
-# export NO_PROXY="localhost,127.0.0.1"
 
 # or Or when using Oh-My-Zsh, edit the ~/.zshrc file and update the plugins= line to include the kubectl plugin.
 # if [ $commands[kubectl]  ]; then
@@ -320,9 +289,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/yuzx/go/bin/mc mc
 
 # zmodload zsh/zprof
 
