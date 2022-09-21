@@ -11,14 +11,6 @@
       }
     },
     */
-    "cmake": {
-      "command": "cmake-language-server",
-      "filetypes": ["cmake"],
-      "rootPatterns": ["build/"],
-      "initializationOptions": {
-        "buildDirectory": "build"
-      }
-    },
     "R": {
       "command": "/usr/bin/R",
       "args": ["--slave", "-e", "languageserver::run()"],

@@ -102,13 +102,14 @@ export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPT
 export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/yuzx/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
+
 # GOPATH
 export GOPROXY=https://goproxy.cn
 export GOPRIVATE=gitlab.bj.sensetime.com/diamond/*
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/mysql/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
 export GO111MODULE=on
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -165,6 +166,7 @@ fi
 
 alias tmux="tmux -2"
 alias start_mysql="cd /usr/local/mysql ; sudo ./bin/mysqld_safe --user=mysql & ; cd -"
+alias stop_mysql="mysqladmin -u root -pmysql1 shutdown"
 alias start_redis="sudo redis-server /etc/redis/redis.conf"
 alias start_memcached="memcached -d -m 64 -u root -l 127.0.0.1 -p 12111 -c 1024"
 alias stop_mysql="mysqladmin -u root -pmysql1 shutdown"
@@ -174,19 +176,12 @@ alias start_hbase="start-hbase.sh"
 alias stop_hbase="stop-hbase.sh"
 alias start_kafka="cd /usr/local/kafka; bin/kafka-server-start.sh -daemon config/server.properties"
 alias stop_kafka="cd /usr/local/kafka; bin/kafka-server-stop.sh"
-alias start_zinc="zinc -nailed -start"
-alias stop_zinc="zinc -shutdown"
 alias start_oozie="/usr/local/oozie/bin/oozied.sh start"
 alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
 alias conda-b="conda activate base"
 
-# alias beeline_n1="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn1.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
-# alias beeline_n2="/usr/local/hive2/bin/beeline -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods;principal=hive/nn2.dev.ad-hadoop.com@DEV.AD-HADOOP.COM\""
-alias beeline_n1="/usr/local/hive2/bin/beeline -n hive -p admin -u \"jdbc:hive2://nn1.dev.ad-hadoop.com:10000/sara_ods\""
-alias beeline_n2="/usr/local/hive2/bin/beeline -n hive -p admin -u \"jdbc:hive2://nn2.dev.ad-hadoop.com:10000/sara_ods\""
-
-alias antlr4='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
-alias grun='java -Xmx512M -cp "/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+alias start_gopls="systemctl --user restart gopls.service"
+alias start_gopls_m="/home/yuzx/go/bin/gopls serve -listen=\"unix;/var/run/go/gopls-daemon-socket\" -logfile=/data/logs/go/gopls.log -debug=:60099"
 
 alias k=/usr/local/bin/kubectl
 alias o=/usr/local/bin/opensearch-cli
