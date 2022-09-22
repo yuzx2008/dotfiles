@@ -1,6 +1,5 @@
 [Unit]
 Description=gopls
-After=network.target
 
 [Service]
 EnvironmentFile=-/home/yuzx/.config/systemd/user/env.conf
@@ -9,4 +8,5 @@ ExecStart=/usr/local/bin/zsh /home/yuzx/.config/systemd/user/run_gopls.sh
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
+
