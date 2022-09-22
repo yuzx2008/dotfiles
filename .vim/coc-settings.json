@@ -52,7 +52,7 @@
   "explorer.width": 26,
   "explorer.file.child.template": "[indent][icon | 1] [filename omitCenter 1]",
   "go.goplsPath": "/home/yuzx/go/bin/gopls",
-  "go.goplsArgs": ["-remote='unix;/var/run/go/gopls-daemon-socket'", "-logfile=auto", "-debug=:0", "-rpc.trace"],
+  "go.goplsArgs": ["-remote=unix;/var/run/go/gopls-daemon-socket", "-logfile=auto", "-debug=:0", "-rpc.trace"],
   "go.goplsOptions": {
     "completeUnimported": true
   },
