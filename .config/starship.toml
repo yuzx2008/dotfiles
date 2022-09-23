@@ -19,6 +19,13 @@ diverged = "<>"
 renamed = "r"
 deleted = "x"
 
+[username]
+format = "[$user]($style) "
+
+[hostname]
+ssh_only = true
+ssh_symbol = "ssh"
+
 [aws]
 symbol = "aws "
 
@@ -123,6 +130,7 @@ symbol = "raku "
 
 [ruby]
 symbol = "rb "
+disabled = true
 
 [rust]
 symbol = "rs "
@@ -135,6 +143,7 @@ symbol = "spack "
 
 [sudo]
 symbol = "sudo "
+disabled = true
 
 [swift]
 symbol = "swift "
@@ -144,3 +153,10 @@ symbol = "terraform "
 
 [zig]
 symbol = "zig "
+
+[rlang]
+symbol = "R "
+
+[kubernetes]
+disabled = false
+symbol = "k8s="
