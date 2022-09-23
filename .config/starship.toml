@@ -5,19 +5,25 @@
 # add_newline = true
 
 [character]
-success_symbol = "[>](bold green)"
+success_symbol = "[>>](bold green)"
 error_symbol = "[x](bold red)"
-vicmd_symbol = "[<](bold green)"
+vicmd_symbol = "[vi-mode >>](bold green)"
 
 [git_commit]
 tag_symbol = " tag "
 
 [git_status]
+conflicted = "c"
 ahead = ">"
 behind = "<"
 diverged = "<>"
 renamed = "r"
-deleted = "x"
+deleted = "-"
+modified = "!"
+untracked = "u"
+stashed = "s"
+staged = "+"
+ignore_submodules = true
 
 [username]
 format = "[$user]($style) "
@@ -108,7 +114,7 @@ symbol = "nix "
 symbol = "ml "
 
 [package]
-symbol = "pkg "
+symbol = "package="
 
 [perl]
 symbol = "pl "
