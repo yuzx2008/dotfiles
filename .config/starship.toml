@@ -6,8 +6,8 @@
 
 [character]
 success_symbol = "[>>](bold green)"
-error_symbol = "[x](bold red)"
-vicmd_symbol = "[vi-mode >>](bold green)"
+error_symbol = "[xx](bold red)"
+vicmd_symbol = "[vi](bold green)"
 
 [git_commit]
 tag_symbol = " tag "
@@ -30,7 +30,7 @@ format = "[$user]($style) "
 
 [hostname]
 ssh_only = true
-ssh_symbol = "ssh"
+ssh_symbol = "ssh="
 
 [aws]
 symbol = "aws "
@@ -166,3 +166,8 @@ symbol = "R "
 [kubernetes]
 disabled = false
 symbol = "k8s="
+
+[time]
+disabled = true
+format = '[$time]($style) '
+time_format = "%Y-%m-%d %H:%M:%S"

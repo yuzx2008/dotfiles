@@ -142,9 +142,12 @@
     "workbench.colorCustomizations": {
         "tab.activeBorder": "#ffff00",
         "tab.unfocusedActiveBorder": "#000000",
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
+        "statusBar.background": "#5f0000",
+        "statusBar.noFolderBackground": "#5f0000",
+        "statusBar.debuggingBackground": "#5f0000",
+        "editor.findMatchBackground": "#00cc44a8",
+        "editor.findMatchHighlightBackground": "#ff7b00a1",
+        "editor.wordHighlightBackground": "#00cc44a8"
     },
     "[r]": {
         "editor.defaultFormatter": "REditorSupport.r"
@@ -196,5 +199,9 @@
     "workbench.iconTheme": "vs-minimal",
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.defaultProfile.linux": "R Terminal",
-    "debug.console.wordWrap": false
+    "debug.console.wordWrap": false,
+    "debug.console.collapseIdenticalLines": false,
+    "debug.console.fontSize": 10,
+    "debug.console.fontFamily": "'DejaVu Sans Mono', '文泉驿等宽正黑'",
+    "debug.terminal.clearBeforeReusing": true
 }

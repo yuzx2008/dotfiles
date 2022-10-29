@@ -319,7 +319,7 @@ colorscheme solarized
 " new .c, .h, .sh, .java，自动插入
 func SetFileHeaderPart()
   if &filetype == 'sh'
-    call setline(1,"\#!/bin/bash")
+    call setline(1,"\#!/usr/bin/env bash")
     call append(line("."), "")
   endif
 endfunc
@@ -557,6 +557,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
+nmap <F3> :call CocActionAsync('format')<CR>
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)

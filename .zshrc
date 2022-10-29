@@ -1,3 +1,8 @@
+
+# 支持各种自动完成，注册 compdef 函数
+autoload -Uz compinit
+compinit
+
 # By default, there is a 0.4 second delay after you hit the <ESC> key and when the mode change is registered.
 # This results in a very jarring and frustrating transition between modes.
 # This can result in issues with other terminal commands that depended on this delay.
@@ -238,12 +243,13 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 # export PATH=/usr/local/cuda-9.2/bin:$PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH
 
-# or Or when using Oh-My-Zsh, edit the ~/.zshrc file and update the plugins= line to include the kubectl plugin.
-# if [ $commands[kubectl]  ]; then
-#     source <(kubectl completion zsh)
-# fi
+if [ $commands[kubectl]  ]; then
+  source <(kubectl completion zsh)
+fi
 
-# source <(golangci-lint completion zsh)
+if [ $commands[golangci-lint]  ]; then
+  source <(golangci-lint completion zsh)
+fi
 
 export KUBECONFIG=$HOME/.kube/config
 # export GIT_TRACE_PACKET=1
@@ -251,10 +257,6 @@ export KUBECONFIG=$HOME/.kube/config
 # export GIT_CURL_VERBOSE=1
 
 [[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
-# autoload -U compinit && compinit -u
-
-# autoload -U +X bashcompinit && bashcompinit
-# complete -o nospace -C /home/yuzx/go/bin/mc mc
 
 # 用于更新 toolchain
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
@@ -263,13 +265,8 @@ export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share
 
-# export LANG=en_US.UTF-8
 export LANGUAGE=en_US:en
 export LC_TIME=en_US.UTF-8
-#export LC_MESSAGES=en_US.UTF-8
-#export LC_NAME=en_US.UTF-8
-
-export NO_PROXY="*.sensetime.com"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
