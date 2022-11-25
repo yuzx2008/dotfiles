@@ -1,8 +1,4 @@
 
-# 支持各种自动完成，注册 compdef 函数
-autoload -Uz compinit
-compinit
-
 # By default, there is a 0.4 second delay after you hit the <ESC> key and when the mode change is registered.
 # This results in a very jarring and frustrating transition between modes.
 # This can result in issues with other terminal commands that depended on this delay.
@@ -25,13 +21,13 @@ setopt SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
 # 添加时间戳，可 history -E -10
-setopt EXTENDED_HISTORY
+# setopt EXTENDED_HISTORY
 # 去重
-setopt HIST_FIND_NO_DUPS
-setopt HIST_EXPIRE_DUPS_FIRST
+# setopt HIST_FIND_NO_DUPS
+# setopt HIST_EXPIRE_DUPS_FIRST
 # 重复命令不写入
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
+# setopt HIST_IGNORE_DUPS
+# setopt HIST_IGNORE_ALL_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
 
@@ -41,6 +37,10 @@ setopt HIST_REDUCE_BLANKS
 setopt NO_CASE_GLOB
 # ls ~/d*<tab> 会展开
 setopt GLOB_COMPLETE
+
+# 支持各种自动完成，注册 compdef 函数
+autoload -Uz compinit
+compinit
 
 # .oh-my-zsh 太慢，换这个 rust 开发的，非常快
 eval "$(starship init zsh)"
@@ -135,7 +135,7 @@ export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk-3-0/gtk-query-immodules-3.0
 export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0/gtk-query-immodules-2.0
 export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/local/lib/gtk-4.0
 
-export PATH="/opt/miniconda3/bin:$PATH"
+# export PATH="/opt/miniconda3/bin:$PATH"  # commented out by conda initialize
 
 export GTK_DEBUG=modules
 export GTK_IM_MODULE=fcitx
@@ -245,6 +245,10 @@ export LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;
 
 if [ $commands[kubectl]  ]; then
   source <(kubectl completion zsh)
+fi
+
+if [ $commands[helm]  ]; then
+  source <(helm completion zsh)
 fi
 
 if [ $commands[golangci-lint]  ]; then
