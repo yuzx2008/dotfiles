@@ -48,10 +48,10 @@ eval "$(starship init zsh)"
 source /usr/local/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/lib/zsh-history-substring-search.zsh
 # c-@ autosuggest-accept
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4e4e4e"
-source /usr/local/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4e4e4e"
+# source /usr/local/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 setopt auto_cd
 
@@ -190,6 +190,7 @@ alias start_gopls_m="/home/yuzx/go/bin/gopls serve -listen=\"unix;/var/run/go/go
 
 alias k=/usr/local/bin/kubectl
 alias o=/usr/local/bin/opensearch-cli
+alias u=$HOME/go/bin/ucpctl
 
 alias ls='ls --color=auto -Fh --group-directories-first'
 alias ll='ls -lh'
@@ -231,7 +232,7 @@ bindkey '^N' history-substring-search-down
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 
-bindkey '^K' autosuggest-accept
+# bindkey '^K' autosuggest-accept
 
 # Avoid "zsh: no matches found: xxxx"
 # or alias scp='noglob scp'

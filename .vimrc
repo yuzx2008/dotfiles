@@ -2,11 +2,11 @@
 set nocompatible
 
 " annoying sound on errors
-set vb t_vb=
-
-" properly disable sound on errors on GUI
-if has('gui_running')
-  autocmd GUIEnter * set vb t_vb=
+set noerrorbells
+set novisualbell
+if has("gui_running")
+    " gui bell
+    autocmd GUIEnter * set vb t_vb=
 endif
 
 " required
@@ -14,6 +14,8 @@ filetype off
 
 " 设置快捷键前缀，即：<Leader>
 let mapleader=","
+" 设置快捷键前缀，即：<LocalLeader>
+let maplocalleader = ','
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -21,7 +23,7 @@ let mapleader=","
 call plug#begin('~/.vim/plugged')
 
 " vim-colors-solarized
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 
 " http://editorconfig.org/ && ~/.editorconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -46,9 +48,6 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
 Plug 'ctrlpvim/ctrlp.vim'
-
-" vim 有一个状态栏，加 powline 则有两状态栏
-set laststatus=2
 
 " 开启 256 色支持，t_Co 即 Terminal Color
 if !has('gui_running')
@@ -116,9 +115,8 @@ let g:go_gopls_options = ["-remote=unix;/var/run/go/gopls-daemon-socket", "-logf
 Plug 'fatih/vim-go'
 " 支持 struct 等 split-join
 " Plug 'AndrewRadev/splitjoin.vim'
-
-" 执行 make/GoBuild 时，自动保存
-set autowrite
+" 代码追踪，gd 自动跳转
+Plug 'dgryski/vim-godef'
 
 let g:go_test_timeout = '10s'
 let g:go_fmt_autosave = 0
@@ -136,6 +134,26 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_auto_type_info = 1
 " :GoSameIds 自动
 let g:go_auto_sameids = 1
+" 'goroutines': 'rightbelow 10new',
+let g:go_debug_windows = {
+      \ 'vars':       'rightbelow 50vnew',
+      \ 'stack':      'rightbelow 10new',
+      \ }
+" F5 continue
+" F9 add breakpoint
+" F8 halt
+" F10 next
+" F11 step in
+let g:go_debug_mappings = {
+      \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
+      \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+      \ '(go-debug-step)': {'key': 's'},
+      \ '(go-debug-print)': {'key': 'p'},
+  \}
+
+map <leader>ds :GoDebugStart<cr>
+map <leader>dt :GoDebugStop<cr>
+map <leader>db :GoDebugBreakpoint<cr>
 
 " :A!/:AV!/:AH!/:AT!
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -165,25 +183,69 @@ call plug#end()
 
 filetype plugin indent on
 
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-" set clipboard=unnamed " for mac osx
-" set clipboard=unnamedplus " for ubuntu
 
 " Enhance command-line completion（vim 自身命令行模式智能补全）
 set wildmenu
 
-" Allow cursor keys in insert mode
-set esckeys
-
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-
-" Optimize for fast terminal connections
-set ttyfast
-
 " Add the g flag to search/replace by default
 " :%s/d/c/gc 不再需要加 g，加 g 反而为 searchFirst
 " set gdefault
+
+
+" Clear search highlight by hitting enter
+nnoremap <silent> <CR> :noh<CR>
+
+" Ignore case of searches
+set ignorecase
+
+" Highlight dynamically as pattern is typed（搜索时大小写不敏感）
+set incsearch
+
+" Don’t reset cursor to start of line when moving around.
+set nostartofline
+
+"" file writing
+
+" 检测文件已经变化自动加载
+set autoread
+" 执行 make/GoBuild 时，自动保存
+set autowrite
+" Show the cursor position（显示光标位置）
+set ruler
+" 检索时 $ . * ^ [ ] 这几个字符不需要 \ 转义
+set magic
+" 匹配模式，输入左括号匹配右括号
+set showmatch
+" Don’t add empty newlines at the end of files
+set noeol
+" for coc.nvim: Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+" set noswapfile
+" set noundofile
+" Centralize backups, swapfiles and undo history
+" set backupdir=~/.vim/backups
+" Don’t create backups when editing files in certain directories
+" set backupskip=/tmp/*
+set directory=~/.vim/swaps
+if exists("&undodir")
+  set undodir=~/.vim/undo
+endif
+
+" new .c, .h, .sh, .java，自动插入
+func SetFileHeaderPart()
+  if &filetype == 'sh'
+    call setline(1,"\#!/usr/bin/env bash")
+    call setline(2,"set -o pipefail")
+    call setline(3,"set -x")
+    call append(line("."), "")
+  endif
+endfunc
+
+" Don’t show the intro message when starting Vim
+set shortmess=atI
+
+"" encoding
 
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
@@ -191,26 +253,21 @@ set fileencoding=utf-8
 set termencoding=utf-8
 " 自动判断文件编码时，依次尝试
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
+" set fileformat=unix
+" set fileformats=unix,dos,mac
 
-" Don’t add empty newlines at the end of files
-set noeol
+"" mouse
 
-" Centralize backups, swapfiles and undo history
-" set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-  set undodir=~/.vim/undo
-endif
-" Don’t create backups when editing files in certain directories
-" set backupskip=/tmp/*
+" Enable mouse in all modes（Vim 可鼠标，防止终端下无法拷贝）
+" set mouse=a
+set mouse=c
 
-" Enable line numbers（行号）
-" set number
+"" indent
 
-" Highlight current line（高亮当前行/列）
-set cursorline
-set nocursorcolumn
-
+" 设置 C/C++ 自动对齐
+" set autoindent
+" set cindent
+" set smartindent
 " Make tabs as wide as two spaces
 set tabstop=2
 " 设置自动对齐空格数
@@ -222,39 +279,78 @@ set smarttab
 " Tab 自动转换成空格，需要 Tab 时用 [Ctrl + V + Tab]
 set expandtab
 
+"" display
+
+" Show the (partial) command as it’s being typed（状态栏显示正输入的命令）
+set showcmd
+" Highlight searches（高亮搜索结果）
+set hlsearch
+" Allow backspace in insert mode
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+
+" no wrapping by default. Use `:set wrap` to re-enable
+set nowrap
+" set wrap
+
+" Use the OS clipboard by default (on versions compiled with `+clipboard`)
+" set clipboard=unnamed " for mac osx
+" set clipboard=unnamedplus " for ubuntu
+
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
+" set listchars=tab:>-,trail:~,extends:>,precedes:<
 
 " set list
 
-" Highlight searches（高亮搜索结果）
-set hlsearch
+"" color
 
-" Clear search highlight by hitting enter
-nnoremap <silent> <CR> :noh<CR>
+" light dark
+if has('gui_running')
+  set background=light
+else
+  set background=dark
+  " let g:solarized_termcolors=256
+endif
+" colorscheme solarized
 
-" Ignore case of searches
-set ignorecase
+" transparent support ctermfg=252
+highlight Normal ctermbg=none
 
-" Highlight dynamically as pattern is typed（搜索时大小写不敏感）
-set incsearch
+" if exists('$TMUX')
+"   set term=screen-256color
+" endif
 
-" Enable mouse in all modes（Vim 可鼠标，防止终端下无法拷贝）
-" set mouse=a
-set mouse=c
+" GUI fonts
+if has("win32")
+    " win32
+    set guifont=Hack:h9
+elseif has("mac")
+    " macos
+    set guifont=Hack:h12
+else
+    " linux, unix
+    set guifont=Hack\ 10
+endif
 
-" Disable error bells
-set noerrorbells
-set novisualbell
+"" cursorline
 
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
-
-" Show the cursor position（显示光标位置）
-set ruler
-
-" Don’t show the intro message when starting Vim
-set shortmess=atI
+" Start scrolling three lines before the horizontal window border
+set scrolloff=5
+" Highlight current line（高亮当前行/列）
+set nocursorline
+set nocursorcolumn
+" Line length marker=120
+" set colorcolumn=120
+" Enable line numbers（行号）
+" set number
+" vim 有一个状态栏，加 powline 则两状态栏
+set laststatus=2
+set lazyredraw
+" Optimize for fast terminal connections
+set ttyfast
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
 " Show the current mode
 " set showmode
@@ -267,79 +363,80 @@ if has('title')
   set title titlestring=%F%y%m%r
 endif
 
-" Show the (partial) command as it’s being typed（状态栏显示正输入的命令）
-set showcmd
+" timeoutlen is used for mapping delays
+" ttimeoutlen is used for key code delays
+" set timeoutlen=1000 ttimeoutlen=0
+set ttimeoutlen=50
 
-" Start scrolling three lines before the horizontal window border
-set scrolloff=5
+" :help :highlight-link
+highlight link markdownItalic NONE
+highlight link markdownBoldItalic NONE
+highlight link markdownBoldItalicDelimiter NONE
 
-au BufNewFile,BufRead *.conf set filetype=dosini
-au BufNewFile,BufRead *.{md,mkd,rmd,mark*}  set filetype=markdown
-au BufNewFile,BufRead .aliases set filetype=sh
-
-" to bottom if log
-au BufNewFile,BufRead *.log normal G
-
-" no wrapping by default. Use `:set wrap` to re-enable
-set nowrap
-
-" markdown 自动换行
-autocmd FileType markdown set wrap
-" autocmd FileType markdown %retab! 2
-" autocmd FileType yaml %retab! 2
-" autocmd FileType ruby autocmd BufWrite <buffer> RuboCop -a
-" :h autocommand-pattern
-auto BufWritePre * set nopaste
-auto BufWritePre *.md,*.yml,*.yaml %retab! 2
+" Set cursor shape and color
+" INSERT mode
+let &t_SI = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
+" REPLACE mode
+let &t_SR = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
+" NORMAL mode
+" https://www.ditig.com/256-colors-cheat-sheet
+let &t_EI = "\<Esc>[2 q" . "\<Esc>]12;rgb:9E/9E/9E\x7"
+" 1 -> blinking block  闪烁的方块
+" 2 -> solid block  不闪烁的方块
+" 3 -> blinking underscore  闪烁的下划线
+" 4 -> solid underscore  不闪烁的下划线
+" 5 -> blinking vertical bar  闪烁的竖线
+" 6 -> solid vertical bar  不闪烁的竖线
 
 " open help in new tab
 cabbrev help tab help
-
-" 匹配模式，输入左括号匹配右括号
-set showmatch
-
-" 设置 C/C++ 自动对齐
-" set autoindent
-" set cindent
 
 " 配色方案
 syntax enable
 " Enable syntax highlighting
 syntax on
 
-" light dark
-if has('gui_running')
-  set background=light
-else
-  set background=dark
-  " let g:solarized_termcolors=256
-endif
-colorscheme solarized
+" vimrc 修改后立刻生效，不用重新打开
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-" new .c, .h, .sh, .java，自动插入
-func SetFileHeaderPart()
-  if &filetype == 'sh'
-    call setline(1,"\#!/usr/bin/env bash")
-    call append(line("."), "")
-  endif
-endfunc
-
+autocmd BufNewFile,BufRead *.conf set filetype=dosini
+autocmd BufNewFile,BufRead *.{md,mkd,rmd,mark*}  set filetype=markdown
+autocmd BufNewFile,BufRead .aliases set filetype=sh
+" to bottom if log
+autocmd BufNewFile,BufRead *.log normal G
+" markdown 自动换行
+autocmd FileType markdown set wrap
+" autocmd FileType markdown %retab! 2
+" autocmd FileType yaml %retab! 2
+" autocmd FileType ruby autocmd BufWrite <buffer> RuboCop -a
+" :h autocommand-pattern
+autocmd BufWritePre * set nopaste
+autocmd BufWritePre *.md,*.yml,*.yaml %retab! 2
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetFileHeaderPart()"
-
 " 新建文件自动定位文件尾
 autocmd BufNewFile * normal G
+" Python 设置，如：不要 tab 等，.editconfig
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType python map <F12> :!python %<CR>
+autocmd BufRead,BufNewFile *Makefile* setlocal filetype=make
+autocmd BufRead,BufNewFile *makefile* setlocal filetype=make
+autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+" 退出插入模式指定类型文件自动保存
+" autocmd InsertLeave *.go,*.sh,*.md write
 
-" timeoutlen is used for mapping delays
-" ttimeoutlen is used for key code delays
-" set timeoutlen=1000 ttimeoutlen=0
-set ttimeoutlen=50
+" go
+" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
 
-" transparent support ctermfg=252
-hi Normal ctermbg=none
+" YAML 设置，支持 .yml .yaml
+" ai = auto indent，自动退格对齐
+" set tabstop=2，一个 tab 2 个空格宽
+" set shiftwidth=2，退格对齐以 2 空格为准
+" set expandtab tab 变空格
+" autocmd FileType yaml setlocal ai ts=2 sw=2 et
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-if exists('$TMUX')
-  set term=screen-256color
-endif
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 if !exists("g:os")
   if has("win64") || has("win32")
@@ -381,23 +478,10 @@ autocmd InsertLeave * call Fcitx2En()
 " 进入插入模式
 " autocmd InsertEnter * call Fcitx2Zh()
 
+"" key mapping
+
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
-
-" Python 设置，如：不要 tab 等，.editconfig
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType python map <F12> :!python %<CR>
-
-" go
-" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
-
-" YAML 设置，支持 .yml .yaml
-" ai = auto indent，自动退格对齐
-" set tabstop=2，一个 tab 2 个空格宽
-" set shiftwidth=2，退格对齐以 2 空格为准
-" set expandtab tab 变空格
-" autocmd FileType yaml setlocal ai ts=2 sw=2 et
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 map <F9> :NERDTreeToggle<CR>
 imap <F9> <ESC>:NERDTreeToggle<CR>
@@ -423,26 +507,29 @@ cmap W! silent w !sudo tee % >/dev/null
 vnoremap <Leader>y "+y
 map <Leader>p "+p
 " 方便多处替换
-vmap <Leader>v "0p
+map <Leader>v "0p
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
 
-" coc
+" map <Esc>[13;5u <C-CR>
+" ~/.vim/plugged/Nvim-R/R/common_global.vim
+" nnoremap <C-CR> :call SendLineToR("down")<CR>
+" xnoremap <C-CR> :call SendSelectionToR("echo", "down", "normal")<CR>
+" inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
+" autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
+" autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
+
+" let g:coc_global_extensions = ['coc-snippets', 'coc-tag', 'coc-pyright', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur', 'coc-rust-analyzer']
+
+"" coc.nvim
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
 " Give more space for displaying messages.
 set cmdheight=1
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -589,36 +676,3 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " explorer
 nnoremap <silent><nowait> <space>x  :<C-u>CocCommand explorer<cr>
-
-" :help :highlight-link
-highlight link markdownItalic NONE
-highlight link markdownBoldItalic NONE
-highlight link markdownBoldItalicDelimiter NONE
-
-" Set cursor shape and color
-" INSERT mode
-let &t_SI = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
-" REPLACE mode
-let &t_SR = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
-" NORMAL mode
-" https://www.ditig.com/256-colors-cheat-sheet
-let &t_EI = "\<Esc>[2 q" . "\<Esc>]12;rgb:9E/9E/9E\x7"
-" 1 -> blinking block  闪烁的方块
-" 2 -> solid block  不闪烁的方块
-" 3 -> blinking underscore  闪烁的下划线
-" 4 -> solid underscore  不闪烁的下划线
-" 5 -> blinking vertical bar  闪烁的竖线
-" 6 -> solid vertical bar  不闪烁的竖线
-
-" map <Esc>[13;5u <C-CR>
-" ~/.vim/plugged/Nvim-R/R/common_global.vim
-" nnoremap <C-CR> :call SendLineToR("down")<CR>
-" xnoremap <C-CR> :call SendSelectionToR("echo", "down", "normal")<CR>
-" inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
-" autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
-
-let maplocalleader = ','
-
-autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
-
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')

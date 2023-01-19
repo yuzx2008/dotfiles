@@ -1,34 +1,92 @@
 {
-  "diagnostic.level": "warning",
-  "suggest.minTriggerInputLength": 1,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "json",
-    "c",
-    "cpp",
-    "python",
-    "xml",
-    "html",
-    "xhtml",
-    "yaml",
-    "css",
-    "markdown",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "python.pythonPath": "python3",
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "120"],
-  "snippets.extends": {
-    "l": ["c", "cpp"],
-    "y": ["c", "cpp"],
-    "cpp": ["c"],
-    "javascriptreact": ["javascript"],
-    "typescript": ["javascript"],
-    "md": ["markdown"]
+  "languageserver": {
+    /*
+    不要自己启动
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    },
+    */
+    "R": {
+      "command": "/usr/bin/R",
+      "args": ["--slave", "-e", "languageserver::run()"],
+      "filetypes": ["r"]
+    }
   },
-  "json.enable": true,
-  "json.format.enable": true,
-  "eslint.run": "onSave"
+  "diagnostic.messageTarget": "float",
+  "markdownlint.config": {
+    "default": true,
+    "line_length": false,
+    "MD045": false,
+    "MD024": false,
+    "MD013": false,
+    "MD046": false
+  },
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "email": "languagetool",
+    "markdown": [ "write-good", "markdownlint" ],
+    "sh": "shellcheck",
+    "elixir": ["mix_credo", "mix_credo_compile"],
+    "eelixir": ["mix_credo", "mix_credo_compile"],
+    "php": ["phpstan", "psalm"],
+    "yaml": [ "yamllint" ],
+    "cmake": [ "cmake-lint", "cmakelint" ],
+    "systemd": "systemd-analyze"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "dart": "dartfmt",
+    "elixir": "mix_format",
+    "eelixir": "mix_format",
+    "python": ["black", "isort"],
+    "lua": "lua-format",
+    "sh": "shfmt",
+    "blade": "blade-formatter",
+    "cmake": "cmake-format"
+  },
+  "explorer.file.column.indent.chars": " ",
+  "explorer.width": 26,
+  "explorer.file.child.template": "[indent][icon | 1] [filename omitCenter 1]",
+  "go.goplsPath": "/home/yuzx/go/bin/gopls",
+  "go.goplsArgs": ["-remote=unix;/var/run/go/gopls-daemon-socket", "-logfile=auto", "-debug=:0", "-rpc.trace"],
+  "go.goplsOptions": {
+    "completeUnimported": true
+  },
+  // 默认 true，调用 gopls -remote=auto 来创建 shared daemon
+  "go.goplsUseDaemon": false,
+  // 避免傻傻地去验证 prometheus.yaml
+  "yaml.schemaStore.enable": false,
+  //"diagnostic.displayByAle": true,
+	"suggest.completionItemKindLabels": {
+			"keyword": "\u0000",
+			"variable": "\ue79b",
+			"value": "\uf89f",
+			"operator": "\u03a8",
+			"function": "\u0192",
+			"reference": "\ufa46",
+			"constant": "\uf8fe",
+			"method": "\uf09a",
+			"struct": "\ufb44",
+			"class": "\uf0e8",
+			"interface": "\uf417",
+			"text": "\ue612",
+			"enum": "\uf435",
+			"enumMember": "\uf02b",
+			"module": "\uf40d",
+			"color": "\u0000",
+			"property": "\ue624",
+			"field": "\uf9be",
+			"unit": "\uf475",
+			"event": "\ufacd",
+			"file": "\uf723",
+			"folder": "\uf114",
+			"snippet": "\ue60b",
+			"typeParameter": "\uf728",
+			"default": "\u0000"
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }
