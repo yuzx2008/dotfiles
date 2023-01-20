@@ -95,7 +95,7 @@ fi
 
 alias tmux="tmux -2"
 
-alias start_gopls="gopls serve -listen=\"unix;/tmp/gopls-daemon-socket\" -logfile=/tmp/gopls.log -debug=:60099"
+alias start_gopls="gopls serve -listen=127.0.0.1:60098 -logfile=/tmp/gopls.log -debug=:60099"
 
 alias k=/usr/local/bin/kubectl
 alias o=/usr/local/bin/opensearch-cli
