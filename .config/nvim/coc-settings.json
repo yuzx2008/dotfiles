@@ -52,7 +52,7 @@
   "explorer.width": 26,
   "explorer.file.child.template": "[indent][icon | 1] [filename omitCenter 1]",
   "go.goplsPath": "/home/yuzx/go/bin/gopls",
-  "go.goplsArgs": ["-remote=unix;/var/run/go/gopls-daemon-socket", "-logfile=auto", "-debug=:0", "-rpc.trace"],
+  "go.goplsArgs": ["-remote=127.0.0.1:60098", "-logfile=auto", "-debug=:0", "-rpc.trace"],
   "go.goplsOptions": {
     "completeUnimported": true
   },
@@ -61,7 +61,9 @@
   // 避免傻傻地去验证 prometheus.yaml
   "yaml.schemaStore.enable": false,
   //"diagnostic.displayByAle": true,
-	"suggest.completionItemKindLabels": {
+  // 修改自动完成窗口的颜色
+	/*
+  "suggest.completionItemKindLabels": {
 			"keyword": "\u0000",
 			"variable": "\ue79b",
 			"value": "\uf89f",
@@ -87,6 +89,6 @@
 			"snippet": "\ue60b",
 			"typeParameter": "\uf728",
 			"default": "\u0000"
-  },
-  "snippets.ultisnips.pythonPrompt": false
+	}
+  */
 }

@@ -185,8 +185,7 @@ alias start_oozie="/usr/local/oozie/bin/oozied.sh start"
 alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
 alias conda-b="conda activate base"
 
-alias start_gopls="systemctl --user restart gopls.service"
-alias start_gopls_m="/home/yuzx/go/bin/gopls serve -listen=\"unix;/var/run/go/gopls-daemon-socket\" -logfile=/data/logs/go/gopls.log -debug=:60099"
+alias start_gopls="gopls serve -listen=127.0.0.1:60098 -logfile=/tmp/gopls.log -debug=127.0.0.1:60099"
 
 alias k=/usr/local/bin/kubectl
 alias o=/usr/local/bin/opensearch-cli
