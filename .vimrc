@@ -436,7 +436,9 @@ autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwi
 " autocmd FileType yaml setlocal ai ts=2 sw=2 et
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+if exists('$TMUX')
+  set term=screen-256color
+endif
 
 if !exists("g:os")
   if has("win64") || has("win32")
