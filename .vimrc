@@ -134,10 +134,18 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_auto_type_info = 1
 " :GoSameIds 自动
 let g:go_auto_sameids = 1
-" 'goroutines': 'rightbelow 10new',
+" let g:go_debug_log_output = 'debugger,rpc'
+let g:go_debug_log_output = ''
+" let g:go_debug_windows = {
+"        \ 'vars':       'leftabove 30vnew',
+"        \ 'stack':      'leftabove 20new',
+"        \ 'goroutines': 'botright 10new',
+"        \ 'out':        'botright 5new',
+" \ }
 let g:go_debug_windows = {
       \ 'vars':       'rightbelow 50vnew',
       \ 'stack':      'rightbelow 10new',
+      \ 'out':        'botright 5new',
       \ }
 " F5 continue
 " F9 add breakpoint
