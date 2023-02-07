@@ -11,23 +11,17 @@ export KEYTIMEOUT=10
 # 默认不会保存 history 到文件，使得 c-p c-n 的搜索不起作用
 export HISTFILE=$HOME/.zsh_history
 # a billion，容易记住
-export HISTFILESIZE=1000000000
-export HISTSIZE=1000000000
+export SAVEHIST=10000000
+export HISTSIZE=10000000
+export HISTTIMEFORMAT="[%F %T] "
 # 确保命令进入文件，默认仅当 shell 退出时，避免意外退出导致丢失，另外可多终端共享
 setopt INC_APPEND_HISTORY
-export HISTTIMEFORMAT="[%F %T] "
 # share history across multiple zsh sessions
 setopt SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
-# 添加时间戳，可 history -E -10
-# setopt EXTENDED_HISTORY
-# 去重
-# setopt HIST_FIND_NO_DUPS
-# setopt HIST_EXPIRE_DUPS_FIRST
-# 重复命令不写入
-# setopt HIST_IGNORE_DUPS
-# setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
 
