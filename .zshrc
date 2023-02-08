@@ -10,7 +10,6 @@ export KEYTIMEOUT=10
 
 # 默认不会保存 history 到文件，使得 c-p c-n 的搜索不起作用
 export HISTFILE=$HOME/.zsh_history
-# a billion，容易记住
 export SAVEHIST=10000000
 export HISTSIZE=10000000
 export HISTTIMEFORMAT="[%F %T] "
@@ -220,6 +219,9 @@ bindkey '^N' history-substring-search-down
 # bind k and j for VI mode
 # bindkey -M vicmd 'k' history-substring-search-up
 # bindkey -M vicmd 'j' history-substring-search-down
+
+# fix: Vi-mode: Backspace not working as expected in insert mode
+bindkey "^?" backward-delete-char
 
 # home & end
 bindkey "\e[1~" beginning-of-line
