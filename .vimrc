@@ -324,10 +324,6 @@ endif
 " transparent support ctermfg=252
 highlight Normal ctermbg=none
 
-" if exists('$TMUX')
-"   set term=screen-256color
-" endif
-
 " GUI fonts
 if has("win32")
     " win32
@@ -443,10 +439,6 @@ autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwi
 " set expandtab tab 变空格
 " autocmd FileType yaml setlocal ai ts=2 sw=2 et
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-if exists('$TMUX')
-  set term=screen-256color
-endif
 
 if !exists("g:os")
   if has("win64") || has("win32")

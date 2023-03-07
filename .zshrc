@@ -186,6 +186,9 @@ alias u=$HOME/go/bin/ucpctl
 
 alias ls='ls --color=auto -Fh --group-directories-first'
 alias ll='ls -lh'
+alias l='ls -lh'
+# Show hidden files
+alias l.='ls -d .* --color=auto'
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -202,6 +205,9 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 alias b='mdbook serve'
+
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%Y-%m-%d %H:%M:%S"'
 
 # if [ -f "/usr/bin/nvim" ]; then
 #     alias vim=nvim
