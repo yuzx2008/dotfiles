@@ -134,10 +134,18 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_auto_type_info = 1
 " :GoSameIds 自动
 let g:go_auto_sameids = 1
-" 'goroutines': 'rightbelow 10new',
+" let g:go_debug_log_output = 'debugger,rpc'
+let g:go_debug_log_output = ''
+" let g:go_debug_windows = {
+"        \ 'vars':       'leftabove 30vnew',
+"        \ 'stack':      'leftabove 20new',
+"        \ 'goroutines': 'botright 10new',
+"        \ 'out':        'botright 5new',
+" \ }
 let g:go_debug_windows = {
       \ 'vars':       'rightbelow 50vnew',
       \ 'stack':      'rightbelow 10new',
+      \ 'out':        'botright 5new',
       \ }
 " F5 continue
 " F9 add breakpoint
@@ -316,10 +324,6 @@ endif
 " transparent support ctermfg=252
 highlight Normal ctermbg=none
 
-" if exists('$TMUX')
-"   set term=screen-256color
-" endif
-
 " GUI fonts
 if has("win32")
     " win32
@@ -435,8 +439,6 @@ autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwi
 " set expandtab tab 变空格
 " autocmd FileType yaml setlocal ai ts=2 sw=2 et
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 if !exists("g:os")
   if has("win64") || has("win32")
