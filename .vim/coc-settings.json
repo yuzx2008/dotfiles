@@ -51,33 +51,17 @@
   "explorer.file.column.indent.chars": " ",
   "explorer.width": 26,
   "explorer.file.child.template": "[indent][icon | 1] [filename omitCenter 1]",
-  "go.goplsPath": "/home/yuzx/go/bin/gopls",
-  "go.goplsArgs": ["-remote=127.0.0.1:60098", "-logfile=auto", "-debug=:0", "-rpc.trace"],
-  "go.goplsOptions": {
-    "completeUnimported": true
+  "go": {
+    "enable": true,
+    // 默认 true，调用 gopls -remote=auto 来创建 shared daemon
+    "go.goplsUseDaemon": false,
+    "checkForUpdates": "disabled",
+    "goplsPath": "/home/yuzx/go/bin/gopls",
+    "goplsArgs": ["-remote=127.0.0.1:60098", "-logfile=auto", "-debug=:0", "-rpc.trace"],
+    // "goplsOptions": {
+    //   "completeUnimported": true
+    // },
   },
-  "java.configuration.maven.globalSettings": "/usr/local/maven/conf/settings.xml",
-  "java.maven.downloadSources": true,
-  "java.maven.updateSnapshots": false,
-  "java.eclipse.downloadSources": true,
-  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m",
-  "java.configuration.runtimes": [
-      {
-        "name": "JavaSE-17",
-        "path": "/usr/local/jdk17",
-      },
-      {
-        "name": "JavaSE-1.8",
-        "path": "/usr/local/jdk8",
-        "default": true
-      },
-      {
-        "name": "JavaSE-11",
-        "path": "/usr/local/jdk11",
-      },
-    ],
-  // 默认 true，调用 gopls -remote=auto 来创建 shared daemon
-  "go.goplsUseDaemon": false,
   // 避免傻傻地去验证 prometheus.yaml
   "yaml.schemaStore.enable": false,
   //"diagnostic.displayByAle": true,
