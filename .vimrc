@@ -80,7 +80,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
 
 Plug 'preservim/tagbar'
-nmap <F8> :TagbarToggle<CR>
+nmap <F2> :TagbarToggle<CR>
 
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
@@ -421,7 +421,7 @@ autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetFileHeaderPart()
 autocmd BufNewFile * normal G
 " Python 设置，如：不要 tab 等，.editconfig
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType python map <F12> :!python %<CR>
+" autocmd FileType python map <F12> :!python %<CR>
 autocmd BufRead,BufNewFile *Makefile* setlocal filetype=make
 autocmd BufRead,BufNewFile *makefile* setlocal filetype=make
 autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
@@ -485,8 +485,8 @@ autocmd InsertLeave * call Fcitx2En()
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
 
-map <F9> :NERDTreeToggle<CR>
-imap <F9> <ESC>:NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <ESC>:NERDTreeToggle<CR>
 
 " 在 bash 中执行光标所在行
 " GoGuild
@@ -646,7 +646,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
-nmap <F3> :call CocActionAsync('format')<CR>
+" nmap <F5> :call CocActionAsync('format')<CR>
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
