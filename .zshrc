@@ -104,7 +104,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
 
 # GOPATH
 export GOPROXY=https://goproxy.cn
-export GOPRIVATE=gitlab.bj.sensetime.com/diamond/*
+export GOPRIVATE=gitlab.bj.sensetime.com/*
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/mysql/bin
@@ -112,9 +112,9 @@ export GO111MODULE=on
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH=$PATH:$HOME/.rvm/bin
-export MINIKUBE_HOME=/data2/yuzx
-export R_LIBS_USER=/data2/R
-export STACK_ROOT=/data2/.stack
+export MINIKUBE_HOME=/data/yuzx
+export R_LIBS_USER=/data/R
+export STACK_ROOT=/data/.stack
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 # 4 rJava
@@ -129,6 +129,8 @@ export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0/gtk-query-immodules-2.0
 export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/local/lib/gtk-4.0
 
 # export PATH="/opt/miniconda3/bin:$PATH"  # commented out by conda initialize
+
+export PATH=$PATH:/usr/local/pgsql/bin
 
 export GTK_DEBUG=modules
 export GTK_IM_MODULE=fcitx
@@ -181,6 +183,7 @@ alias conda-b="conda activate base"
 alias start_gopls="gopls serve -listen=127.0.0.1:60098 -logfile=/tmp/gopls.log -debug=127.0.0.1:60099"
 
 alias k=/usr/local/bin/kubectl
+alias kf="/usr/local/bin/kubectl --grace-period=0 --force --wait=false"
 alias o=/usr/local/bin/opensearch-cli
 alias u=$HOME/go/bin/ucpctl
 
