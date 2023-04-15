@@ -152,16 +152,22 @@ let g:go_debug_windows = {
 " F8 halt
 " F10 next
 " F11 step in
-let g:go_debug_mappings = {
-      \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
-      \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
-      \ '(go-debug-step)': {'key': 's'},
-      \ '(go-debug-print)': {'key': 'p'},
-  \}
+" let g:go_debug_mappings = {
+"       \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
+"       \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+"       \ '(go-debug-step)': {'key': 's'},
+"       \ '(go-debug-print)': {'key': 'p'},
+"   \}
 
 map <leader>ds :GoDebugStart<cr>
 map <leader>dt :GoDebugStop<cr>
 map <leader>db :GoDebugBreakpoint<cr>
+autocmd FileType go map <F5> :GoDebugContinue<CR>
+autocmd FileType go map <F6> :GoDebugPrint<CR>
+autocmd FileType go map <F8> :GoDebugHalt<CR>
+autocmd FileType go map <F9> :GoDebugBreakpoint<CR>
+autocmd FileType go map <F10> :GoDebugNext<CR>
+autocmd FileType go map <F11> :GoDebugStep<CR>
 
 " :A!/:AV!/:AH!/:AT!
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
