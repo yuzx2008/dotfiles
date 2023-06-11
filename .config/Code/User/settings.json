@@ -201,7 +201,11 @@
     "terminal.integrated.defaultProfile.linux": "R Terminal",
     "debug.console.wordWrap": false,
     "debug.console.collapseIdenticalLines": false,
-    "debug.console.fontSize": 10,
-    "debug.console.fontFamily": "'DejaVu Sans Mono', '文泉驿等宽正黑'",
-    "debug.terminal.clearBeforeReusing": true
+    // "debug.console.fontSize": 12,
+    // "debug.console.fontFamily": "'Noto Emoji', 'DejaVu Sans Mono', '文泉驿等宽正黑'",
+    "debug.terminal.clearBeforeReusing": true,
+    "terminal.integrated.scrollback": 10000,
+    "SenseCode.Prompt": {
+        "sense": "1"
+    }
 }
