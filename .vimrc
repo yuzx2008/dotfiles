@@ -112,6 +112,7 @@ let g:tagbar_type_go = {
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 let g:go_gopls_options = ["-remote=127.0.0.1:60098", "-logfile=auto", "-debug=:0", "-rpc.trace"]
+" let g:go_debug=['lsp']
 Plug 'fatih/vim-go'
 " 支持 struct 等 split-join
 " Plug 'AndrewRadev/splitjoin.vim'
