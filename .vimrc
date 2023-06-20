@@ -454,31 +454,45 @@ if !exists("g:os")
   endif
 endif
 
+function HandleText(channel) abort
+  let text = []
+  while ch_status(a:channel, {'part': 'out'}) == 'buffered'
+    let text += [ch_read(a:channel)]
+  endwhile
+  let text = join(text, '\n')
+  " imagine more vimscript functions that use `text`, below
+endfunction
+
 " fcitx 退出插入模式，切换英文输入
 function! Fcitx2En()
+  " system 同步调用，切换 normal 模式卡顿，导致 hjkl 字符残留在屏幕上
   if g:os == "Darwin"
-    let s:input_status = system("im-select")
-    if s:input_status != "com.apple.keylayout.ABC"
-      let l:a = system("im-select com.apple.keylayout.ABC")
-    endif
+    " let s:input_status = system("im-select")
+    " if s:input_status != "com.apple.keylayout.ABC"
+    "   let l:a = system("im-select com.apple.keylayout.ABC")
+    " endif
+    let job = job_start(['sh', '-c', 'im-select com.apple.keylayout.ABC'], #{close_cb: 'HandleText'})
   elseif g:os == "Linux"
-    let s:input_status = system("fcitx5-remote")
-    if s:input_status == 2
-      let l:a = system("fcitx5-remote -c")
-    endif
+    " let s:input_status = system("fcitx5-remote")
+    " if s:input_status == 2
+    "   let l:a = system("fcitx5-remote -c")
+    " endif
+    let job = job_start(['sh', '-c', 'fcitx5-remote -c'], #{close_cb: 'HandleText'})
   endif
 endfunction
 function! Fcitx2Zh()
   if g:os == "Darwin"
-    let s:input_status = system("im-select")
-    if s:input_status != "com.apple.keylayout.ABC"
-      let l:a = system("im-select com.sogou.inputmethod.sogou.pinyin")
-    endif
+    " let s:input_status = system("im-select")
+    " if s:input_status != "com.apple.keylayout.ABC"
+    "   let l:a = system("im-select com.sogou.inputmethod.sogou.pinyin")
+    " endif
+    let job = job_start(['sh', '-c', 'im-select com.sogou.inputmethod.sogou.pinyin'], #{close_cb: 'HandleText'})
   elseif g:os == "Linux"
-    let s:input_status = system("fcitx5-remote")
-    if s:input_status != 2
-      let l:a = system("fcitx5-remote -o")
-    endif
+    " let s:input_status = system("fcitx5-remote")
+    " if s:input_status != 2
+    "   " let l:a = system("fcitx5-remote -o")
+    " endif
+    let job = job_start(['sh', '-c', 'im-select com.sogou.inputmethod.sogou.pinyin'], #{close_cb: 'HandleText'})
   endif
 endfunction
 " 退出插入模式
