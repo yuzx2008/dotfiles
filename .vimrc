@@ -113,10 +113,6 @@ let g:tagbar_type_go = {
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 let g:go_gopls_options = ["-remote=127.0.0.1:60098", "-logfile=auto", "-debug=:0", "-rpc.trace"]
 Plug 'fatih/vim-go'
-" 支持 struct 等 split-join
-" Plug 'AndrewRadev/splitjoin.vim'
-" 代码追踪，gd 自动跳转
-Plug 'dgryski/vim-godef'
 
 let g:go_test_timeout = '10s'
 let g:go_fmt_autosave = 0
@@ -204,7 +200,6 @@ set wildmenu
 " Add the g flag to search/replace by default
 " :%s/d/c/gc 不再需要加 g，加 g 反而为 searchFirst
 " set gdefault
-
 
 " Clear search highlight by hitting enter
 nnoremap <silent> <CR> :noh<CR>
@@ -358,8 +353,7 @@ set laststatus=2
 set lazyredraw
 " Optimize for fast terminal connections
 set ttyfast
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set updatetime=300
 
 " Show the current mode
@@ -535,14 +529,6 @@ map <Leader>v "0p
 vnoremap < <gv
 vnoremap > >gv
 
-" map <Esc>[13;5u <C-CR>
-" ~/.vim/plugged/Nvim-R/R/common_global.vim
-" nnoremap <C-CR> :call SendLineToR("down")<CR>
-" xnoremap <C-CR> :call SendSelectionToR("echo", "down", "normal")<CR>
-" inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
-" autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
-" autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
-
 " let g:coc_global_extensions = ['coc-snippets', 'coc-tag', 'coc-pyright', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur', 'coc-rust-analyzer']
 
 "" coc.nvim
@@ -631,14 +617,20 @@ augroup end
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
+" Run the Code Lens action on the current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
