@@ -691,3 +691,5 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " explorer
 nnoremap <silent><nowait> <space>x  :<C-u>CocCommand explorer<cr>
+" yank
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
