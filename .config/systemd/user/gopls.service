@@ -1,9 +1,15 @@
 [Unit]
 Description=gopls
 
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
 [Service]
 ExecStart=/usr/local/bin/zsh /home/yuzx/.config/systemd/user/run_gopls.sh
 ExecReload=/bin/kill -HUP $MAINPID
+
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=default.target
