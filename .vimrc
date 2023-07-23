@@ -95,6 +95,14 @@ Plug 'neoclide/jsonc.vim'
 Plug 'preservim/tagbar'
 nmap <F2> :TagbarToggle<CR>
 
+Plug 'preservim/vimux'
+let g:delve_breakpoint_sign = '*'
+let g:delve_tracepoint_sign = '?'
+let g:delve_new_command = 'new'
+let g:delve_enable_linenr_highlighting = 1
+let g:delve_use_vimux = 1
+Plug 'sebdah/vim-delve'
+
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
