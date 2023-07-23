@@ -55,6 +55,19 @@ if !has('gui_running')
 endif
 
 Plug 'itchyny/lightline.vim'
+" coc.nvim
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'cocstatus': 'coc#status'
+	\ },
+	\ }
+" Use autocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 Plug 'tyru/open-browser.vim'
 Plug 'yuzx2008/previm'
@@ -111,10 +124,12 @@ let g:tagbar_type_go = {
 \ }
 
 let g:go_gopls_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
+let g:go_def_mapping_enabled = 0
+let g:go_diagnostics_enabled = 0
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 let g:go_gopls_options = ["-remote=127.0.0.1:60098", "-logfile=auto", "-debug=:0", "-rpc.trace"]
 " let g:go_debug=['lsp']
-let g:go_def_mapping_enabled = 0
 Plug 'fatih/vim-go'
 
 let g:go_test_timeout = '10s'
