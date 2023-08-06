@@ -102,13 +102,13 @@ let g:delve_new_command = 'new'
 let g:delve_enable_linenr_highlighting = 1
 let g:delve_use_vimux = 1
 Plug 'sebdah/vim-delve'
+noremap <leader>b :DlvAddBreakpoint<CR>
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
 
 filetype plugin indent on
-
 
 " Enhance command-line completion（vim 自身命令行模式智能补全）
 set wildmenu

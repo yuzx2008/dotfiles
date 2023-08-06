@@ -55,6 +55,19 @@ if !has('gui_running')
 endif
 
 Plug 'itchyny/lightline.vim'
+" coc.nvim
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'cocstatus': 'coc#status'
+	\ },
+	\ }
+" Use autocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 Plug 'tyru/open-browser.vim'
 Plug 'yuzx2008/previm'
@@ -80,110 +93,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
 
 Plug 'preservim/tagbar'
-nmap <F8> :TagbarToggle<CR>
+nmap <F2> :TagbarToggle<CR>
 
-let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-\ }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-let g:go_gopls_options = ["-remote=127.0.0.1:60098", "-logfile=auto", "-debug=:0", "-rpc.trace"]
-Plug 'fatih/vim-go'
-" 支持 struct 等 split-join
-" Plug 'AndrewRadev/splitjoin.vim'
-" 代码追踪，gd 自动跳转
-Plug 'dgryski/vim-godef'
-
-let g:go_test_timeout = '10s'
-let g:go_fmt_autosave = 0
-" goimports 比 gofmt 导入 package 更好，大 code base 会慢
-let g:go_fmt_command = "goimports"
-" 默认 snake_case
-" let g:go_addtags_transform = "camelcase"
-" let g:go_fmt_fail_silently = 1
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-" gometalinter 很快
-" let g:go_metalinter_autosave = 1
-" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-" let g:go_metalinter_deadline = "5s"
-" 当光标在标识符上，status line 自动显式 go-info，可设置更新时间 set updatetime=100，默认 800ms
-let g:go_auto_type_info = 1
-" :GoSameIds 自动
-let g:go_auto_sameids = 1
-" let g:go_debug_log_output = 'debugger,rpc'
-let g:go_debug_log_output = ''
-" let g:go_debug_windows = {
-"        \ 'vars':       'leftabove 30vnew',
-"        \ 'stack':      'leftabove 20new',
-"        \ 'goroutines': 'botright 10new',
-"        \ 'out':        'botright 5new',
-" \ }
-let g:go_debug_windows = {
-      \ 'vars':       'rightbelow 50vnew',
-      \ 'stack':      'rightbelow 10new',
-      \ 'out':        'botright 5new',
-      \ }
-" F5 continue
-" F9 add breakpoint
-" F8 halt
-" F10 next
-" F11 step in
-let g:go_debug_mappings = {
-      \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
-      \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
-      \ '(go-debug-step)': {'key': 's'},
-      \ '(go-debug-print)': {'key': 'p'},
-  \}
-
-map <leader>ds :GoDebugStart<cr>
-map <leader>dt :GoDebugStop<cr>
-map <leader>db :GoDebugBreakpoint<cr>
-
-" :A!/:AV!/:AH!/:AT!
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd Filetype go command! -bang AH call go#alternate#Switch(<bang>0, 'split')
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>t <Plug>(go-test-func)
-autocmd FileType go nmap <Leader>co <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <leader>ru <Plug>(go-run)
+Plug 'preservim/vimux'
+let g:delve_new_command = 'new'
+let g:delve_enable_linenr_highlighting = 1
+let g:delve_use_vimux = 1
+Plug 'sebdah/vim-delve'
+noremap <leader>b :DlvToggleBreakpoint<CR>
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -191,14 +108,12 @@ call plug#end()
 
 filetype plugin indent on
 
-
 " Enhance command-line completion（vim 自身命令行模式智能补全）
 set wildmenu
 
 " Add the g flag to search/replace by default
 " :%s/d/c/gc 不再需要加 g，加 g 反而为 searchFirst
 " set gdefault
-
 
 " Clear search highlight by hitting enter
 nnoremap <silent> <CR> :noh<CR>
@@ -352,8 +267,7 @@ set laststatus=2
 set lazyredraw
 " Optimize for fast terminal connections
 set ttyfast
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set updatetime=300
 
 " Show the current mode
@@ -377,21 +291,6 @@ highlight link markdownItalic NONE
 highlight link markdownBoldItalic NONE
 highlight link markdownBoldItalicDelimiter NONE
 
-" Set cursor shape and color
-" INSERT mode
-let &t_SI = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
-" REPLACE mode
-let &t_SR = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
-" NORMAL mode
-" https://www.ditig.com/256-colors-cheat-sheet
-let &t_EI = "\<Esc>[2 q" . "\<Esc>]12;rgb:9E/9E/9E\x7"
-" 1 -> blinking block  闪烁的方块
-" 2 -> solid block  不闪烁的方块
-" 3 -> blinking underscore  闪烁的下划线
-" 4 -> solid underscore  不闪烁的下划线
-" 5 -> blinking vertical bar  闪烁的竖线
-" 6 -> solid vertical bar  不闪烁的竖线
-
 " open help in new tab
 cabbrev help tab help
 
@@ -409,7 +308,7 @@ autocmd BufNewFile,BufRead .aliases set filetype=sh
 " to bottom if log
 autocmd BufNewFile,BufRead *.log normal G
 " markdown 自动换行
-autocmd FileType markdown set wrap
+" autocmd FileType markdown set wrap
 " autocmd FileType markdown %retab! 2
 " autocmd FileType yaml %retab! 2
 " autocmd FileType ruby autocmd BufWrite <buffer> RuboCop -a
@@ -421,7 +320,7 @@ autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetFileHeaderPart()
 autocmd BufNewFile * normal G
 " Python 设置，如：不要 tab 等，.editconfig
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType python map <F12> :!python %<CR>
+" autocmd FileType python map <F12> :!python %<CR>
 autocmd BufRead,BufNewFile *Makefile* setlocal filetype=make
 autocmd BufRead,BufNewFile *makefile* setlocal filetype=make
 autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
@@ -448,31 +347,45 @@ if !exists("g:os")
   endif
 endif
 
+function HandleText(channel) abort
+  let text = []
+  while ch_status(a:channel, {'part': 'out'}) == 'buffered'
+    let text += [ch_read(a:channel)]
+  endwhile
+  let text = join(text, '\n')
+  " imagine more vimscript functions that use `text`, below
+endfunction
+
 " fcitx 退出插入模式，切换英文输入
 function! Fcitx2En()
+  " system 同步调用，切换 normal 模式卡顿，导致 hjkl 字符残留在屏幕上
   if g:os == "Darwin"
-    let s:input_status = system("im-select")
-    if s:input_status != "com.apple.keylayout.ABC"
-      let l:a = system("im-select com.apple.keylayout.ABC")
-    endif
+    " let s:input_status = system("im-select")
+    " if s:input_status != "com.apple.keylayout.ABC"
+    "   let l:a = system("im-select com.apple.keylayout.ABC")
+    " endif
+    let job = job_start(['sh', '-c', 'im-select com.apple.keylayout.ABC'], #{close_cb: 'HandleText'})
   elseif g:os == "Linux"
-    let s:input_status = system("fcitx5-remote")
-    if s:input_status == 2
-      let l:a = system("fcitx5-remote -c")
-    endif
+    " let s:input_status = system("fcitx5-remote")
+    " if s:input_status == 2
+    "   let l:a = system("fcitx5-remote -c")
+    " endif
+    let job = job_start(['sh', '-c', 'fcitx5-remote -c'], #{close_cb: 'HandleText'})
   endif
 endfunction
 function! Fcitx2Zh()
   if g:os == "Darwin"
-    let s:input_status = system("im-select")
-    if s:input_status != "com.apple.keylayout.ABC"
-      let l:a = system("im-select com.sogou.inputmethod.sogou.pinyin")
-    endif
+    " let s:input_status = system("im-select")
+    " if s:input_status != "com.apple.keylayout.ABC"
+    "   let l:a = system("im-select com.sogou.inputmethod.sogou.pinyin")
+    " endif
+    let job = job_start(['sh', '-c', 'im-select com.sogou.inputmethod.sogou.pinyin'], #{close_cb: 'HandleText'})
   elseif g:os == "Linux"
-    let s:input_status = system("fcitx5-remote")
-    if s:input_status != 2
-      let l:a = system("fcitx5-remote -o")
-    endif
+    " let s:input_status = system("fcitx5-remote")
+    " if s:input_status != 2
+    "   " let l:a = system("fcitx5-remote -o")
+    " endif
+    let job = job_start(['sh', '-c', 'im-select com.sogou.inputmethod.sogou.pinyin'], #{close_cb: 'HandleText'})
   endif
 endfunction
 " 退出插入模式
@@ -485,8 +398,8 @@ autocmd InsertLeave * call Fcitx2En()
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
 
-map <F9> :NERDTreeToggle<CR>
-imap <F9> <ESC>:NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <ESC>:NERDTreeToggle<CR>
 
 " 在 bash 中执行光标所在行
 " GoGuild
@@ -514,14 +427,6 @@ map <Leader>v "0p
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-
-" map <Esc>[13;5u <C-CR>
-" ~/.vim/plugged/Nvim-R/R/common_global.vim
-" nnoremap <C-CR> :call SendLineToR("down")<CR>
-" xnoremap <C-CR> :call SendSelectionToR("echo", "down", "normal")<CR>
-" inoremap <C-CR> <ESC>:call SendLineToR("down")<CR>
-" autocmd VimLeave * if exists("g:SendCmdToR") && string(g:SendCmdToR) != "function('SendCmdToR_fake')" | call RQuit("nosave") | endif
-" autocmd QuitPre * if exists("g:SendCmdToR") | call RQuit("nosave") | endif
 
 " let g:coc_global_extensions = ['coc-snippets', 'coc-tag', 'coc-pyright', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur', 'coc-rust-analyzer']
 
@@ -611,14 +516,20 @@ augroup end
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
+" Run the Code Lens action on the current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -646,7 +557,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
-nmap <F3> :call CocActionAsync('format')<CR>
+" nmap <F5> :call CocActionAsync('format')<CR>
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -678,3 +589,5 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " explorer
 nnoremap <silent><nowait> <space>x  :<C-u>CocCommand explorer<cr>
+" yank
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
