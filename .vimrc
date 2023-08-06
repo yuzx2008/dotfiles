@@ -96,13 +96,11 @@ Plug 'preservim/tagbar'
 nmap <F2> :TagbarToggle<CR>
 
 Plug 'preservim/vimux'
-let g:delve_breakpoint_sign = '*'
-let g:delve_tracepoint_sign = '?'
 let g:delve_new_command = 'new'
 let g:delve_enable_linenr_highlighting = 1
 let g:delve_use_vimux = 1
 Plug 'sebdah/vim-delve'
-noremap <leader>b :DlvAddBreakpoint<CR>
+noremap <leader>b :DlvToggleBreakpoint<CR>
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -293,21 +291,6 @@ highlight link markdownItalic NONE
 highlight link markdownBoldItalic NONE
 highlight link markdownBoldItalicDelimiter NONE
 
-" Set cursor shape and color
-" INSERT mode
-let &t_SI = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
-" REPLACE mode
-let &t_SR = "\<Esc>[1 q" . "\<Esc>]12;green\x7"
-" NORMAL mode
-" https://www.ditig.com/256-colors-cheat-sheet
-let &t_EI = "\<Esc>[2 q" . "\<Esc>]12;rgb:9E/9E/9E\x7"
-" 1 -> blinking block  闪烁的方块
-" 2 -> solid block  不闪烁的方块
-" 3 -> blinking underscore  闪烁的下划线
-" 4 -> solid underscore  不闪烁的下划线
-" 5 -> blinking vertical bar  闪烁的竖线
-" 6 -> solid vertical bar  不闪烁的竖线
-
 " open help in new tab
 cabbrev help tab help
 
@@ -325,7 +308,7 @@ autocmd BufNewFile,BufRead .aliases set filetype=sh
 " to bottom if log
 autocmd BufNewFile,BufRead *.log normal G
 " markdown 自动换行
-autocmd FileType markdown set wrap
+" autocmd FileType markdown set wrap
 " autocmd FileType markdown %retab! 2
 " autocmd FileType yaml %retab! 2
 " autocmd FileType ruby autocmd BufWrite <buffer> RuboCop -a
