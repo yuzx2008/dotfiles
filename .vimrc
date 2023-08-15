@@ -87,7 +87,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " rust
-" Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " json filetype=jsonc 允许 json 中包含注释
 Plug 'neoclide/jsonc.vim'

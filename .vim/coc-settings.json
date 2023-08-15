@@ -24,6 +24,11 @@
     "MD013": false,
     "MD046": false
   },
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**"
+  ],
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.messageTarget": "float",
   "diagnostic-languageserver.filetypes": {
