@@ -1,0 +1,4 @@
+select-pane -t 0    # 选中第 0 个窗格
+split-window -v -l 10  # 分成上下两个
+select-pane -t 0     # 选回第 0
+

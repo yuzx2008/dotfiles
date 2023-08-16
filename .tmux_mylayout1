@@ -1,6 +1,6 @@
-selectp -t 0    # 选中第 0 个窗格
-splitw -h -p 50  # 分左右两个
-selectp -t 1     # 选中 1，右边那个
-splitw -v -p 50  # 分成上下两个
-selectp -t 0     # 选回第 0
+select-pane -t 0    # 选中第 0 个窗格
+split-window -h -l 50%  # 分左右两个
+select-pane -t 1     # 选中 1，右边那个
+split-window -v -l 50%  # 分成上下两个
+select-pane -t 0     # 选回第 0
 
