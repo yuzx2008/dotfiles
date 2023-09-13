@@ -118,6 +118,7 @@
     "java.maven.downloadSources": true,
     "java.maven.updateSnapshots": false,
     "java.eclipse.downloadSources": true,
+    "java.format.comments.enabled": false,
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/home/yuzx/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
     "java.configuration.runtimes": [
         {
@@ -142,15 +143,15 @@
     "workbench.colorCustomizations": {
         "tab.activeBorder": "#ffff00",
         "tab.unfocusedActiveBorder": "#000000",
-        "statusBar.background": "#5f0000",
-        "statusBar.noFolderBackground": "#5f0000",
-        "statusBar.debuggingBackground": "#5f0000",
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f",
         "editor.findMatchBackground": "#00cc44a8",
         "editor.findMatchHighlightBackground": "#ff7b00a1",
         "editor.wordHighlightBackground": "#00cc44a8"
     },
     "[r]": {
-        "editor.defaultFormatter": "REditorSupport.r"
+        "editor.defaultFormatter": "jkroening.vscoder"
     },
     "editor.quickSuggestions": {
         "strings": true
@@ -198,7 +199,7 @@
     "workbench.tree.indent": 16,
     "workbench.iconTheme": "vs-minimal",
     "security.workspace.trust.untrustedFiles": "open",
-    "terminal.integrated.defaultProfile.linux": "R Terminal",
+    "terminal.integrated.defaultProfile.linux": "zsh",
     "debug.console.wordWrap": false,
     "debug.console.collapseIdenticalLines": false,
     // "debug.console.fontSize": 12,
