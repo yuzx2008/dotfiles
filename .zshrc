@@ -24,6 +24,10 @@ setopt HIST_IGNORE_ALL_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
 
+# 粘贴 # 开头行报错：bad pattern
+# unsetopt INTERACTIVE_COMMENTS
+unsetopt BAD_PATTERN
+
 # setopt CORRECT
 # setopt CORRECT_ALL
 
