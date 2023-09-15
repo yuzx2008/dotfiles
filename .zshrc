@@ -87,6 +87,7 @@ export PATH=$PATH:$ANDROID_NDK
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 export PATH=$PATH:$OOZIE_CLIENT_HOME/bin
 export PATH=$PATH:/opt/bin
+export PATH="$HOME/.cabal/bin:$PATH"
 
 # swift 4 tensorflow
 export PATH=$PATH:/opt/usr/bin
@@ -104,7 +105,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
 
 # GOPATH
 export GOPROXY=https://goproxy.cn
-export GOPRIVATE=gitlab.bj.sensetime.com/*
+export GOPRIVATE=gitlab.bj.sensetime.com
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/mysql/bin
@@ -124,8 +125,8 @@ export PATH=$PATH:$HOME/.krew/bin
 export PATH=$PATH:/usr/local/libexec
 
 # 4 fcitx
-export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk-3-0/gtk-query-immodules-3.0
-export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0/gtk-query-immodules-2.0
+export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk-3-0
+export PATH=$PATH:/usr/lib/x86_64-linux-gnu/libgtk2.0-0
 export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/local/lib/gtk-4.0
 
 # export PATH="/opt/miniconda3/bin:$PATH"  # commented out by conda initialize
@@ -318,10 +319,29 @@ function preexec {
 function precmd {
 }
 
-# Add yellow marker when connected over SSH
-if [ -n "$SSH_CONNECTION" ]; then
-    PS1="$sshsegment $PS1"
-    padding=""
-else
-    padding=" "
-fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/yuzx/go/bin/mc mc
+
+# zsh completion for step
+_step() {
+  local -a opts
+  local cur
+  cur=${words[-1]}
+  if [[ "$cur" == "-"* ]]; then
+    opts=("${(@f)$(_CLI_ZSH_AUTOCOMPLETE_HACK=1 ${words[@]:0:#words[@]-1} ${cur} --generate-bash-completion)}")
+  else
+    opts=("${(@f)$(_CLI_ZSH_AUTOCOMPLETE_HACK=1 ${words[@]:0:#words[@]-1} --generate-bash-completion)}")
+  fi
+
+  if [[ "${opts[1]}" != "" ]]; then
+    _describe 'values' opts
+  else
+    _files
+  fi
+
+  return
+}
+
+compdef _step step
+
