@@ -282,6 +282,10 @@ export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share:/va
 export LANGUAGE=en_US:en
 export LC_TIME=en_US.UTF-8
 
+# 避免 snap run xxx 出现 /user.slice/user-1000.slice/session-1.scope is not a snap cgroup
+# XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

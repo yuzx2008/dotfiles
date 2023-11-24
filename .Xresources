@@ -72,7 +72,7 @@ xterm*cursorBlink: true
 Xft.autohint: True
 Xft.lcdfilter: lcddefault
 Xft.render: True
-Xft.core: Flase
+Xft.core: False
 Xft.dpi: 96
 Xft.antialias: True
 Xft.rgba: "rgb"
