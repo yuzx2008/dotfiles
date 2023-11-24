@@ -67,8 +67,11 @@
     "-debug=:0",
     "-rpc.trace"
   ],
-  "java.enabled": false,
+  "java.enabled": true,
   "java.jdt.ls.java.home": "/usr/local/jdk17",
+  "java.import.gradle.enabled": false,
+  "java.configuration.maven.globalSettings": "/usr/local/maven/conf/settings.xml",
+  "java.format.comments.enabled": false,
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-1.8",
@@ -111,7 +114,7 @@
   "go.trace.server": "verbose",
   // 避免傻傻地去验证 prometheus.yaml
   "yaml.schemaStore.enable": false
-  //"diagnostic.displayByAle": true,
+  // "diagnostic.displayByAle": true,
   // 修改自动完成窗口的颜色
   // "suggest.completionItemKindLabels": {
   // 		"keyword": "\u0000",
