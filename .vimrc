@@ -23,6 +23,15 @@ let maplocalleader = ','
 call plug#begin('~/.vim/plugged')
 
 " vim-colors-solarized
+let g:solarized_termcolors=256
+" light dark
+if has('gui_running')
+  set background=light
+else
+  set background=dark
+  " let g:solarized_termcolors=256
+endif
+" colorscheme solarized
 " Plug 'altercation/vim-colors-solarized'
 
 " http://editorconfig.org/ && ~/.editorconfig
@@ -101,6 +110,14 @@ let g:delve_enable_linenr_highlighting = 1
 let g:delve_use_vimux = 1
 Plug 'sebdah/vim-delve'
 noremap <leader>b :DlvToggleBreakpoint<CR>
+
+" disable auto format. but :GoImportRun will work.
+let g:goimports = 0
+" enable simplify filter
+let g:goimports_simplify = 1
+" run goimports with `-local "github.com/myrepo"` option
+let g:goimports_local = 'github.com/yuzx2008'
+Plug 'mattn/vim-goimports'
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -226,15 +243,6 @@ set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
 " set list
 
 "" color
-
-" light dark
-if has('gui_running')
-  set background=light
-else
-  set background=dark
-  " let g:solarized_termcolors=256
-endif
-" colorscheme solarized
 
 " transparent support ctermfg=252
 highlight Normal ctermbg=none
@@ -427,6 +435,9 @@ map <Leader>v "0p
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
+
+" Search for visually selected text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " let g:coc_global_extensions = ['coc-snippets', 'coc-tag', 'coc-pyright', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur', 'coc-rust-analyzer']
 
