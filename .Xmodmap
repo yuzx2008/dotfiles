@@ -2,3 +2,4 @@ clear lock
 add control = Caps_Lock Control_L Control_R
 keycode 66 = Escape NoSymbol Escape
 
+! keycode 9 = asciitilde asciitilde asciitilde asciitilde
