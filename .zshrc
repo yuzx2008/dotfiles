@@ -279,7 +279,6 @@ export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share
 
-export LANGUAGE=en_US:en
 export LC_TIME=en_US.UTF-8
 
 # 避免 snap run xxx 出现 /user.slice/user-1000.slice/session-1.scope is not a snap cgroup

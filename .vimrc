@@ -44,7 +44,7 @@ Plug 'editorconfig/editorconfig-vim'
 set grepformat=%f:%l:%c:%m
 
 " c-f 切换 mru/files/buf
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*.html,*.htm " MacOSX/Linux
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -333,8 +333,13 @@ autocmd BufRead,BufNewFile *Makefile* setlocal filetype=make
 autocmd BufRead,BufNewFile *makefile* setlocal filetype=make
 autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType sh setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 " 退出插入模式指定类型文件自动保存
 " autocmd InsertLeave *.go,*.sh,*.md write
+
+augroup JsonToJsonc
+    autocmd! FileType json set filetype=jsonc
+augroup end
 
 " go
 " autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
