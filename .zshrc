@@ -185,7 +185,7 @@ alias start_oozie="/usr/local/oozie/bin/oozied.sh start"
 alias stop_oozie="/usr/local/oozie/bin/oozied.sh stop"
 alias conda-b="conda activate base"
 
-alias start_gopls="gopls serve -listen=127.0.0.1:60098 -logfile=/tmp/gopls.log -debug=127.0.0.1:60099"
+alias start_gopls="gopls serve -listen=127.0.0.1:60098 -logfile=/tmp/gopls-server.log -debug=127.0.0.1:60099"
 
 alias k=/usr/local/bin/kubectl
 alias kf="/usr/local/bin/kubectl --grace-period=0 --force --wait=false"
