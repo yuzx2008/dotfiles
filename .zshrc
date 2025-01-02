@@ -39,6 +39,8 @@ setopt GLOB_COMPLETE
 autoload -Uz compinit
 compinit
 
+export PATH=$PATH:$HOME/.cargo/bin
+
 # .oh-my-zsh 太慢，换这个 rust 开发的，非常快
 eval "$(starship init zsh)"
 
@@ -137,12 +139,10 @@ export GTK_PATH=$GTK_PATH:/usr/local/lib/gtk-2.0:/usr/local/lib/gtk-3.0:/usr/loc
 
 export PATH=$PATH:/usr/local/pgsql/bin
 
-export GTK_DEBUG=modules
+# export GTK_DEBUG=modules
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-
-source $HOME/.cargo/env
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
 
@@ -277,7 +277,7 @@ export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 # 用于更新 rustup
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
-export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share
 
 export LC_TIME=en_US.UTF-8
 
