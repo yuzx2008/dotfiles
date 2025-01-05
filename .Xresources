@@ -12,12 +12,12 @@ xterm*utf8: true
 ! Specify the pattern for scalable fonts selected from the FreeType library if support for that library was compiled into xterm.  There is no default value.
 ! fc-list :scalable=true:spacing=mono: family
 ! DejaVu Sans Mono:style=Book:antialias=True:pixelsize=12
-xterm*faceName: Noto Emoji:style=Regular:antialias=True:pixelsize=10
+xterm*faceName: DejaVu Sans Mono:style=Book:antialias=True:pixelsize=10
 
 ! Specify a double-width scalable font for cases where an application requires this, e.g., in CJK applications.  There is no default value.
 ! If the application uses double-wide characters and this resource is not given, xterm will use a scaled version of the font given by faceName.
 ! WenQuanYi Zen Hei, WenQuanYi Zen Hei Mono, WenQuanYi Zen Hei Sharp, WenQuanYi Zen Micro Hei, WenQuanYi Zen Micro Hei Mono
-xterm*faceNameDoublesize: Noto Emoji:style=Regular:antialias=True:pixelsize=10
+xterm*faceNameDoublesize: WenQuanYi Zen Hei Mono:style=Regular:antialias=True:pixelsize=10
 
 ! Specify the pointsize for fonts selected from the FreeType library if support for that library was compiled into xterm.
 ! xterm*faceSize: 12
