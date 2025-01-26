@@ -24,14 +24,49 @@
     "MD013": false,
     "MD046": false
   },
-  "workspace.ignoredFolders": [
-    "$HOME",
-    "$HOME/.cargo/**",
-    "$HOME/.rustup/**"
-  ],
+  "workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.messageTarget": "float",
+  "diagnostic-languageserver.linters": {
+    "pylint": {
+      "sourceName": "pylint",
+      "command": "pylint",
+      "debounce": 100,
+      "args": [
+        "--output-format",
+        "text",
+        "--score",
+        "no",
+        "--msg-template",
+        "'{line}:{column}:{category}:{msg} ({msg_id}:{symbol})'",
+        "%file"
+      ],
+      "formatPattern": [
+        "^(\\d+?):(\\d+?):([a-z]+?):(.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "endColumn": 2,
+          "security": 3,
+          "message": 4
+        }
+      ],
+      "rootPatterns": ["pyproject.toml", "setup.py", ".git"],
+      "securities": {
+        "informational": "hint",
+        "refactor": "info",
+        "convention": "info",
+        "warning": "warning",
+        "error": "error",
+        "fatal": "error"
+      },
+      "offsetColumn": 1,
+      "offsetColumnEnd": 1,
+      "formatLines": 1
+    }
+  },
   "diagnostic-languageserver.filetypes": {
+    "python": "pylint",
     "vim": "vint",
     "email": "languagetool",
     "markdown": ["write-good", "markdownlint"],
@@ -48,10 +83,25 @@
     "elixir": "mix_format",
     "eelixir": "mix_format",
     "python": ["black", "isort"],
+    // "python": ["black", "isort", "docformatter"],
     "lua": "lua-format",
     "sh": "shfmt",
     "blade": "blade-formatter",
     "cmake": "cmake-format"
+  },
+  "diagnostic-languageserver.formatters": {
+    "black": {
+      "command": "black",
+      "args": ["-q", "-"]
+    },
+    "isort": {
+      "command": "isort",
+      "args": ["-q", "-"]
+    },
+    "docformatter": {
+      "command": "docformatter",
+      "args": ["-"]
+    }
   },
   "explorer.file.column.indent.chars": " ",
   "explorer.width": 26,
@@ -94,7 +144,6 @@
       "embed": false,
       "directive": false,
       "assign": false,
-      "fieldalignment": false,
       "unusedvariable": false,
       "unusedresult": false,
       "unusedwrite": false,
@@ -102,9 +151,7 @@
       "unreachable": false,
       "buildtag": false,
       "cgocall": false,
-      "stubmethods": false,
       "infertypeargs": false,
-      "fillstruct": false,
       "undeclaredname": false,
       "noresultvalues": false,
       "nonewvars": false,
@@ -113,7 +160,8 @@
   },
   "go.trace.server": "verbose",
   // 避免傻傻地去验证 prometheus.yaml
-  "yaml.schemaStore.enable": false
+  "yaml.schemaStore.enable": false,
+  "snippets.ultisnips.pythonPrompt": false,
   // "diagnostic.displayByAle": true,
   // 修改自动完成窗口的颜色
   // "suggest.completionItemKindLabels": {
@@ -143,4 +191,36 @@
   // 		"typeParameter": "\uf728",
   // 		"default": "\u0000"
   // }
+  "jedi.enable": true,
+  "jedi.startupMessage": false,
+  "jedi.markupKindPreferred": "plaintext",
+  "jedi.trace.server": "off",
+  "jedi.jediSettings.autoImportModules": [],
+  "jedi.jediSettings.caseInsensitiveCompletion": true,
+  "jedi.jediSettings.debug": false,
+  "jedi.executable.command": "jedi-language-server",
+  "jedi.executable.args": [],
+  "jedi.codeAction.nameExtractFunction": "jls_extract_def",
+  "jedi.codeAction.nameExtractVariable": "jls_extract_var",
+  "jedi.completion.disableSnippets": false,
+  "jedi.completion.resolveEagerly": false,
+  "jedi.completion.ignorePatterns": [],
+  "jedi.diagnostics.enable": true,
+  "jedi.diagnostics.didOpen": true,
+  "jedi.diagnostics.didChange": true,
+  "jedi.diagnostics.didSave": true,
+  "jedi.hover.enable": true,
+  "jedi.hover.disable.keyword.all": false,
+  "jedi.hover.disable.keyword.names": [],
+  "jedi.hover.disable.keyword.fullNames": [],
+  "jedi.workspace.extraPaths": [],
+  "jedi.workspace.environmentPath": "/usr/local/bin/py3",
+  "jedi.workspace.symbols.maxSymbols": 20,
+  "jedi.workspace.symbols.ignoreFolders": [
+    ".nox",
+    ".tox",
+    ".venv",
+    "__pycache__",
+    "venv"
+  ]
 }
