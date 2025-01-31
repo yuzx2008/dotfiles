@@ -283,7 +283,7 @@ export LC_TIME=en_US.UTF-8
 
 # 避免 snap run xxx 出现 /user.slice/user-1000.slice/session-1.scope is not a snap cgroup
 # XDG_RUNTIME_DIR=/run/user/1000
-export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+# export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
