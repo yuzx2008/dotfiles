@@ -198,5 +198,8 @@
   // "python.pythonPath": "/usr/local/bin/py3",
   "python.analysis.extraPaths": [
     "/opt/NeMo"
-  ]
+  ],
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.parameterTypes": false
 }
