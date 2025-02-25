@@ -141,7 +141,7 @@
 	default = simple
 
 [user]
-	email = yuzhixing@sensetime.com
+	email = yuzx2008@gmail.com
   name = yuzx
 
 [http]
@@ -153,8 +153,6 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[lfs]
-	url = https://lfs.sensetime.com/
 
 # 更换 https
 [url "https://github.com"]
@@ -162,3 +160,5 @@
 
 [status]
   aheadBehind = false
+[init]
+	defaultBranch = main
