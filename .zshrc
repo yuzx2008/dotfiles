@@ -45,7 +45,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 eval "$(starship init zsh)"
 
 source /usr/local/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/lib/zsh-history-substring-search.zsh
+source /usr/local/lib/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 setopt auto_cd
 
