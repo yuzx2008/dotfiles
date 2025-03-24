@@ -108,6 +108,10 @@
     }
   },
   "explorer.file.column.indent.chars": " ",
+  "explorer.keyMappings.global": {
+    "<left>": ["wait", "collapse"],
+    "<right>": ["wait", "expandable?", "expand", "open:tab"]
+  },
   "explorer.width": 26,
   "explorer.file.child.template": "[indent][icon | 1] [filename omitCenter 1]",
   "go.enable": true,
