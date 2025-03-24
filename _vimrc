@@ -198,8 +198,8 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
 "" mouse
 
 " Enable mouse in all modes（Vim 可鼠标，防止终端下无法拷贝）
-" set mouse=a
-set mouse=c
+set mouse=a
+" set mouse=c
 
 "" indent
 
@@ -249,7 +249,7 @@ highlight Normal ctermbg=none
 " GUI fonts
 if has("win32")
     " win32
-    set guifont=Consolas:h10
+    set guifont=Consolas:h11
 elseif has("mac")
     " macos
     set guifont=Hack:h12
@@ -606,3 +606,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 nnoremap <silent><nowait> <space>x  :<C-u>CocCommand explorer<cr>
 " yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+cd c:\Users\yuzx\wiki
+" https://github.com/derekmcloughlin/gvimfullscreen_win32.git
+map <F11> <Esc>:call libcallnr("gvimfullscreen_64.dll", "ToggleFullScreen", 0)<CR>
