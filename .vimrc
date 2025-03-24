@@ -7,6 +7,8 @@ set novisualbell
 if has("gui_running")
     " gui bell
     autocmd GUIEnter * set vb t_vb=
+    set guioptions-=T
+    " set guioptions-=m
 endif
 
 " required
@@ -23,13 +25,12 @@ let maplocalleader = ','
 call plug#begin('~/.vim/plugged')
 
 " vim-colors-solarized
-let g:solarized_termcolors=256
-" light dark
 if has('gui_running')
-  set background=light
+  " light dark
+  set background=dark
 else
   set background=dark
-  " let g:solarized_termcolors=256
+  let g:solarized_termcolors=256
 endif
 " colorscheme solarized
 " Plug 'altercation/vim-colors-solarized'
@@ -250,7 +251,7 @@ highlight Normal ctermbg=none
 " GUI fonts
 if has("win32")
     " win32
-    set guifont=Hack:h9
+    set guifont=Consolas:h11
 elseif has("mac")
     " macos
     set guifont=Hack:h12
@@ -607,3 +608,5 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 nnoremap <silent><nowait> <space>x  :<C-u>CocCommand explorer<cr>
 " yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+" cd ~/wiki

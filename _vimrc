@@ -1,4 +1,3 @@
-
 " be iMproved, required
 set nocompatible
 
@@ -31,8 +30,9 @@ if has('gui_running')
   set background=dark
 else
   set background=dark
-  let g:solarized_termcolors=256
+  " let g:solarized_termcolors=256
 endif
+colorscheme solarized
 Plug 'altercation/vim-colors-solarized'
 
 " http://editorconfig.org/ && ~/.editorconfig
@@ -119,8 +119,6 @@ Plug 'mattn/vim-goimports'
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
-
-colorscheme solarized
 
 filetype plugin indent on
 
