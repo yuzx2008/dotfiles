@@ -169,6 +169,7 @@
   "go.trace.server": "verbose",
   // 避免傻傻地去验证 prometheus.yaml
   "yaml.schemaStore.enable": false,
+  "snippets.ultisnips.enable": false,
   "snippets.ultisnips.pythonPrompt": false,
   // "diagnostic.displayByAle": true,
   // 修改自动完成窗口的颜色

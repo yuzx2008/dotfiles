@@ -86,7 +86,7 @@ let g:UltiSnipsUsePythonVersion=3
 " snippet 引擎
 " Plug 'SirVer/ultisnips'
 " snippet 代码
-Plug 'yuzx2008/vim-snippets'
+" Plug 'yuzx2008/vim-snippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 " 跳至下个 tab stop

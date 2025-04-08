@@ -67,7 +67,7 @@ export GOROOT=/usr/local/go
 export GOPROXY=https://goproxy.cn
 export GOPRIVATE=gitlab.bj.sensetime.com
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:/usr/local/mysql/bin
 export GO111MODULE=on
 
