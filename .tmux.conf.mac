@@ -26,7 +26,7 @@ set-option -g history-limit 10000
 set-option -g allow-rename off
 
 # macOS sierra
-set-option -g default-command "reattach-to-user-namespace -l zsh"
+# set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 # 设置复制模式键盘布局 vi 或 emacs
 set-window-option -g mode-keys vi
@@ -59,7 +59,8 @@ bind-key l select-pane -R
 set-option -g default-terminal "screen-256color"
 
 # ctrl b D（大写），'source-file' understands '-q' to suppress errors for nonexistent files.
-bind D source-file -q ~/.tmux_mylayout1
+bind V source-file -q ~/.tmux_mylayout1
+bind H source-file -q ~/.tmux_mylayout2
 
 set-option -g status on
 
@@ -79,7 +80,7 @@ set -g status-right-length 80
 
 # set -g status-right ""
 # set -g status-right '#[fg=colour136]#(echo $USER)@#H %Y-%m-%d %H:%M'
-set -g status-right '#[fg=colour136]#(echo $USER)@#H'
+set -g status-right '#(echo $USER)@#H'
 
 # for neovim, autoread
 set-option -g focus-events on
@@ -87,35 +88,4 @@ set-option -g focus-events on
 # for neovim, termguicolors
 set-option -sa terminal-overrides ',xterm-256color:RGB'
 
-#### COLOUR (Solarized 256)
-
-# default statusbar colors
-set-option -g status-style fg=colour136,bg=colour235 #yellow and base02
-
-# default window title colors
-set-window-option -g window-status-style fg=colour244,bg=default #base0 and default
-#set-window-option -g window-status-style dim
-
-# active window title colors
-set-window-option -g window-status-current-style fg=colour166,bg=default #orange and default
-#set-window-option -g window-status-current-style bright
-
-# pane border
-set-option -g pane-border-style fg=colour235 #base02
-set-option -g pane-active-border-style fg=colour240 #base01
-
-# message text
-set-option -g message-style fg=colour166,bg=colour235 #orange and base02
-
-# pane number display
-set-option -g display-panes-active-colour colour33 #blue
-set-option -g display-panes-colour colour166 #orange
-
-# clock
-set-window-option -g clock-mode-colour colour64 #green
-
-# bell
-set-window-option -g window-status-bell-style fg=colour235,bg=colour160 #base02, red
 set-window-option -g bell-action any
-
-set-window-option -g extended-keys always
