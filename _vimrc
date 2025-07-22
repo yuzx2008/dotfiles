@@ -38,6 +38,8 @@ Plug 'altercation/vim-colors-solarized'
 " http://editorconfig.org/ && ~/.editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'tpope/vim-fugitive'
+
 " %f 文件
 " %l 行
 " %c 列
@@ -115,6 +117,15 @@ let g:goimports_simplify = 1
 " run goimports with `-local "github.com/myrepo"` option
 let g:goimports_local = 'github.com/yuzx2008'
 Plug 'mattn/vim-goimports'
+
+Plug 'sillybun/vim-repl'
+nnoremap <leader>n :REPLToggle<CR>
+let g:sendtorepl_invoke_key = "<leader>w"
+let g:repl_program = {
+			\	'python': ['python'],
+			\	'default': ['bash']
+			\	}
+
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -440,6 +451,11 @@ vnoremap > >gv
 
 " Search for visually selected text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+nnoremap <S-Up> :resize -1<CR>
+nnoremap <S-Down> :resize +1<CR>
+nnoremap <S-Left> :vertical resize -1<CR>
+nnoremap <S-Right> :vertical resize +1<CR>
 
 " let g:coc_global_extensions = ['coc-snippets', 'coc-tag', 'coc-pyright', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur', 'coc-rust-analyzer']
 
