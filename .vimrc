@@ -120,6 +120,15 @@ let g:goimports_simplify = 1
 let g:goimports_local = 'github.com/yuzx2008'
 Plug 'mattn/vim-goimports'
 
+Plug 'sillybun/vim-repl'
+nnoremap <leader>n :REPLToggle<CR>
+let g:sendtorepl_invoke_key = "<leader>w"
+let g:repl_program = {
+			\	'python': ['python'],
+			\	'default': ['bash']
+			\	}
+
+
 " All of your Plugins must be added before the following line
 " Initialize plugin system
 call plug#end()
