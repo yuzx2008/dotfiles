@@ -56,7 +56,7 @@ bind-key h select-pane -L
 unbind-key l
 bind-key l select-pane -R
 
-set-option -g default-terminal "screen-256color"
+# set-option -g default-terminal "screen-256color"
 
 # ctrl b D（大写），'source-file' understands '-q' to suppress errors for nonexistent files.
 bind V source-file -q ~/.tmux_mylayout1
@@ -86,6 +86,6 @@ set -g status-right '#(echo $USER)@#H'
 set-option -g focus-events on
 
 # for neovim, termguicolors
-set-option -sa terminal-overrides ',xterm-256color:RGB'
+# set-option -sa terminal-overrides ',xterm-256color:RGB'
 
 set-window-option -g bell-action any
