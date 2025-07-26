@@ -39,6 +39,9 @@ setopt GLOB_COMPLETE
 autoload -Uz compinit
 compinit
 
+# 兼容已经存在的 Bash shell completion
+autoload -Uz bashcompinit && bashcompinit
+
 export PATH=$PATH:$HOME/.cargo/bin
 
 # .oh-my-zsh 太慢，换这个 rust 开发的，非常快
@@ -71,15 +74,20 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:/usr/local/mysql/bin
 export GO111MODULE=on
 
+# NODE
+export NODE_HOME=/usr/local/node
+export PATH=$PATH:$NODE_HOME/bin
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export R_LIBS_USER=/data/R
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 # 4 rJava
 export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
 
-# export PATH="/opt/miniconda3/bin:$PATH"  # commented out by conda initialize
-
 export PATH=$PATH:/usr/local/pgsql/bin
+
+# huggingface
+export HF_HOME=/data2/.cache/huggingface
 
 # export GTK_DEBUG=modules
 export GTK_IM_MODULE=fcitx
@@ -136,6 +144,9 @@ alias now='date +"%Y-%m-%d %H:%M:%S"'
 # ag='sudo apt'，与 /usr/bin/ag 冲突
 # unalias ag
 
+# 给 yaegi 添加 history 和命令行编辑
+alias yaegi='rlwrap yaegi'
+
 bindkey -v
 
 bindkey '^P' history-substring-search-up
@@ -175,26 +186,11 @@ fi
 [[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
 
 # 用于更新 toolchain
-export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 # 用于更新 rustup
-export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
 
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # zmodload zsh/zprof
 
@@ -222,3 +218,21 @@ function preexec {
 function precmd {
 }
 
+export PATH=$PATH:/data/git_m/docker_test/bash_hello/tools
+
+export PATH="/opt/miniforge3/bin:$PATH"
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/opt/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='/opt/miniforge3';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+. "$HOME/.local/bin/env"
