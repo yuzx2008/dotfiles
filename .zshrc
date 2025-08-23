@@ -102,6 +102,7 @@ fi
 
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
+  . "$HOME/.local/bin/env"
 fi
 # eval 'dircolors ~/.dircolors'
 
@@ -235,4 +236,3 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
-. "$HOME/.local/bin/env"
