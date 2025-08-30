@@ -125,7 +125,7 @@ nnoremap <leader>n :REPLToggle<CR>
 let g:sendtorepl_invoke_key = "<leader>w"
 let g:repl_program = {
 			\	'python': ['python'],
-			\	'default': ['bash']
+			\	'default': ['zsh']
 			\	}
 
 
