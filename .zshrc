@@ -102,7 +102,6 @@ fi
 
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
-  . "$HOME/.local/bin/env"
 fi
 # eval 'dircolors ~/.dircolors'
 
@@ -163,6 +162,7 @@ bindkey "\e[4~" end-of-line
 # Avoid "zsh: no matches found: xxxx"
 unsetopt nomatch
 
+export KUBE_EDITOR=vim
 alias k=/usr/local/bin/kubectl
 alias kf="/usr/local/bin/kubectl --grace-period=0 --force --wait=false"
 
@@ -178,6 +178,10 @@ fi
 
 if [ $commands[golangci-lint]  ]; then
   source <(golangci-lint completion zsh)
+fi
+
+if [ $commands[crane]  ]; then
+  source <(crane completion zsh)
 fi
 
 # export GIT_TRACE_PACKET=1
@@ -236,3 +240,4 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
+# . "$HOME/.local/bin/env"
