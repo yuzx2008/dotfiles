@@ -1,0 +1,10 @@
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+pkgs_dirs:
+  - /data/.conda/pkgs
+envs_dirs:
+  - /data/.conda/envs
+auto_activate_base: false
+show_channel_urls: true
