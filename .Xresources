@@ -12,7 +12,7 @@ xterm*utf8: true
 ! Specify the pattern for scalable fonts selected from the FreeType library if support for that library was compiled into xterm.  There is no default value.
 ! fc-list :scalable=true:spacing=mono: family
 ! DejaVu Sans Mono:style=Book:antialias=True:pixelsize=12
-xterm*faceName: DejaVu Sans Mono:style=Book:antialias=True:pixelsize=11
+xterm*faceName: DejaVu Sans Mono:style=Book:antialias=True:pixelsize=10
 
 ! Specify a double-width scalable font for cases where an application requires this, e.g., in CJK applications.  There is no default value.
 ! If the application uses double-wide characters and this resource is not given, xterm will use a scaled version of the font given by faceName.
@@ -154,6 +154,11 @@ xterm*selectToClipboard: true
 *.color20:      base04
 *.color21:      base06
 
+*vt100.translations: #override \n\
+  Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+  Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
+  Ctrl <Key>M: maximize()
+
 ! copy && paste
 ! Ctrl-M 最大化
 ! Ctrl-R 恢复
@@ -167,9 +172,6 @@ xterm*selectToClipboard: true
 ! Meta<Key>l: string(0x1b) string("[1;5C")
 ! 5 Ctrl modifier, 13 ASCII value for a Carriage Return
 ! Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-*VT100*translations: #override \n\
-  Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
-  <Key>Home: string(0x1b) string("[1~") \n\
-  <Key>End: string(0x1b) string("[4~") \n\
-  Ctrl ~Meta ~Shift <Key>Enter: string(0x1b) string("[13;5u")
+# *VT100*translations: #override \n\
+#   Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1)
 
