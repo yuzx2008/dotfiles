@@ -206,5 +206,9 @@
   ],
   "pyright.inlayHints.functionReturnTypes": false,
   "pyright.inlayHints.variableTypes": false,
-  "pyright.inlayHints.parameterTypes": false
+  "pyright.inlayHints.parameterTypes": false,
+  "python.linting.enabled": true,
+  "python.linting.ruffEnabled": true,
+  "python.formatting.provider": "ruff",
+  "python.sortImports.path": "ruff"
 }
