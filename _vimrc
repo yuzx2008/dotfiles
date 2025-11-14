@@ -24,17 +24,6 @@ let maplocalleader = ','
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" vim-colors-solarized
-if has('gui_running')
-  " light dark
-  set background=dark
-else
-  set background=dark
-  " let g:solarized_termcolors=256
-endif
-colorscheme solarized
-Plug 'altercation/vim-colors-solarized'
-
 " http://editorconfig.org/ && ~/.editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
@@ -125,7 +114,6 @@ let g:repl_program = {
 			\	'python': ['python'],
 			\	'default': ['bash']
 			\	}
-
 
 " All of your Plugins must be added before the following line
 " Initialize plugin system
@@ -419,9 +407,6 @@ autocmd InsertLeave * call Fcitx2En()
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
 
-map <F3> :NERDTreeToggle<CR>
-imap <F3> <ESC>:NERDTreeToggle<CR>
-
 " 在 bash 中执行光标所在行
 " GoGuild
 " nnoremap <leader>b :.w !bash<CR>
@@ -624,3 +609,5 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 cd c:\Users\yuzx\wiki
 " https://github.com/derekmcloughlin/gvimfullscreen_win32.git
 map <F11> <Esc>:call libcallnr("gvimfullscreen_64.dll", "ToggleFullScreen", 0)<CR>
+
+colorscheme desert

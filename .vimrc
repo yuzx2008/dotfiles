@@ -421,9 +421,6 @@ autocmd InsertLeave * call Fcitx2En()
 " Paste toggle - when pasting something in, don't indent.
 set pastetoggle=<F4>
 
-map <F3> :NERDTreeToggle<CR>
-imap <F3> <ESC>:NERDTreeToggle<CR>
-
 " 在 bash 中执行光标所在行
 " GoGuild
 " nnoremap <leader>b :.w !bash<CR>

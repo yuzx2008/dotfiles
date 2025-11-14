@@ -1,4 +1,5 @@
 {
+  "suggest.noselect": true,
   "languageserver": {
     // 不要自己启动
     // "golang": {
