@@ -59,12 +59,6 @@ export MAVEN_OPTS="-Xms2g -Xmx4g -XX:ReservedCodeCacheSize=512m"
 export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin
 export PATH=$PATH:/opt/bin
 
-# cuda
-export PATH=$PATH:/usr/local/cuda-12.6/bin
-# or /etc/ld.so.conf add /usr/local/cuda-12.6/lib64
-# ldconfig
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12.6/lib64
-
 # GOPATH
 export GOROOT=/usr/local/go
 export GOPROXY=https://goproxy.cn
@@ -78,20 +72,12 @@ export GO111MODULE=on
 export NODE_HOME=/usr/local/node
 export PATH=$PATH:$NODE_HOME/bin
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export R_LIBS_USER=/data/R
-export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
-# 4 rJava
-export LD_LIBRARY_PATH=/usr/local/jdk8/jre/lib/amd64/server:$LD_LIBRARY_PATH
-
-export PATH=$PATH:/usr/local/pgsql/bin
-
 # huggingface
 export HF_HOME=/data2/.cache/huggingface
 
 # export GTK_DEBUG=modules
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 # export TERM=screen-256color       # for a tmux -2 session (also for screen)
@@ -103,13 +89,6 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
-# eval 'dircolors ~/.dircolors'
-
-# You may need to manually set your language environment
-export LANG=zh_CN.UTF-8
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 alias tmux="tmux -2"
 alias conda-b="conda activate base"
@@ -140,9 +119,6 @@ alias b='mdbook serve'
 
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%Y-%m-%d %H:%M:%S"'
-
-# ag='sudo apt'，与 /usr/bin/ag 冲突
-# unalias ag
 
 # 给 yaegi 添加 history 和命令行编辑
 alias yaegi='rlwrap yaegi'
@@ -223,21 +199,5 @@ function preexec {
 function precmd {
 }
 
-export PATH=$PATH:/data/git_m/docker_test/bash_hello/tools
+. "$HOME/.nvm/nvm.sh"
 
-export PATH="/opt/miniforge3/bin:$PATH"
-
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/opt/miniforge3/bin/mamba';
-export MAMBA_ROOT_PREFIX='/opt/miniforge3';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
-
-# . "$HOME/.local/bin/env"
