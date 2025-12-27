@@ -5,8 +5,8 @@ StartLimitIntervalSec=500
 StartLimitBurst=5
 
 [Service]
-ExecStart=/usr/local/bin/zsh /home/yuzx/.config/systemd/user/run_gopls.sh
-ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=zsh /home/yuzx/.config/systemd/user/run_gopls.sh
+ExecReload=kill -HUP $MAINPID
 
 Restart=on-failure
 RestartSec=5s
